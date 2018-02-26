@@ -33,7 +33,7 @@
   			</div><br>
         <div class="form-group">
         	<label for="pwd">Password: </label>
-        	<input type="password" name="pass" onkeypress="focusPassword()" class="form-control" placeholder="Password" id="pwd" maxlength="8" required ng-model="pwd">
+        	<input type="password" name="pass" onkeyup="focusPassword()" class="form-control" placeholder="Password" id="pwd" maxlength="8" required ng-model="pwd">
         	<div class="form-group" id="out"></div>
         </div><br>
 
@@ -57,7 +57,7 @@
   			</div><br>
 		<div class="form-group">
         	<label for="email">Phone Number: </label>
-        	<input type="text" name="phone" onkeypress="focusPhone()" class="form-control" id="phone" ng-model="phone" required>
+        	<input type="text" name="phone" onkeyup ="focusPhone()" class="form-control" id="phone" ng-model="phone" required>
         	<div class="form-group" id="outp"></div><br>
         </div><br>
           <div class="alert alert-danger" id="alert4">
@@ -66,7 +66,7 @@
   			</div><br>
 		<div class="form-group">
 			<label for="cntry">Country: </label>
-        	<input type="text" name="country" onkeypress="focusCountry()" class="form-control" id="country"  ng-model="country" required>
+        	<input type="text" name="country" onkeyup="focusCountry()" class="form-control" id="country"  ng-model="country" required>
 			</div>
 			<div class="form-group" id="outc"></div><br>
 	   <div class="alert alert-danger" id="alert6">
@@ -76,7 +76,7 @@
 			<br>	
 		<div class="form-group">	
 			<label for="city">City: </label>
-        	<input type="text" name="city" onkeypress="focusCity()"class="form-control" id="city" ng-model="city" required>
+        	<input type="text" name="city" onkeyup="focusCity()"class="form-control" id="city" ng-model="city" required>
 			</div><div class="form-group" id="outci"></div><br>
 		<div class="alert alert-danger" id="alert7">
     			<a href="#" class="close" onclick="$('#alert7').hide()">&times;</a>
@@ -85,7 +85,7 @@
 			
 		<div class="form-group">	
 			<label for="city">Street: </label>
-        	<input type="text" name="street" onkeypress="focusStreet()"class="form-control" id="street" ng-model="street" required>
+        	<input type="text" name="street" onkeyup="focusStreet()"class="form-control" id="street" ng-model="street" required>
 			</div>
 		<div class="form-group" id="outs"></div><br>
 					<div class="alert alert-danger" id="alert8">
@@ -95,7 +95,7 @@
 			
 		<div class="form-group">
 		    <label for="hnum">Number: </label>
-        	<input type="text" name="hnumb" onkeypress="focushNumber()" class="form-control" id="hnumb" ng-model="hnumb" required>
+        	<input type="text" name="hnumb" onkeyup="focushNumber()" class="form-control" id="hnumb" ng-model="hnumb" required>
 			</div>
 			<div class="form-group" id="outn"></div><br>
 	
@@ -105,7 +105,7 @@
   		</div><br>
 		<div class="form-group">	
 			<label for="zc">Zip Code: </label>
-        	<input type="text" name="zip" onkeypress="focusZip()"class="form-control" id="zip" ng-model="zip" required>
+        	<input type="text" name="zip" onkeyup="focusZip()"class="form-control" id="zip" ng-model="zip" required>
         </div>
 		<div class="form-group" id="outz"></div><br>
 		<div class="alert alert-danger" id="alert10">
@@ -113,7 +113,7 @@
     			<strong>{{errormsg10}}</strong>
   		</div><br>
 		<br>
-        <div class="form-group" id="longInput">
+        <div class="form-group">
         	<label for="photo">Photo: </label>
         	<input type="text" class="form-control" id="userImageUrl" placeholder="Photo URL" ng-model="userImageUrl">
         </div><br>

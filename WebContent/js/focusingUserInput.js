@@ -1,21 +1,34 @@
+/**functions that help to focus the user on his parameters choice**/
+
+
+var letters = /^[A-Z a-z]+$/;//for parameters that have to match only letters
+var numbers = /[0-9]/;//for parameters that have to match only numbers
+var homePhone1 = /^04([0-9]{7})?$/;//pattern to phone number which starts with 04
+var homePhone2 = /^02([0-9]{7})?$/;//pattern to phone number which starts with 02
+var homePhone3 = /^03([0-9]{7})?$/;//pattern to phone number which starts with 03
+var homePhone4 = /^09([0-9]{7})?$/;//pattern to phone number which starts with 09
+var cellPhone = /^05([0-9]{8})?$/;//pattern to phone number which starts with 05
+var validEmail =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;//pattern to email
+$scope.errormsg1="";
+	    		
+
 function focusPassword()
 		{
-			var chars1=/[A-Z]/;
-			var chars2=/[a-z]/;
-			var chars3=/[0-9]/;
+	 	
 			var theInput = document.getElementsByTagName("input")[2];
 			var theOutput = document.getElementById("out");
 			var pass = document.forms[0].pass.value;
-			//theInput.style.borderWidth = "2px 2px 4px 1px";
+	
 			if(pass.length<4)
 			{
+				
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "Weak Password";
 				theOutput.style.color="red";
 			}
 			else
 			{
-				if(((pass.match(chars1))||(pass.match(chars2)))&&(pass.match(chars3)))
+				if((pass.match(letters))&&(pass.match(numbers)))
 				{
 					theInput.style.borderColor="green";
 					theOutput.innerHTML = "Strong Password";
@@ -32,26 +45,23 @@ function focusPassword()
 
 
 		function focusCountry(){
-		
-			var chars1=/[A-Z]/;
-			var chars2=/[a-z]/;
-			var chars3=/[0-9]/;
+	
 			var theInput = document.getElementsByTagName("input")[5];
 			var theOutput = document.getElementById("outc");
 			var country = document.forms[0].country.value;
-			if(country.match(chars3))
+			if(!(country.match(letters)))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "Please use letters";
 				theOutput.style.color="red";
 			}
-		    if((country.length<3))
+		    if((country.length<2))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "You have to use at least 3 letters";
 				theOutput.style.color="red";
 			}
-			if(country.match(chars1)||country.match(chars2)&& !country.match(chars3)&&(country.length>=3))
+			if(country.match(letters)&&(country.length>=2))
 			{
 				theInput.style.borderColor="blue";
 				theOutput.innerHTML = "Ok";
@@ -60,14 +70,10 @@ function focusPassword()
 			}
 
 		function focusStreet(){
-		
-			var chars1=/[A-Z]/;
-			var chars2=/[a-z]/;
-			var chars3=/[0-9]/;
 			var theInput = document.getElementsByTagName("input")[7];
 			var theOutput = document.getElementById("outs");
 			var street = document.forms[0].street.value;
-			if(street.match(chars3))
+			if(!(street.match(letters)))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "Please use letters";
@@ -79,7 +85,7 @@ function focusPassword()
 				theOutput.innerHTML = "You have to use at least 3 letters";
 				theOutput.style.color="red";
 			}
-			if(street.match(chars1)||street.match(chars2)&& !street.match(chars3)&&(street.length>=3))
+			if(street.match(letters)&&(street.length>=2))
 			{
 				theInput.style.borderColor="blue";
 				theOutput.innerHTML = "Ok";
@@ -88,26 +94,23 @@ function focusPassword()
 			}
 
 		function focushNumber(){
-		
-			var chars1=/[A-Z]/;
-			var chars2=/[a-z]/;
-			var chars3=/[0-9]/;
+
 			var theInput = document.getElementsByTagName("input")[8];
 			var theOutput = document.getElementById("outn");
 			var hnumb = document.forms[0].hnumb.value;
-			if(!(hnumb.match(chars3)))
+			if(!(hnumb.match(numbers)))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "Please use numbers";
 				theOutput.style.color="red";
 			}
-		    if((hnumb.length<1))
+		    if((hnumb.length<0))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "Please enter your block number";
 				theOutput.style.color="red";
 			}
-			if(hnumb.match(chars3)||hnumb.match(chars2)&& (hnumb.length==1))
+			if(hnumb.match(numbers)||(hnumb.length>1))
 			{
 				theInput.style.borderColor="blue";
 				theOutput.innerHTML = "Ok";
@@ -116,26 +119,24 @@ function focusPassword()
 			}
 
 		function focusCity(){
-		
-			var chars1=/[A-Z]/;
-			var chars2=/[a-z]/;
-			var chars3=/[0-9]/;
+	
 			var theInput = document.getElementsByTagName("input")[6];
 			var theOutput = document.getElementById("outci");
 			var city = document.forms[0].city.value;
-			if(city.match(chars3))
+			if(!(city.match(letters)))
 			{
+				
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "Please use letters";
 				theOutput.style.color="red";
 			}
-		    if((city.length<3))
+		    if((city.length<2))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "You have to use at least 3 letters";
 				theOutput.style.color="red";
 			}
-			if(city.match(chars1)||city.match(chars2)&& !city.match(chars3)&&(city.length>=3))
+			if(city.match(letters)&&(city.length>=2))
 			{
 				theInput.style.borderColor="blue";
 				theOutput.innerHTML = "Ok";
@@ -144,14 +145,11 @@ function focusPassword()
 			}
 
 		function focusZip(){
-		
-			var chars1=/[A-Z]/;
-			var chars2=/[a-z]/;
-			var chars3=/[0-9]/;
+	
 			var theInput = document.getElementsByTagName("input")[9];
 			var theOutput = document.getElementById("outz");
 			var zip = document.forms[0].zip.value;
-			if(!zip.match(chars3) ||zip.match(chars2)||zip.match(chars1))
+			if((!(zip.match(numbers)) ||zip.match(letters)))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "Please use numbers";
@@ -169,17 +167,14 @@ function focusPassword()
 				theOutput.innerHTML = "Ok";
 				theOutput.style.color="blue";
 			}
-			}
+		}
 
 		function focusPhone(){
-		
-			var chars1=/[A-Z]/;
-			var chars2=/[a-z]/;
-			var chars3=/[0-9]/;
+
 			var theInput = document.getElementsByTagName("input")[5];
 			var theOutput = document.getElementById("outp");
 			var phone = document.forms[0].phone.value;
-			if((phone.match(chars1))||(phone.match(chars2)))
+			if((phone.match(letters)) || (!(phone.match(numbers))))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "Please use numbers";

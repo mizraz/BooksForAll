@@ -13,7 +13,7 @@ angular.module('myApp').controller("Ctrl",
 		$scope.errormsg8="";
 		$scope.errormsg9="";
 		$scope.errormsg10="";
-		$scope.errormsg12="Nickname already exists";
+		$scope.errormsg12="Nickname or email already exists";
 		$('#alert1').hide();
 		$('#alert2').hide();
 		$('#alert3').hide();
@@ -164,7 +164,7 @@ angular.module('myApp').controller("Ctrl",
 //				$rootScope.curPage = $rootScope.pagesPaths.catalog;
 //	    	       	window.location = 'http://localhost:8080/ExampleServletv3/index.html';
 	    	    },function() {			
-	    			$scope.errormsg12="Nickname "+$scope.nick+" already exists, enter a new one and try again";
+	    			$scope.errormsg12="Nickname "+$scope.nick+" or email "+$scope.email+" already exists, enter a new one and try again";
 	    			$('#alert12').show();
 					//window.location = 'http://localhost:8080/ExampleServletv3/KREbooks/index.html';
 	    		});

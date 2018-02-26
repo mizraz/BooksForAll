@@ -85,7 +85,7 @@ public class UserRegisterServlet extends HttpServlet {
 		Gson gson = new Gson();
 		Type type = new TypeToken<User>(){}.getType();
 		User user = gson.fromJson(data, type);
-		if (UsernameExist(user.getUserNickname(),response))
+		if (UsernameExist(user.getUserNickname(),user.getEmail(),response))
 		{
 			 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 			//PrintWriter writer = response.getWriter();
@@ -140,11 +140,8 @@ public class UserRegisterServlet extends HttpServlet {
 		catch ( SQLException | NamingException e)
 		{
 		
-			//log error 
-			//cntx.log("Error during database initialization",e);
 			e.printStackTrace();
-			//getServletContext().log("Error while closing connection", e);
-    		//response.sendError(500);//internal server error
+			
 		}
 		
         // just to illustrate the use of Json in Servlets, we return the input to the client
@@ -178,7 +175,7 @@ public class UserRegisterServlet extends HttpServlet {
 		
 		return;
 	}
-	protected Boolean UsernameExist(String username, HttpServletResponse response) throws ServletException, IOException
+	protected Boolean UsernameExist(String username,String email, HttpServletResponse response) throws ServletException, IOException
 	{
 		int check = 0;
 		try
@@ -187,7 +184,7 @@ public class UserRegisterServlet extends HttpServlet {
 			BasicDataSource ds = (BasicDataSource)context.lookup(
 					getServletContext().getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.OPEN);
 			Connection conn = ds.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM USER_DETAILS WHERE user_nickname ='"+username.toString()+"'");
+			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM USER_DETAILS WHERE user_nickname ='"+username.toString()+"' OR email='"+email.toString()+"'");
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next())
 			{
