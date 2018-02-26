@@ -8,10 +8,17 @@
 
 		<div class='row'>
 
-			<ul class="chat style-2" id="chati" ng-show="$ctrl.isCollapsed">
-				<!--            <li> </li> -->
+
+			<ul class="chat style-2 details-list list-unstyled" id="reviwsList" ng-show="$ctrl.isCollapsed">
+				           <li class="col-xs-12"  ng-repeat="review in reviewsList"><review review="review"> </review> </li>
 
 			</ul>
+
+
+<!-- 			<ul class="chat style-2" id="chati" ng-show="$ctrl.isCollapsed"> -->
+<!-- 				           <li> </li> -->
+
+<!-- 			</ul> -->
 
 
 		</div>

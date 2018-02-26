@@ -1,20 +1,31 @@
-/*chat style ***********************************************************/
 
-.chat {
-  /* z-index: 1; */
-  /* order: 4; */
-  /* flex: 40 1 auto; */
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  flex-flow: row wrap;
-  background: #f6f6f6;
-}
+
+.review-details {
+	border: 2px solid white;
+	border-radius: 8%;
+	margin-bottom: 10px;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* message stype ************************************************************/
+
 
 img {
 	max-width: 10000px; /*need this to cancel this attribute who takes care images in READ BOOK page are not too big. this fix shows the reviewer photo */
