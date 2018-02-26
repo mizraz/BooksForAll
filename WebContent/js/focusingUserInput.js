@@ -1,4 +1,6 @@
+
 /**functions that help to focus the user on his parameters choice**/
+
 
 
 var letters = /^[A-Z a-z]+$/;//for parameters that have to match only letters
@@ -15,11 +17,13 @@ $scope.errormsg1="";
 function focusPassword()
 		{
 	 	
+
 			var theInput = document.getElementsByTagName("input")[2];
 			var theOutput = document.getElementById("out");
 			var pass = document.forms[0].pass.value;
 	
 			if(pass.length<4)
+
 			{
 				
 				theInput.style.borderColor="red";

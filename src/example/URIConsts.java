@@ -8,6 +8,8 @@ public class URIConsts {
 	public static final String EMAIL = "email";
 	public static final String REVIEW_APPROVE = "reviewApprove"; 
 	public static final String DELETE_USER = "deleteUser";
+	public static final String PURCHASE = "purchase";
+
 	
 
 	

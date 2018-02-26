@@ -134,6 +134,7 @@ angular.module('myApp').controller("Ctrl",
 	    			description: $scope.desc,
 	    			userImageUrl: $scope.userImageUrl	
 	    		}
+
 	    		
 
 	    		
