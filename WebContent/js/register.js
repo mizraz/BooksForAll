@@ -134,28 +134,36 @@ angular.module('myApp').controller("Ctrl",
 	    			description: $scope.desc,
 	    			userImageUrl: $scope.userImageUrl	
 	    		}
-	    		request = $.post("http://localhost:8080/BooksForAll/UserRegisterServlet",JSON.stringify(data));
-	    		console.log(request);
-	    		request.then(function (response, textStatus, jqXHR)
-	    		{      console.log("HELLO");
-				$("#myModalRegisterLogin").modal('hide');
+	    		
+
+	    		
+	    		$http.post("http://localhost:8080/BooksForAll/UserRegisterServlet",JSON.stringify(data))
+	    		.then(function(response) {
+	    		    console.log("HELLO");
+		    		if($scope.userImageUrl =="")
+	    			{
+		    			$scope.userImageUrl = "resources/userImages/annonymous.jpg"
+	    			}
+	    		    
 				$rootScope.userLogedIn = {
-						email: response.data[0].email,
-						userNickname: response.data[0].userNickname,
-						userName: response.data[0].userName,
-						userImageUrl: response.data[0].userImageUrl,
-						phoneNumber: response.data[0].phoneNumber,
-						description: response.data[0].description,
-						country:response.data[0].address.split(",")[0],
-						city:response.data[0].address.split(",")[1],
-						street:response.data[0].address.split(",")[2],
-						hnumb:response.data[0].address.split(",")[3],
-						zip:response.data[0].address.split(",")[4]
+						email: $scope.name,
+						userNickname:  $scope.nick,
+						userName: $scope.name,
+						userImageUrl: $scope.userImageUrl,
+						phoneNumber: $scope.phone,
+						description: $scope.desc,
+						country: $scope.country,
+						city: $scope.city,
+						street: $scope.street,
+						hnumb: $scope.hnumb,
+						zip: $scope.zip
 				};
-				$rootScope.curPage = $rootScope.pagesPaths.catalog;
+				$rootScope.getEbooksAndPurchases();
+				$("#myModalRegisterLogin").modal('hide');
+				
+//				$rootScope.curPage = $rootScope.pagesPaths.catalog;
 //	    	       	window.location = 'http://localhost:8080/ExampleServletv3/index.html';
-	    	    });
-	    		request.fail(function() {			
+	    	    },function() {			
 	    			$scope.errormsg12="Nickname "+$scope.nick+" already exists, enter a new one and try again";
 	    			$('#alert12').show();
 					//window.location = 'http://localhost:8080/ExampleServletv3/KREbooks/index.html';
