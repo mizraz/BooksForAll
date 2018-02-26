@@ -2,6 +2,14 @@
 			['$scope','$rootScope','$http', function($scope, $rootScope, $http) {
 	
 
+		this.$onInit = function () {
+			$scope.curEbookIdUserClickedToBuy = $rootScope.curEbookUserClickedToBuy.bookId;
+			$scope.curEbookUserClickedToBuyTitle = $rootScope.curEbookUserClickedToBuy.title;
+
+			console.log("$scope.curEbookIdUserClickedToBuy id: " + $scope.curEbookIdUserClickedToBuy);
+			
+		}
+				
 		
 		$scope.errormsg="";
 		$scope.errormsg1="";

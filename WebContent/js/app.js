@@ -29,6 +29,8 @@
 				userDetailsPageForAdmin: 'html/usereDetailsForAdmin.html'	
 		}
 		
+		$rootScope.curEbookUserClickedToBuy = '';
+		
 		
 
 

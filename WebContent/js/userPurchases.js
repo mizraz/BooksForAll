@@ -6,6 +6,7 @@ angular.module('myApp').controller("userPurchasesController",
 			
 			console.log($rootScope.nnn);
 			ctrl.email = $rootScope.userLogedIn.email;
+			$scope.nickname = $rootScope.userLogedIn.userNickname;
 //			$rootScope.userPurchases = [];
 
 

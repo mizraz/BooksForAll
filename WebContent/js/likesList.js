@@ -23,7 +23,7 @@
 				ctrl.countLikers = $scope.result.data.length;
 				// foreach like of ctrl.ebookId, store it in ctrl.userNamesList.
 				for (var liker in $scope.result.data) {
-					ctrl.userNamesList.push($scope.result.data[liker].userNickname);
+					ctrl.userNamesList.push($scope.result.data[liker]);
 					ctrl.usersListHtml = ctrl.usersListHtml + '\n' +  $scope.result.data[liker].userNickname; //TODO: delete
 				}
 

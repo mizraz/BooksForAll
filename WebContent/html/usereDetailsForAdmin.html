@@ -66,8 +66,41 @@
         	<ng-model="photo"><strong>{{photo}}</strong></ng-model>
         
         </div><br><br>
-       
+        
       </form>
+             		<button   data-toggle="modal" data-book-id="my_id_value" class="button btn-danger" ng-click="confirmDeleteUser()" > Delete User</button> 
+		
+		
+			<!-- Modal -->
+	<div class="modal container" id="confirmDeleteUserModal" role="dialog" >
+		<div class="modal-dialog .modal-sm">
+
+			<!-- Modal content-->
+			<div class="modal-content col-xs-12">
+				<div class="modal-header">
+					<button type="button" class="close  " data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Are you sure you would like to delete user?</h4>
+
+				</div>
+				<div class="col-xs-6">
+					<button type="button" class="btn btn-default"
+						ng-click="deleteUser(true)">Yes</button>
+						</div>
+							<div class="col-xs-6">
+					<button type="button" class="btn btn-default "
+						ng-click="deleteUser(false)">No</button>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+        
     </div>
 </body>
 </html>

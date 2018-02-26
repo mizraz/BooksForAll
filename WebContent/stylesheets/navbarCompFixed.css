@@ -46,11 +46,11 @@ a {
  }
  
  
- .myNavbar {
+ .my-navbar {
  	display: none;
  }
  
- .fixedToTop:hover .myNavbar {
+ .fixed-to-top:hover .my-navbar {
  	display: block;
  	background: white;
  	

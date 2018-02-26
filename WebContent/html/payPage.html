@@ -7,7 +7,7 @@
 
 <div class="container" ng-controller="CtrlBuy">
       <form class="form-inline" method="post">
-        <h3 class="form-heading">Buy a book:</h3>
+        <h3 class="form-heading">Buy ebook: <i><u><b>{{curEbookUserClickedToBuyTitle}}</b></u></i></h3>
         <div class="form-group">
         	<label for="name">Name:</label>
         	<input type="text" class="form-control" placeholder="Name" id="name" maxlength="10" required autofocus ng-model="name">
@@ -92,7 +92,7 @@
         </div><br>
         <a href="#" class="close" onclick="$('#alert4').hide()">&times;</a>
     		<strong>{{errormsg4}}</strong>
-  		</div><br>
+  		<br>
         <div class="form-group">
         	<label for="date">Date:</label>
         	<input type="date" class="form-control" placeholder="Date" id="date"  required autofocus ng-model="date">
@@ -102,8 +102,9 @@
     		<strong>{{errormsg1}}</strong>
   		</div><br>
     
-    <button type="submit" class="btn btn-sm btn-primary" ng-click='BuyNow()'>Buy Now</button>
+    <button type="submit" class="btn btn-sm btn-primary" ng-click='BuyNow()'>Pay Now</button>
   </form>
+  </div>
 
 </div>
 

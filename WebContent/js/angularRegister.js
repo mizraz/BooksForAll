@@ -138,7 +138,9 @@ angular.module('myApp').controller("Ctrl",
 	    		console.log(request);
 	    		request.then(function (response, textStatus, jqXHR)
 	    		{      console.log("HELLO");
-	    	       	window.location = 'http://localhost:8080/ExampleServletv3/index.html';
+				$("#myModalRegisterLogin").modal('hide');
+				$rootScope.curPage = $rootScope.pagesPaths.catalog;
+//	    	       	window.location = 'http://localhost:8080/ExampleServletv3/index.html';
 	    	    });
 	    		request.fail(function() {			
 	    			$scope.errormsg12="Nickname "+$scope.nick+" already exists, enter a new one and try again";

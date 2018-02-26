@@ -51,16 +51,16 @@ public class loginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		Cookie[] sessionCookie = null;
-		sessionCookie = request.getCookies();
-		if (sessionCookie == null) //if no session is open
-		{
-			response.sendRedirect("http://localhost:8080/ExampleServletv3/KREbooks/registerANDlogin/login.html");
-		}
-		//else
-		//{
-			response.sendRedirect("http://localhost:8080/ExampleServletv3/KREbooks/registerANDlogin/login.html");
-		//}
+//		Cookie[] sessionCookie = null;
+//		sessionCookie = request.getCookies();
+//		if (sessionCookie == null) //if no session is open
+//		{
+//			response.sendRedirect("http://localhost:8080/ExampleServletv3/KREbooks/registerANDlogin/login.html");
+//		}
+//		//else
+//		//{
+//			response.sendRedirect("http://localhost:8080/ExampleServletv3/KREbooks/registerANDlogin/login.html");
+//		//}
 	}
 
 	/**

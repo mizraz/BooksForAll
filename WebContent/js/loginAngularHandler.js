@@ -172,7 +172,7 @@ angular.module('myApp').controller("Ctrlogin",
 							// update if the isPurchased flag - 1 if bought this book, otherwise 0.
 							$rootScope.ebooksDict["ebook" + $rootScope.resultPurchasesTmp.data[purchase].bookId].isPurchased = 1 ; //TODO: this line is example how to add properties to ebook. need to do this for like etc with real data from ajax.
 							// update isLiked - 1 if liked, otherwise 0.
-							$rootScope.ebooksDict["ebook" + $rootScope.resultPurchasesTmp.data[purchase].bookId].isliked = $rootScope.resultPurchasesTmp.data[purchase].isLiked; //TODO: this line is example how to add properties to ebook. need to do this for like etc with real data from ajax.
+							$rootScope.ebooksDict["ebook" + $rootScope.resultPurchasesTmp.data[purchase].bookId].isLiked = $rootScope.resultPurchasesTmp.data[purchase].isLiked; //TODO: this line is example how to add properties to ebook. need to do this for like etc with real data from ajax.
 							// update currentScroll - update the position the user stopped reading
 							$rootScope.ebooksDict["ebook" + $rootScope.resultPurchasesTmp.data[purchase].bookId].currentScroll = $rootScope.resultPurchasesTmp.data[purchase].currentScroll;
 							

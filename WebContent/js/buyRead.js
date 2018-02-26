@@ -9,6 +9,7 @@ var myModalReadBody;
 		var ctrl = this;
 
 		this.$onInit = function() {
+			ctrl = this;
 
 			$rootScope.curEbookIdd = '123'; // TODO: delete
 
@@ -27,8 +28,8 @@ var myModalReadBody;
 				
 				// check if user liked this book. if liked, to show unlike button. otherwise Like button.
 				//TODO: think to hide Like if user didn't bought ebook.
-				if ($rootScope.purchasesDict["ebook"+ ctrl.curEbook.bookId].isLiked == '1' ||
-						$rootScope.purchasesDict["ebook"+ ctrl.curEbook.bookId].isLiked == 1) 
+				if ($rootScope.ebooksDict["ebook"+ ctrl.curEbook.bookId].isLiked == '1' ||
+						$rootScope.ebooksDict["ebook"+ ctrl.curEbook.bookId].isLiked == 1) 
 				{
 					ctrl.isLiked = true;
 				}
@@ -51,9 +52,9 @@ var myModalReadBody;
 		// ctrl.clickedBuy()  - user clicked by. to route to paymentForm page
 		ctrl.clickedBuy = function () {
 
-			console.log('clicked buy');
+			console.log('clicked buy book: ' + ctrl.ebook.bookId);
 			
-			
+			$rootScope.curEbookUserClickedToBuy = ctrl.ebook;
 			$rootScope.curPage =  $rootScope.pagesPaths.payPage;
 
 		}
@@ -184,14 +185,16 @@ var myModalReadBody;
 			console.log("clicked like;");
 
 			if(ctrl.ebook.isLiked == 1) {
-				ctrl.ebook.isLiked = 0;
 				ctrl.isLiked = false;
+				ctrl.ebook.isLiked = 0;
+				$rootScope.ebooksDict["ebook" + ctrl.ebook.bookId].isLiked = 0;
 
 			} else {
-				ctrl.ebook.isLiked = 1;
 				ctrl.isLiked = true;
+				ctrl.ebook.isLiked = 1;
+				$rootScope.ebooksDict["ebook" + ctrl.ebook.bookId].isLiked = 1;
 			}
-
+			
 
 			console.log(ctrl.ebook.isLiked);
 
