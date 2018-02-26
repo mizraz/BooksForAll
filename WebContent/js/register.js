@@ -138,21 +138,12 @@ angular.module('myApp').controller("Ctrl",
 	    		console.log(request);
 	    		request.then(function (response, textStatus, jqXHR)
 	    		{      console.log("HELLO");
+				
+			
 				$("#myModalRegisterLogin").modal('hide');
-				$rootScope.userLogedIn = {
-						email: response.data[0].email,
-						userNickname: response.data[0].userNickname,
-						userName: response.data[0].userName,
-						userImageUrl: response.data[0].userImageUrl,
-						phoneNumber: response.data[0].phoneNumber,
-						description: response.data[0].description,
-						country:response.data[0].address.split(",")[0],
-						city:response.data[0].address.split(",")[1],
-						street:response.data[0].address.split(",")[2],
-						hnumb:response.data[0].address.split(",")[3],
-						zip:response.data[0].address.split(",")[4]
-				};
+				
 				$rootScope.curPage = $rootScope.pagesPaths.catalog;
+				
 //	    	       	window.location = 'http://localhost:8080/ExampleServletv3/index.html';
 	    	    });
 	    		request.fail(function() {			
