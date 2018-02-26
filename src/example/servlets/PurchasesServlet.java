@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -19,10 +20,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import com.google.gson.Gson;
+
+import DB.DBConsts;
 import DB.DBQueries;
 import example.AppConstants;
 import example.URIConsts;
+import example.Utils;
 import example.model.Purchase;
+import example.model.Review;
 
 /**
  * Servlet implementation class PurchasesServlet
@@ -31,7 +36,8 @@ import example.model.Purchase;
 		description = "Handles purchases info",
 		urlPatterns = { 
 				"/purchases/email/*",
-				"/purchase/email/*"
+				"/purchase/email/*",
+				"/newPurchase"
 //				, "/transactions/*" /*will have 2 params: first, second date*/
 		})
 public class PurchasesServlet extends HttpServlet {
@@ -122,7 +128,68 @@ public class PurchasesServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		
+		
+		try {
+
+			//obtain CustomerDB data source from Tomcat's context
+			Context context = new InitialContext();
+			BasicDataSource ds = (BasicDataSource)context.lookup(
+					getServletContext().getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.OPEN);
+			Connection conn = ds.getConnection();
+			String data = Utils.getPostBody(request);
+			    			System.out.println("!!!!!!!!!!!! " + data);
+			Gson gson = new Gson();
+			Purchase purchase = gson.fromJson(data, Purchase.class);
+			System.out.println("in post purchase " + purchase.getBookId());
+
+			try {
+				
+	    		String uri = request.getRequestURI();
+
+	    		
+				PreparedStatement pstmt = conn.prepareStatement(DBQueries.INSERT_PURCHASE);
+				pstmt.setString(1, purchase.getEmail());
+				pstmt.setString(2, purchase.getBookId());
+				pstmt.setString(3, "0");
+				pstmt.setString(4, purchase.getPrice());
+				pstmt.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+				pstmt.setInt(6, 0);
+
+
+
+				pstmt.executeUpdate();
+				System.out.println("email, bookId :  " + purchase.getEmail() +
+						purchase.getBookId() +"price: "+ purchase.getPrice());
+	    		
+				
+
+
+			} catch (SQLException e) {
+				getServletContext().log("Error while querying for customers", e);
+				response.sendError(500);//internal server error
+			}
+			conn.close();
+
+		} catch (SQLException | NamingException e) {
+			getServletContext().log("Error while closing connection", e);
+			response.sendError(500);//internal server error
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
