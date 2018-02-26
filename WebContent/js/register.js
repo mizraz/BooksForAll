@@ -134,19 +134,37 @@ angular.module('myApp').controller("Ctrl",
 	    			description: $scope.desc,
 	    			userImageUrl: $scope.userImageUrl	
 	    		}
-	    		request = $.post("http://localhost:8080/BooksForAll/UserRegisterServlet",JSON.stringify(data));
-	    		console.log(request);
-	    		request.then(function (response, textStatus, jqXHR)
-	    		{      console.log("HELLO");
-				
-			
+
+	    		
+
+	    		
+	    		$http.post("http://localhost:8080/BooksForAll/UserRegisterServlet",JSON.stringify(data))
+	    		.then(function(response) {
+	    		    console.log("HELLO");
+		    		if($scope.userImageUrl =="")
+	    			{
+		    			$scope.userImageUrl = "resources/userImages/annonymous.jpg"
+	    			}
+	    		    
+				$rootScope.userLogedIn = {
+						email: $scope.name,
+						userNickname:  $scope.nick,
+						userName: $scope.name,
+						userImageUrl: $scope.userImageUrl,
+						phoneNumber: $scope.phone,
+						description: $scope.desc,
+						country: $scope.country,
+						city: $scope.city,
+						street: $scope.street,
+						hnumb: $scope.hnumb,
+						zip: $scope.zip
+				};
+				$rootScope.getEbooksAndPurchases();
 				$("#myModalRegisterLogin").modal('hide');
 				
-				$rootScope.curPage = $rootScope.pagesPaths.catalog;
-				
+//				$rootScope.curPage = $rootScope.pagesPaths.catalog;
 //	    	       	window.location = 'http://localhost:8080/ExampleServletv3/index.html';
-	    	    });
-	    		request.fail(function() {			
+	    	    },function() {			
 	    			$scope.errormsg12="Nickname "+$scope.nick+" already exists, enter a new one and try again";
 	    			$('#alert12').show();
 					//window.location = 'http://localhost:8080/ExampleServletv3/KREbooks/index.html';

@@ -71,9 +71,17 @@ public class ManageUsersDBFromJsonFile implements ServletContextListener {
     		
     		boolean created = false;
     		try{
-//    			
-//    			Statement stmt3 = conn.createStatement();
-//    			stmt3.executeUpdate(DBQueries.DROP_USERS_TABLE);
+				
+    			
+    			try {
+	    			Statement stmt3 = conn.createStatement();
+	    			stmt3.executeUpdate(DBQueries.DROP_USERS_TABLE);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+    			
+    			
+
     			
     			//create Customers table
     			Statement stmt = conn.createStatement();

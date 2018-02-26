@@ -165,7 +165,6 @@ public class ReviewHandler extends HttpServlet {
 			    			System.out.println("!!!!!!!!!!!! " + rev.getBookId());
 
 			try {
-//TODO: need to insert timestamp
 				
 	    		String uri = request.getRequestURI();
 	    		if (uri.indexOf(URIConsts.REVIEW_APPROVE) == -1){//filter customer by specific name

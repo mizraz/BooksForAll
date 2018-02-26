@@ -73,7 +73,7 @@ angular.module('myApp').controller("Ctrlogin",
 							};
 
 
-							ctrl.getEbooksAndPurchases();
+							$rootScope.getEbooksAndPurchases();
 
 
 
@@ -119,7 +119,7 @@ angular.module('myApp').controller("Ctrlogin",
 			};
 
 			// ctrl.getEbooksAndPurchases() - sends request for: all ebooks, all ebooks were bought by user. updates relevant DS.
-			ctrl.getEbooksAndPurchases = function() {
+			$rootScope.getEbooksAndPurchases = function() {
 
 				console.log("ctrl.getEbooksAndPurchases");
 

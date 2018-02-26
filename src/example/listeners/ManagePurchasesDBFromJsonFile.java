@@ -79,8 +79,14 @@ public class ManagePurchasesDBFromJsonFile implements ServletContextListener {
 //    			stmt5.executeUpdate(DBQueries.DROP_PURCHASES_TABLE_CONSTRAINT_EBOOK_ID);
 				
 				
-				Statement stmt3 = conn.createStatement();
-				stmt3.executeUpdate(DBQueries.DROP_USER_PURCHASES_TABLE);
+				try {
+					Statement stmt3 = conn.createStatement();
+					stmt3.executeUpdate(DBQueries.DROP_USER_PURCHASES_TABLE);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+
 
 
 				//create Customers table
