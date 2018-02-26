@@ -1,0 +1,109 @@
+<!doctype html>
+<html  lang="en" id="body">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+
+<!--  <script src="http://code.jquery.com/jquery-3.2.1.js"></script> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  -->
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  -->
+<!-- <script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>  -->
+
+<script src="lib/jquery-3.2.1.js"></script>
+<link rel="stylesheet" href="
+			lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script src="lib/angular.min.js"></script>
+
+<link rel="stylesheet" href="stylesheets/index.css">
+<script src="js/app.js"></script>
+<script src="js/ebookDetails.js"></script>
+<script src="js/navbarComp.js"></script>
+<script src="js/navbarCompFixed.js"></script>
+<script src="js/reviewForm.js"></script>
+<script src="js/reviewEbook.js"></script>
+<script src="js/likesList.js"></script>
+<script src="js/buyRead.js"></script>
+<script src="js/ebookPage.js"></script>
+<script src="js/userPurchases.js"></script>
+<script src="js/reviewsListAll.js"></script>
+<script src="js/lastTransactions.js"></script>
+<script src="js/usersList.js"></script>
+<script src="js/userDetails.js"></script>
+<script  src="js/udetailsAndularHandler.js"></script>
+<script  src="js/PaymentHandler.js"></script>
+<script  src="js/loginAngularHandler.js"></script>
+<script  src="js/focusingRegisterParams.js"></script>
+<script  src="js/angularRegister.js"></script>
+<script  src="js/DetailsForAdminHandler.js"></script>
+
+
+
+
+<title>KRE Store</title>
+</head>
+
+<body  ng-app="myApp" >
+	<div class="content" ng-controller='MainCtrl as ctrl' id="bodyId">
+		<div class="container">
+			<header class="page-header">
+
+				<h1 style="content:'\e125';">KRE - Books for all!</h1>
+
+
+			</header>
+		</div>
+
+<!-- 		<navbar-comp cur-page="ctrl.curPage" user-id="ctrl.userId" -->
+<!-- 			user-privel="ctrl.userPrivel" isShowCatalog="ctrl.isShowCatalog"></navbar-comp> -->
+
+
+		<navbar-comp ng-if="!curPage.includes('contents/')" cur-page="ctrl.curPage" user-id="ctrl.userId"
+			user-privel="userPrivel" isShowCatalog="ctrl.isShowCatalog"></navbar-comp>
+			
+		<navbar-comp-fixed ng-if="curPage.includes('contents/')" cur-page="ctrl.curPage" user-id="ctrl.userId"
+			user-privel="userPrivel" isShowCatalog="ctrl.isShowCatalog"></navbar-comp-fixed>
+
+		<!-- <ebook-page ng-click="" ng-show="ctrl.isShowEbook" ebook="ctrl.ebook1" isShowCatalog="isShowCatalog" isShowEbook="isShowEbook"> </ebook-page> -->
+		<!-- <review-ebook> </review-ebook> -->
+
+		<div  id="idCurPageInclude" class="container">
+			<div  ng-include="curPage"></div>
+
+			<!-- <div data-ng-view> </div> -->
+
+		</div>
+		
+					<!-- Modal -->
+	<div class="modal container modal-register" id="myModalRegisterLogin" role="dialog">
+		<div class="modal-dialog .modal-lg modal-register">
+
+			<!-- Modal content-->
+			<div class="modal-content col-xs-12">
+				<div class="modal-header">
+					<h4 class="modal-title">Register</h4>
+			
+					</div>
+					
+			<div  ng-include="modalCurPath"></div>
+					
+
+
+				<div class="modal-footer">
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+		
+		
+	</div>
+
+</body>
+
+</html>

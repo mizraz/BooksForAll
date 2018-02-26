@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="stylesheets/ebookPage.css">
+
+<div class="content" ng-controller='ebookPageController as ctrl'>
+	<div class='container' id='ebookPage'>
+		<ebook-details ebook="ctrl.ebook"></ebook-details>
+		<div class="row">
+			<review-ebook userr="userName" ebook-id="ctrl.ebook.bookId"></review-ebook>
+			<review-form userr="userName" ng-if="!isCurEbookReviewed"
+				ebook-id="ctrl.ebook.bookId" ng-if="ctrl.isUserPurchased()">
+			</review-form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,141 @@
+/*chat style ***********************************************************/
+
+.chat {
+  /* z-index: 1; */
+  /* order: 4; */
+  /* flex: 40 1 auto; */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  flex-flow: row wrap;
+  background: #f6f6f6;
+}
+
+
+/* message stype ************************************************************/
+
+
+
+.message {
+  display: flex;
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+
+.sidebar-message {
+  flex: 0;
+  margin-right: 5px;
+}
+
+.profile-img {
+  height: 20px;
+  width: 20px;
+}
+
+.img-circle {
+  margin-top: 2px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+.message-body {
+  border-radius: 15px;
+  border: solid 1px #D3D3D3;
+  /* border: hotpink solid 2px; */
+  background: white;
+  padding-left: 10px;
+  /*maybe to set padding in each sub element*/
+  padding-bottom: 10px;
+  display: inline-block;
+  left: 0px;
+  /* stick it wherever it was positioned by default */
+  top: 0px;
+}
+
+.message-header {
+  flex: 4;
+  display: flex;
+  margin-bottom: 7px;
+  /*   display: flex; */
+  box-sizing: border-box;
+  /* border: solid yellow 2px; */
+}
+
+.container-button-delete-message {
+  margin-right: 5px;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.button-delete-message {
+  margin: 10px 10px 0 0;
+  background: none;
+  border: none;
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
+}
+
+.button-delete-message:active,
+.button-delete-message:focus {
+  position: relative;
+  clip: auto;
+  clip-path: none;
+}
+
+.empty-div-del-btn {
+  flex: 10;
+}
+
+li:focus>.message-body,
+.message-body:hover {
+  background: #ebedec;
+}
+
+li:focus>.message-body>.message-header>.container-button-delete-message>.button-delete-message,
+.message-body:hover>.message-header>.container-button-delete-message>.button-delete-message {
+  background: #ebedec;
+  position: relative;
+  clip: auto;
+  clip-path: none;
+}
+
+.message-content {
+  flex: 1 0 auto;
+  word-break: break-word;
+  font-family: "Nunito script=all rev=2", sans-serif;
+  font-weight: 400;
+  color: #616161;
+  margin: 0 0 0 0;
+  font-size: 0.8em;
+}
+
+.message-user-name {
+  font-family: 'Nunito script=all rev=2', sans-serif;
+  font-style: normal;
+  font-size: 0.9em;
+  color: #202729;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-right: 10px;
+  word-break: break-word;
+}
+
+.message-time-sent {
+  position: relative;
+  right: 10px;
+  top: 5px;
+  margin: 8px 0 0 8px;
+  flex: 20;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+  color: #b8b8b8;
+  font-size: 0.7rem;
+}
+
+.message-time-sent:nth-letter(2) {
+  color: green;
+  size: 20rem;
+}

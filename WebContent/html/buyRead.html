@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="stylesheets/buyRead.css">
+
+<div class='container buy-read col-xs-5 col-sm-7' id='buyRead'>
+	<div>
+		<likes-list ebook-id="$ctrl.ebook.bookId"
+			is-user-liked="$ctrl.isUserliked" class=" "
+			is-user-purchased="$isUserPurchased"></likes-list>
+		<button ng-if="!$ctrl.ebook.isPurchased" type="button"
+			ng-click="$ctrl.clickedBuy()" class="btn btn-info btn-lg "
+			data-toggle="modal" data-target="#myModalBuy">Buy</button>
+		<button ng-if="$ctrl.ebook.isPurchased" type="button"
+			ng-click="$ctrl.clickedRead()" class="btn btn-info btn-lg ">Read</button>
+		<button ng-if="(!$ctrl.isLiked && $ctrl.ebook.isPurchased)"
+			type="button" ng-click="$ctrl.submitLike()" class="btn btn-primary ">Like</button>
+		<button ng-if="$ctrl.isLiked" type="button"
+			ng-click="$ctrl.submitLike()" class="btn btn-primary ">unlike</button>
+
+	</div>
+
+	<!-- Modal -->
+	<div class="modal " id="myModalBuy" role="dialog">
+		<div class="modal-dialog .modal-lg">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Pay Here!</h4>
+				</div>
+				<div class="modal-body">
+					<p>ENTER CREDIT CARD AND OTHER BILLING DETAILS.</p>
+					<input></input> <input></input> <input></input> <input></input> <input></input>
+					<input></input>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal container" id="myModalScroll" role="dialog">
+		<div class="modal-dialog .modal-sm">
+			<!-- Modal content-->
+			<div class="modal-content col-xs-12">
+				<div class="modal-header">
+					<button type="button" class="close  " data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Would you like to go to where you stopped?</h4>
+				</div>
+				<div class="col-xs-6">
+					<button type="button" class="btn btn-default"
+						ng-click="$ctrl.goToLastScroll(true)">Yes</button>
+				</div>
+				<div class="col-xs-6">
+					<button type="button" class="btn btn-default "
+						ng-click="$ctrl.goToLastScroll(false)">No</button>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+

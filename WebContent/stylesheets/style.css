@@ -1,0 +1,111 @@
+body#login {
+	background-image: url(../img/7595.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+body#login .container {
+	width: 20%;
+	margin-left: 1%;
+	margin-top: 8%;
+}
+
+span#tooltip {
+	color: red;
+	font-weight: bold;
+}
+
+body#registration {
+	background-image: url(../img/7595.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+body#registration .form-group{
+	margin-top: 0.5%;
+}
+
+#out {
+	margin-left: 40px;
+	font-weight: bold;
+}
+
+body#registration .alert-danger{
+	width: 35%;
+}
+
+body#registration #desc {
+	width: 50%;
+	height: 120px;
+}
+
+label {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 200px;
+}
+
+input {
+	display: inline-block;
+	float: left;
+}
+
+body#welcome {
+	background: #333333;
+	color: #FFF;
+}
+
+#nav-collapse li{
+	background: #222222 !important;
+}
+
+#footer{
+	text-align: center;
+}
+
+#nickcolor{
+	color: red;
+}
+
+#nav-collapse li :hover{
+	background: #CE0000;
+	border-radius: 5px;
+}
+.panel-body{
+	color: #000 !important; 
+}
+.jumbotron{
+	color: #000 !important; 
+}
+
+.taginfo{
+	background: #333333;
+	color : #FFF;
+	width: 50%;
+	border-radius: 10px;
+	border-style: solid;
+    border-color: #000;
+	padding: 1%;
+	margin-top: 0.5%;
+	display: none;
+}
+
+.browse .list-group-item-text{
+	background: #DBDBDB !important;
+	padding: 1%;
+	border-radius: 10px;
+}
+
+.tablealign{
+	 valign: top;
+}
+
+.quesRating{
+	 display: none;
+}
+
+.nav-tabs li {
+	cursor: pointer;
+	cursor: hand;
+}

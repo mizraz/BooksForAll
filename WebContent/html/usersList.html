@@ -1,0 +1,9 @@
+ <h1>USERS LIST</h1>
+ <div ng-controller="usersListController as ctrl"> <!--  -->
+ <ul class="row list-unstyled" ng-repeat="user in ctrl.usersList" >
+		<li class="col-xs-12 col-sm-12 col-lg-12" >
+			<user-details ng-click="ctrl.goToUserDetailsPage(user)" user="user" ></user-details>
+		</li>
+	</ul> 
+		
+</div>

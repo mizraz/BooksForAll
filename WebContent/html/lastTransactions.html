@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="stylesheets/lastTransactions.css">
+
+<div class="container"
+	ng-controller="lastTransactionsController as ctrl">
+
+
+	<div class='row'>
+
+
+		<div>
+			<span><u>Sum total of purchases in period:</u> <strong>{{ctrl.sumPurchases}}</strong></span>
+		</div>
+		<div>
+			<span><u>Number of purchases in period:</u> <strong>{{ctrl.countPurchases}}</strong></span>
+		</div>
+		<form name="myForm">
+			<label for="exampleInput">Select dates of transactions:</label> <input
+				type="date" id="exampleInput" name="input" ng-model="dates.first"
+				placeholder="yyyy-MM-dd" required /> <input type="date"
+				id="exampleInput" name="input" ng-model="dates.second"
+				placeholder="yyyy-MM-dd" required />
+			<div role="alert">
+				<span class="error" ng-show="myForm.input.$error.required">
+					Required!</span> <span class="error" ng-show="myForm.input.$error.date">
+					Not a valid date!</span>
+			</div>
+
+			<button ng-click="ctrl.getTranscationsBetweenDates()">send</button>
+
+		</form>
+
+		<div class="table-responsive">
+
+
+			<table class="table table-condensed">
+
+
+				<tr>
+					<th scope="col">Book Id</th>
+					<th scope="col">Email</th>
+					<th scope="col">Price</th>
+					<th scope="col">Date Purchased</th>
+				</tr>
+
+				<tr ng-repeat="transaction in ctrl.transactionsList ">
+					<td class="col-xs-3 col-md-4">{{transaction.email}}</td>
+					<td class=" col-md-12 col-md-1">{{transaction.bookId}}</td>
+					<td class="col-md-3 col-md-2">{{transaction.price}}</td>
+					<td class="col-md-12 col-md-5">{{transaction.datePurchased}}</td>
+				</tr>
+
+			</table>
+
+
+
+		</div>
+
+
+	</div>
+
+
+
+
+</div>
+

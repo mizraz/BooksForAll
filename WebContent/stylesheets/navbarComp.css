@@ -1,0 +1,46 @@
+/*.user{
+    background: green;
+}
+
+.users{
+    background: blue;
+}
+
+.recent-transactions{
+	    background: red;
+	
+}
+
+.reviews{
+    background: violet;
+}
+
+.home{
+    background: yellow;
+}
+
+
+.ccc{
+    background: powderblue;
+}*/
+
+.navbar{
+	text-align: center;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+    margin-left: 0;
+}
+
+a {
+    margin-left: 0;
+    padding: 0;
+
+    
+}
+
+.nopadding {
+    padding-left: 0 !important;
+    /* margin-left: 0 !important; */
+ }

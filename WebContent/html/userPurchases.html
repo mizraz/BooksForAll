@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="stylesheets/userPurchases.css">
+
+<div class='container' ng-controller="userPurchasesController as ctrl">
+	<h1>{{$userDetails.nickname}}, here are ebooks you purchased:</h1>
+	<ul class="row list-unstyled" ng-repeat="x in userPurchases">
+		<li class="col-xs-12 col-sm-12 col-lg-12 ebook-item well">
+			<ebook-details ebook="x"></ebook-details>
+		</li>
+	</ul>
+
+</div>

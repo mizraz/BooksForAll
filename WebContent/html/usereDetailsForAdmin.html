@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	
+	<meta charset="UTF-8">
+	<title>User Details</title>	
+</head>
+<body id="registration">
+	<div class="container ng-scope"  ng-controller="CtrlDetailsForAdmin">
+      <form class="form-inline" method="post">
+        <h3 class="form-heading">User Details</h3>
+        <div class="form-group">
+        	<label for="name">Name: </label>
+        	<ng-model="name"><strong>{{name}}</strong></ng-model>       	
+        </div>
+        <br>
+        <div class="form-group">
+        	<label for="nick">Nickname: </label>
+        	<ng-model="nick"><strong>{{nick}}</strong></ng-model>
+        </div><br>
+        
+        <div class="form-group">
+        	<label for="desc">Description: </label>
+        	
+        	<ng-model="desc"><strong><textarea style="overflow-y: scroll" rows='5' cols="50" maxlength="600">{{desc}}</textarea></strong></ng-model>
+        	
+        </div><br>
+        <br>
+		<div class="form-group">
+        	<label for="email">Email: </label>
+        	<ng-model="email"><strong>{{email}}</strong></ng-model>
+        </div><br>
+		<div class="form-group">
+        	<label for="phoneNumber">Phone Number: </label>
+        	<ng-model="phoneNumber"><strong>{{phoneNumber}}</strong></ng-model>
+        </div><br>
+			
+		<div class="form-group">
+			<label for="country">Country: </label>
+			<ng-model="country"><strong>{{country}}</strong></ng-model>
+			</div>
+			<br>
+		<div class="form-group">	
+			<label for="city">City: </label>
+        	<ng-model="city"><strong>{{city}}</strong></ng-model>
+			</div>
+			<br>
+		<div class="form-group">	
+			<label for="street">Street: </label>
+        	<ng-model="street"><strong>{{street}}</strong></ng-model>
+			</div>
+			<br>
+		<div class="form-group">
+		    <label for="hnumb">Number: </label>
+        	<ng-model="hnumb"><strong>{{hnumb}}</strong></ng-model>
+			</div>
+			<br>
+		<div class="form-group">	
+			<label for="zip">Zip Code: </label>
+        	<ng-model="zip"><strong>{{zip}}</strong></ng-model>
+        </div>
+	   <br>
+        <div class="form-group">
+        	<label for="photo">Photo: </label>
+        	<ng-model="photo"><strong>{{photo}}</strong></ng-model>
+        
+        </div><br><br>
+       
+      </form>
+    </div>
+</body>
+</html>

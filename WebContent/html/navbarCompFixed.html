@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="stylesheets/navbarCompFixed.css">    
+
+<div class="fixedToTop" style="z-index: 500;  position: fixed; width: 100%;     top: 0;   left: 0;">
+
+<nav class="navbar "  data-spy="affix" data-offset-top="0" style="z-index: 400; ">
+    <div class="container myNavbar">
+     <div class="row">
+        <strong>
+        <ul class="nav navbar-nav col-xs-12 col-sm-12 ">
+            <li class="  home col-xs-4 col-sm-3 col-md-2" ng-click="$ctrl.routeToPage('html/catalog.html')">
+                <a href="" class="nopadding"><span class=" text-nowrap"><img src="resources/navbarImages/glyphicons-21-home.jpg">
+                     Home</span></a>
+            </li>
+            <li class="nopadding text-nowrap ccc col-xs-4 col-sm-3 col-md-1" ng-click="$ctrl.routeToPage('html/topDeals.html')"><a href="" class="nopadding">Top deals</a></li>
+            <li class="nopadding text-nowrap ddd col-xs-4 col-sm-2 col-md-1" ng-click="$ctrl.routeToPage('html/contactUs.html')" ><a href="" class="nopadding">Contact us</a></li>
+            <li class=" text-nowrap reviews col-xs-6 col-sm-3 col-md-2 " ng-click=" $ctrl.routeToPage('html/reviewsListAll.html')"   ng-if="$ctrl.userPrivel == 1" }}>
+                <a href="" class="nopadding">Reviews list</a></li>
+            <li class="nopadding text-nowrap users col-xs-6 col-sm-3 col-md-2" ng-click="$ctrl.routeToPage('html/usersList.html')" ng-if="$ctrl.userPrivel == 1" }}>
+                <a href="" class="nopadding">Users list</a></li>
+             <li class="nopadding text-nowrap last-transactions col-xs-6 col-sm-3 col-md-2" ng-click="$ctrl.routeToPage('admin/lastTransactions/lastTransactions.html')" ng-if="$ctrl.userPrivel == 1" }}>
+                <a href="" class="nopadding">Recent Transactions</a></li>
+
+
+             <li class="nopadding text-nowrap last-transactions col-xs-6 col-sm-3 col-md-2" ng-click="$ctrl.routeToPage('html/userDetails.html')" ng-if="$ctrl.userPrivel == 1" }}>
+
+            <li class="text-nowrap col-xs-6 col-sm-2 col-md-2 dropdown " ng-if="$ctrl.userPrivel == 0"><a class=" text-nowrap dropdown-toggle" data-toggle="dropdown"  class="nopadding">
+                Hi {{$userLogedIn.userNickname}}!</a>
+            </li>
+            <li class="cart col-xs-3 col-sm-1 col-md-1 navbar-right " style="margin-right: 0!important" ng-click="$ctrl.routeToPage('html/userPurchases.html')">
+                <a href="" class="" style="margin-right: 0!important"><img src="resources/navbarImages/glyphicons-203-shopping-cart.jpg"></a>
+                
+            </li>
+            <li class="col-xs-3 col-sm-1 col-md-1 navbar-right " ng-click="$ctrl.routeToPage('html/profile.html')">
+                <a href=""><img src="resources/navbarImages/glyphicons-4-user.jpg"></a>
+            </li>
+
+        </ul>
+        </strong>
+        
+        </div>
+        
+    
+    </div>
+</nav>
+</div>
+
+<!-- EXAMPLE with ngRoute <li class=" text-nowrap reviews col-xs-6 col-sm-3 col-md-2 " ng-click="$ctrl.curPage = 'admin/reviewsListAll/reviewsListAll.html'" ng-if="$ctrl.userPrivel == 1" }}>
+    <a href="/#!/reviewsListAll" class="nopadding">Reviews list</a></li> -->

@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css"/> -->
+
+	<meta charset="UTF-8">
+	<title>Log-in</title>
+</head>
+<body ng-app="myApp" id="login">
+
+	<div class="container ng-scope"  ng-controller="Ctrlogin">
+		<form>
+	        <h3 class="form-heading">Please sign in</h3>
+	        <div class="form-group">
+	        	<label for="nick">Nickname: </label>
+	        	<input type="text" class="form-control" placeholder="Username" ng-model="nick" id="nick" required >
+	        </div><br>
+	   <div class="alert alert-danger" id = "alert1">
+		 <a href="#" class="close" onclick="$('#alert1').hide()">&times;</a>
+		 <strong>{{errormsg1}}</strong>
+				</div>
+	        <div class="form-group">
+	        	<label for="pwd">Password: </label>
+	        	<input type="password" class="form-control" placeholder="Password" ng-model="pwd" id="pwd" required>
+	        </div><br>
+             <br>
+	        <button type="submit" ng-click='SubmitFunction()' class="btn btn-lg btn-primary btn-block">Sign in</button>
+		</form>
+		<br>
+		<p>Not a member?</p>
+		<a  class="btn btn-lg btn-primary btn-block" role="button" ng-click="clickedRegister()">Resigter Now</a>
+		
+
+	</div> <!-- /container -->
+</body>
+</html>

@@ -1,0 +1,17 @@
+.ebook-img {
+    height: 200px;
+    width: 200px;
+    vertical-align: super;
+}
+.details-list {
+    /* display: inline-block; */
+    
+    /* display: flex; */
+    /* justify-content: center; */
+    /* position: relative;
+    top: 50px; */
+}
+
+img {
+	max-width: 10000px; /*need this to cancel this attribute who takes care images in READ BOOK page are not too big. this fix shows the reviewer photo */
+}

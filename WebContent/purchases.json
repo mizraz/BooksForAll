@@ -1,0 +1,49 @@
+[
+{ "email" : "clark.kent@cripto.com", "bookId" : "56254", "isLiked" : "1", "price" : "10", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "clark.kent@cripto.com", "bookId" : "56255", "isLiked" : "1", "price" : "2", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "clark.kent@cripto.com", "bookId" : "56256", "isLiked" : "1", "price" : "3", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "clark.kent@cripto.com", "bookId" : "56238", "isLiked" : "0", "price" : "4", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "clark.kent@cripto.com", "bookId" : "56262", "isLiked" : "0", "price" : "50", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "clark.kent@cripto.com", "bookId" : "56260", "isLiked" : "0", "price" : "60", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "clark.kent@cripto.com", "bookId" : "56257", "isLiked" : "0", "price" : "30", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+
+{ "email" : "bruce.wayne@gotham.com", "bookId" : "56254", "isLiked" : "1", "price" : "50", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "bruce.wayne@gotham.com", "bookId" : "56255", "isLiked" : "1", "price" : "12", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "bruce.wayne@gotham.com", "bookId" : "56256", "isLiked" : "1", "price" : "13", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "bruce.wayne@gotham.com", "bookId" : "56238", "isLiked" : "1", "price" : "5", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "bruce.wayne@gotham.com", "bookId" : "56262", "isLiked" : "1", "price" : "20", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "bruce.wayne@gotham.com", "bookId" : "56260", "isLiked" : "1", "price" : "30", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "bruce.wayne@gotham.com", "bookId" : "56257", "isLiked" : "0", "price" : "30", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+
+
+{ "email" : "peter.parker@nyc.com", "bookId" : "56254", "isLiked" : "0", "price" : "5", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "peter.parker@nyc.com", "bookId" : "56255", "isLiked" : "1", "price" : "512", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "peter.parker@nyc.com", "bookId" : "56256", "isLiked" : "0", "price" : "3", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "peter.parker@nyc.com", "bookId" : "56238", "isLiked" : "0", "price" : "51", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "peter.parker@nyc.com", "bookId" : "56262", "isLiked" : "1", "price" : "20", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "peter.parker@nyc.com", "bookId" : "56260", "isLiked" : "1", "price" : "320", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+
+
+{ "email" : "tony.stark@nyc.com", "bookId" : "56254", "isLiked" : "1", "price" : "5", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "tony.stark@nyc.com", "bookId" : "56255", "isLiked" : "1", "price" : "52", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "tony.stark@nyc.com", "bookId" : "56256", "isLiked" : "0", "price" : "31", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "tony.stark@nyc.com", "bookId" : "56238", "isLiked" : "1", "price" : "515", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "tony.stark@nyc.com", "bookId" : "56262", "isLiked" : "1", "price" : "27", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "tony.stark@nyc.com", "bookId" : "56260", "isLiked" : "0", "price" : "324", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+
+{ "email" : "refael@nyc.com", "bookId" : "56254", "isLiked" : "1", "price" : "5", "datePurchased" : "2017-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "refael@nyc.com", "bookId" : "56255", "isLiked" : "1", "price" : "52", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "refael@nyc.com", "bookId" : "56256", "isLiked" : "1", "price" : "31", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "refael@nyc.com", "bookId" : "56238", "isLiked" : "1", "price" : "515", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "refael@nyc.com", "bookId" : "56262", "isLiked" : "1", "price" : "27", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "refael@nyc.com", "bookId" : "56260", "isLiked" : "1", "price" : "324", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+
+{ "email" : "donatelo@nyc.com", "bookId" : "56254", "isLiked" : "1", "price" : "5", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "donatelo@nyc.com", "bookId" : "56255", "isLiked" : "0", "price" : "52", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "donatelo@nyc.com", "bookId" : "56256", "isLiked" : "1", "price" : "31", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "donatelo@nyc.com", "bookId" : "56238", "isLiked" : "1", "price" : "515", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "donatelo@nyc.com", "bookId" : "56262", "isLiked" : "0", "price" : "27", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" },
+{ "email" : "donatelo@nyc.com", "bookId" : "56260", "isLiked" : "1", "price" : "324", "datePurchased" : "2018-01-01 00:00:00" , "currentScroll" : "500" }
+
+
+]

@@ -1,0 +1,11 @@
+<!--  with ngRepeat need a workaround WITH BOOTSTRAP STYLE -->
+<ul ng-repeat="x in ebooksList" ng-if="$index % 3 == 0"
+	class="list-unstyled ">
+	<li class="list-unstyle col-xs-12 col-sm-6 col-lg-4 ebook-item well"><ebook-details
+			ebook="ebooksList[$index]"></ebook-details></li>
+	<li class="col-xs-12 col-sm-6 col-lg-4 ebook-item well"><ebook-details
+			ebook="ebooksList[$index+1]"></ebook-details></li>
+	<li class="col-xs-12 col-sm-6 col-lg-4 ebook-item well"><ebook-details
+			ebook="ebooksList[$index+2]"></ebook-details></li>
+</ul>
+
