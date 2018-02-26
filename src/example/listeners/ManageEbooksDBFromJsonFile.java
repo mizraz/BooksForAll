@@ -72,8 +72,8 @@ public class ManageEbooksDBFromJsonFile implements ServletContextListener {
 //    			Statement stmt4 = conn.createStatement();
 //    			stmt4.executeUpdate(DBQueries.DROP_EBOOKS_TABLE_CONSTRAINT_PK );
 //				
-//				Statement stmt3 = conn.createStatement();
-//				stmt3.executeUpdate(DBQueries.DROP_EBOOKS_TABLE);
+				Statement stmt3 = conn.createStatement();
+				stmt3.executeUpdate(DBQueries.DROP_EBOOKS_TABLE);
 
 
 				//create Customers table

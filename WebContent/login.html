@@ -15,22 +15,22 @@
 	        <h3 class="form-heading">Please sign in</h3>
 	        <div class="form-group">
 	        	<label for="nick">Nickname: </label>
-	        	<input type="text" class="form-control" placeholder="Username" ng-model="nick" id="nick" required >
+	        	<input type="text" class="form-control" placeholder="Nickname" ng-model="nick" id="nick" required >
 	        </div><br>
 	   <div class="alert alert-danger" id = "alert1">
 		 <a href="#" class="close" onclick="$('#alert1').hide()">&times;</a>
 		 <strong>{{errormsg1}}</strong>
-				</div>
+				</div><br><br> 
 	        <div class="form-group">
 	        	<label for="pwd">Password: </label>
 	        	<input type="password" class="form-control" placeholder="Password" ng-model="pwd" id="pwd" required>
 	        </div><br>
-             <br>
-	        <button type="submit" ng-click='SubmitFunction()' class="btn btn-lg btn-primary btn-block">Sign in</button>
+             <br><br> 
+	        <button type="submit" ng-click='SubmitFunction()' class="btn btn-lg btn-success">Sign in</button>
 		</form>
-		<br>
-		<p>Not a member?</p>
-		<a  class="btn btn-lg btn-primary btn-block" role="button" ng-click="clickedRegister()">Resigter Now</a>
+		<br><br><br>
+		<p><strong>Not a member?<strong></strong></p>
+		<a  class="btn btn-lg btn-info " role="button" ng-click="clickedRegister()">Resigter Now</a>
 		
 
 	</div> <!-- /container -->

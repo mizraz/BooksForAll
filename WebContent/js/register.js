@@ -77,7 +77,7 @@ angular.module('myApp').controller("Ctrl",
 		     if(!($scope.email.match(validEmail)))//checks email validity
 		     {
 		         CheckFlag=0;
-		         $scope.errormsg5="Your email invalid";
+		         $scope.errormsg5="Your email is  invalid";
 		         $('#alert5').show()
 		     }
 		     //validates phone number
@@ -97,13 +97,13 @@ angular.module('myApp').controller("Ctrl",
 			  if(($scope.city.length < 3) || (!($scope.city.match(letters))))
 			  {
 			      CheckFlag=0;
-			      $scope.errormsg7="Your city must be letters long at least";
+			      $scope.errormsg7="Your city must be 3 letters long at least";
 				  $('#alert7').show();
 			  }
 			  if(($scope.street.length < 3) || (!($scope.street.match(letters))))
 			  {
 			      CheckFlag=0;
-			      $scope.errormsg8="Your street must be letters long at least";
+			      $scope.errormsg8="Your street must be 3 letters long at least";
 				  $('#alert8').show();
 			  }
 			  if(($scope.hnumb.length == 0) || (!($scope.hnumb.match(numbers))))
@@ -122,7 +122,7 @@ angular.module('myApp').controller("Ctrl",
 	    	if(CheckFlag==1)
 	    	{
 	    		if ($scope.userImageUrl == 0)
-	    			$scope.userImageUrl="https://vignette.wikia.nocookie.net/simpsons/images/1/11/Homersimpson.jpg/revision/latest?cb=20121229201104";
+	    			$scope.userImageUrl="https://en.wikipedia.org/wiki/Homer_Simpson#/media/File:Homer_Simpson_2006.png";
 	    		var data =
 	    		{
 	    			userName: $scope.name,
@@ -139,6 +139,19 @@ angular.module('myApp').controller("Ctrl",
 	    		request.then(function (response, textStatus, jqXHR)
 	    		{      console.log("HELLO");
 				$("#myModalRegisterLogin").modal('hide');
+				$rootScope.userLogedIn = {
+						email: response.data[0].email,
+						userNickname: response.data[0].userNickname,
+						userName: response.data[0].userName,
+						userImageUrl: response.data[0].userImageUrl,
+						phoneNumber: response.data[0].phoneNumber,
+						description: response.data[0].description,
+						country:response.data[0].address.split(",")[0],
+						city:response.data[0].address.split(",")[1],
+						street:response.data[0].address.split(",")[2],
+						hnumb:response.data[0].address.split(",")[3],
+						zip:response.data[0].address.split(",")[4]
+				};
 				$rootScope.curPage = $rootScope.pagesPaths.catalog;
 //	    	       	window.location = 'http://localhost:8080/ExampleServletv3/index.html';
 	    	    });

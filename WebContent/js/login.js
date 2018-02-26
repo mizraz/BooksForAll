@@ -29,7 +29,7 @@ angular.module('myApp').controller("Ctrlogin",
 
 					};
 
-					$http.post('http://localhost:8080/BooksForAll/loginServlet', JSON.stringify(data))
+					$http.post('http://localhost:8080/BooksForAll/login', JSON.stringify(data))
 					.then(function(response) {
 
 						//TODO: $rootScope.eamil = email_of_user_just_loged_in_from_the_response; 
