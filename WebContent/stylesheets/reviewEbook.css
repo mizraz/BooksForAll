@@ -139,3 +139,9 @@ li:focus>.message-body>.message-header>.container-button-delete-message>.button-
   color: green;
   size: 20rem;
 }
+
+
+.img-user-review {
+	width: 100px;
+	height: 100px;
+}

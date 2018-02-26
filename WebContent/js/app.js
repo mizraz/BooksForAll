@@ -41,6 +41,8 @@
 		$rootScope.ebooksList = [];
 		// $rootScope.curPage - holds the current page user in. starts in main page: the catalog.
 		$rootScope.curPage = $rootScope.pagesPaths.catalog;
+		// $rootScope.lastPage - holds the last page user in. used just for reading ebooks. starts in main page: the catalog.
+		$rootScope.lastPage = $rootScope.pagesPaths.catalog;
 		console.log("$rootScope.pagesPaths.catalog: " + $rootScope.pagesPaths.catalog);
 		console.log("$rootScope.curPage: " + $rootScope.curPage);
 		 

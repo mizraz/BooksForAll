@@ -2,12 +2,13 @@
 
 
 <div class='container' ng-controller="reviewsListAllController">
-	<h1>here will be a list of all pending
-		approval reviews</h1>
+	<h1>A list of all pending reviews for approval </h1>
 
-	<ul class="chat style-2" id="chati">
+			<ul class="style-2 details-list list-unstyled" id="reviwsList">
+				           <li  class="review-details col-xs-12" ng-repeat="review in reviewsList"><review review="review"></review> </li>
+
+			</ul>
 
 
-	</ul>
 
 </div>

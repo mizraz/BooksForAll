@@ -95,6 +95,7 @@ var myModalReadBody;
 				window.curEmailToSendScroll = $rootScope.userLogedIn.email;
 				// this conditions mean: user never read this book / is on top of it.
 				if (ctrl.curReadEbookScroll = $rootScope.ebooksDict[ebookIdDict].currentScroll == 0) {
+					$rootScope.lastPage =  $rootScope.curPage;
 					$rootScope.curPage = $rootScope.pagesPaths.ebookContents + $rootScope.curEbookIdd + '.html';
 				}
 				else { //open modal to ask user if to go to last scroll.

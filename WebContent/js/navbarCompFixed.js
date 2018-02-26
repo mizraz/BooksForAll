@@ -12,6 +12,11 @@ ctrl.routeToPage = function(pageToRouteTo){
 	  
 	};
 
+	$scope.backToLastPageClicked = function () {
+		var tmpPage = $rootScope.lastPage;
+		$rootScope.lastPage =  $rootScope.curPage;
+		$rootScope.curPage = tmpPage;
+	};
 
 
 };
