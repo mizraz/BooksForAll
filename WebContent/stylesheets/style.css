@@ -1,5 +1,5 @@
 body#login {
-	background-image: url(../img/7595.jpg);
+	
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -108,4 +108,8 @@ body#welcome {
 .nav-tabs li {
 	cursor: pointer;
 	cursor: hand;
+}
+.longInput{
+	border: 1px solid black;
+    width: 300px;
 }

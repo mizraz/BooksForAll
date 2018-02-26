@@ -16,9 +16,9 @@
 				catalog: 'html/catalog.html',
 				contactUs: 'html/contactUs.html',
 				lastTransactions: 'html/lastTransactions.html',
-				payPage: 'html/payPage.html',
+				payPage: 'html/paymentForm.html',
 				profile: 'html/profile.html',
-				register: 'html/reg.html',
+				register: 'html/register.html',
 				reviewsListAll: 'html/reviewsListAll.html',
 				topDeals: 'html/topDeals.html',
 				userDetails: 'html/userDetails.html',
@@ -26,7 +26,7 @@
 				usersList: 'html/usersList.html',
 				login: 'login.html',
 				ebookContents: 'resources/gutenberg/contents/', //needs to concat a suffix with the ebookId
-				userDetailsPageForAdmin: 'html/usereDetailsForAdmin.html'	
+				userDetailsPageForAdmin: 'html/userDetailsForAdmin.html'	
 		}
 		
 		$rootScope.curEbookUserClickedToBuy = '';

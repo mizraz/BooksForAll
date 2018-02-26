@@ -95,7 +95,7 @@ function focusPassword()
 			var theInput = document.getElementsByTagName("input")[8];
 			var theOutput = document.getElementById("outn");
 			var hnumb = document.forms[0].hnumb.value;
-			if(!hnumb.match(chars3))
+			if(!(hnumb.match(chars3)))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "Please use numbers";
@@ -179,7 +179,7 @@ function focusPassword()
 			var theInput = document.getElementsByTagName("input")[5];
 			var theOutput = document.getElementById("outp");
 			var phone = document.forms[0].phone.value;
-			if(!phone.match(chars3))
+			if((phone.match(chars1))||(phone.match(chars2)))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "Please use numbers";
