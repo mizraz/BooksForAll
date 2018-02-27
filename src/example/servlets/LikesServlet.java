@@ -61,10 +61,10 @@ public class LikesServlet extends HttpServlet {
 	}
 
 	/**
-	 * Do get.
+	 * get all likes of ebook, by book id
 	 *
 	 * @param request the request
-	 * @param response the response
+	 * @param response - a list of likes for the given book id by url param
 	 * @throws ServletException the servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -126,7 +126,7 @@ public class LikesServlet extends HttpServlet {
 	}
 
 	/**
-	 * Do post.
+	 * Handles a new like. updates in DB in table USER_PURCHASES that user like / unlike the given book id by url param.
 	 *
 	 * @param request the request
 	 * @param response the response

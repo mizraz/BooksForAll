@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 public class Utils {
 
 	/**
-	 * Gets the post body.
+	 * Gets the body of the post request.
 	 *
-	 * @param request the request
-	 * @return the post body
+	 * @param request contains the body to return.
+	 * @return the post body parameters.
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static String getPostBody(HttpServletRequest request) throws IOException {
@@ -34,7 +34,7 @@ public class Utils {
 	/**
 	 * Prints the all in result set.
 	 *
-	 * @param resultList the result list
+	 * @param resultList the result list to print.
 	 */
 	public static void printAllInResultSet(ArrayList<Map<String, Object>> resultList) {
 		Iterator<Map<String, Object>> iterator = resultList.iterator();

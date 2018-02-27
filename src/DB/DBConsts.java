@@ -2,12 +2,12 @@ package DB;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class DBConsts.
+ * The Class DBConsts. contains the sql columns, tables names that are used for DB queries.
  */
 public class DBConsts {
 
 	/**
-	 * The Enum SqlColumns.
+	 * The Enum SqlColumns - contains the names of columns in DB.
 	 */
 	public enum SqlColumns{
 		
@@ -85,9 +85,9 @@ public class DBConsts {
 		}
 		
 		/**
-		 * Gets the name.
+		 * Get the name of the column in DB.
 		 *
-		 * @return the name
+		 * @return the name  as stored in DB.
 		 */
 		public String getName(){
 			return columnName;
@@ -97,7 +97,7 @@ public class DBConsts {
 	
 	
 	/**
-	 * The Enum SqlTables.
+	 * The Enum SqlTables - contains the names of tables in DB.
 	 */
 	public enum SqlTables{
 		
@@ -128,9 +128,9 @@ public class DBConsts {
 		}
 		
 		/**
-		 * Gets the name.
+		 * Get the name of the table in DB.
 		 *
-		 * @return the name
+		 * @return the name as stored in DB
 		 */
 		public String getName(){
 			return tableName;

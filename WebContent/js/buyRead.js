@@ -18,12 +18,12 @@ var myModalReadBody;
 			ctrl.curEbook = ctrl.ebook;
 			ctrl.userEmail = $rootScope.userLogedIn.email;
 
-
+			// check whether user purchased current ebook
 			if ($rootScope.purchasesDict["ebook"+ ctrl.curEbook.bookId] == undefined) {
 				ctrl.usrBoughtCurBook = false;
 				ctrl.isLiked = false;
-			} else
-			{
+			} else {
+				// ctrl.usrBoughtCurBook - local flag indicates user purchased this book.
 				ctrl.usrBoughtCurBook = true;
 				console.log("$rootScope.purchasesDict[ebook+ ctrl.curEbook.bookId].isLiked" + $rootScope.purchasesDict["ebook"+ ctrl.curEbook.bookId].isLiked);
 
@@ -31,13 +31,13 @@ var myModalReadBody;
 				//TODO: think to hide Like if user didn't bought ebook.
 				if ($rootScope.ebooksDict["ebook"+ ctrl.curEbook.bookId].isLiked == '1' ||
 						$rootScope.ebooksDict["ebook"+ ctrl.curEbook.bookId].isLiked == 1) 
-				{
-					ctrl.isLiked = true;
+				{ 	//flag used to identify wheter user liked this book
+					ctrl.isLiked = true; 
 				}
 				else {
+					//flag used to identify wheter user liked this book
 					ctrl.isLiked = false;
 				}
-
 			}			
 
 
@@ -46,9 +46,11 @@ var myModalReadBody;
 			console.log("ctrl.isLiked: " + ctrl.isLiked);
 
 
-
+			// ctrl.userPrivel - for local use. 1 if admin, else 0.
 			ctrl.userPrivel = $rootScope.userPrivel;
 			console.log("likes list this.$oninit ");
+			
+			
 //			send ajax to get all likes to ctrl.ebookId
 			$http.get("http://localhost:8080/BooksForAll/likes/bookId/"+ctrl.ebook.bookId)
 			.then(function(response) {
@@ -58,7 +60,7 @@ var myModalReadBody;
 				console.log($scope.result);
 				console.log('number of likers: ' + $scope.result.data.length);
 
-
+				// ctrl.countLikers - the number of likes this book has.
 				ctrl.countLikers = $scope.result.data.length;
 				// foreach like of ctrl.ebookId, store it in ctrl.userNamesList.
 				for (var liker in $scope.result.data) {
@@ -66,11 +68,11 @@ var myModalReadBody;
 					ctrl.usersListHtml = ctrl.usersListHtml + '\n' +  $scope.result.data[liker].userNickname; //TODO: delete
 					if($scope.result.data[liker].userNickname == $rootScope.userLogedIn.userNickname)
 					{
+						// $scope.indexOfUserInLikesList - the position of user in the likes list shown in tooltip.
 						$scope.indexOfUserInLikesList = liker;
 					}
-
 				}
-
+				// update in global dictionary the likes list.
 				$rootScope.ebooksDict["ebook"+ctrl.ebook.bookId].likesList = $scope.result.data;
 
 
@@ -105,14 +107,6 @@ var myModalReadBody;
 			};
 
 
-
-
-
-
-
-
-
-
 		};
 
 		// ctrl.clickedBuy()  - user clicked by. to route to paymentForm page
@@ -135,8 +129,6 @@ var myModalReadBody;
 			$rootScope.curEbookIdd = ctrl.ebook.bookId;
 
 
-			//TODO: send ajax to update current scroll!!!!!!!!!!!!!!!!!!!!!!!
-
 //			send ajax to get current scroll position.
 			$http.get("http://localhost:8080/BooksForAll/scroll/email/"+$rootScope.userLogedIn.email+"/bookId/"+ctrl.ebook.bookId)
 			.then(function(response) {
@@ -151,15 +143,13 @@ var myModalReadBody;
 
 
 				console.log("current scroll of bookId: " +ctrl.ebook.bookId + " is: " + $rootScope.ebooksDict["ebook" +ctrl.ebook.bookId].currentScroll);
-
-
 				console.log("$rootScope.curEbookIdd " + $rootScope.curEbookIdd);
 
 				var ebookIdDict = "ebook" + $rootScope.curEbookIdd;
-
+				// store user info needed for sending ajax request to update last scroll position.
 				window.curBookIdToSendScroll = $rootScope.curEbookIdd;
 				window.curEmailToSendScroll = $rootScope.userLogedIn.email;
-				// this conditions mean: user never read this book / is on top of it.
+				// this conditions mean: user never read this book / is on top scroll position of it.
 				if (ctrl.curReadEbookScroll = $rootScope.ebooksDict[ebookIdDict].currentScroll == 0) {
 					$rootScope.lastPage =  $rootScope.curPage;
 					$rootScope.curPage = $rootScope.pagesPaths.ebookContents + $rootScope.curEbookIdd + '.html';
@@ -174,15 +164,13 @@ var myModalReadBody;
 
 					$("#myModalScroll").modal();				
 				}
-
-
 			}); 
-
 		};	
 
 
-		// ctrl.goToLastScroll() - user cliked: yes / no on the ScrollModal. 
+		// ctrl.goToLastScroll() - user clicked: yes / no on the ScrollModal. 
 		// if cliked yes - send him to the place he stopped reading. otherwise, to the top of ebook.
+		// isToGoToLastScroll - true if clicked 'yes' button , false if clicked 'no' button.
 		ctrl.goToLastScroll = function (isToGoToLastScroll) {
 
 
@@ -252,6 +240,9 @@ var myModalReadBody;
 			console.log("clicked like;");
 
 			if(ctrl.ebook.isLiked == 1) {
+				// update all DS and flags that user is no longer likes this book.
+				// removes user from likes list.
+				// reduce 1 to number of likers list.
 				ctrl.isLiked = false;
 				ctrl.ebook.isLiked = 0;
 				ctrl.countLikers -= 1;
@@ -259,6 +250,9 @@ var myModalReadBody;
 				$rootScope.ebooksDict["ebook" + ctrl.ebook.bookId].isLiked = 0;
 
 			} else {
+				// update all DS and flags that user likes this book.
+				// add user to likes list.
+				// add 1 to number of likers list.
 				ctrl.isLiked = true;
 				ctrl.ebook.isLiked = 1
 				ctrl.countLikers += 1;
@@ -270,6 +264,7 @@ var myModalReadBody;
 
 			console.log(ctrl.ebook.isLiked);
 
+			// like object to send server to update that user likes / unliked this book.
 			var like =
 			{
 					email: $rootScope.userLogedIn.email,
@@ -289,10 +284,7 @@ var myModalReadBody;
 				$scope.result = $scope.records;
 			});
 		};
-
 	};
-
-
 	angular.module('myApp').component('buyRead', {
 		controller: buyReadController,
 		templateUrl: 'html/buyRead.html',
@@ -300,11 +292,4 @@ var myModalReadBody;
 			ebook: '='
 		}
 	});
-
-
-
 })(window.angular);
-
-
-
-

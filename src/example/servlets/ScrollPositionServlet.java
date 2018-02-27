@@ -54,10 +54,10 @@ public class ScrollPositionServlet extends HttpServlet {
     }
 
 	/**
-	 * Do get.
+	 * Get the last scroll position user is in book id by url param.
 	 *
-	 * @param request the request
-	 * @param response the response
+	 * @param request the for the last scroll position
+	 * @param response ScrollObj , contains user last scroll position
 	 * @throws ServletException the servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -123,32 +123,12 @@ public class ScrollPositionServlet extends HttpServlet {
 			response.sendError(500);//internal server error
 		}
 		
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	}
 
 	/**
-	 * Do post.
+	 * Update the last scroll position of user in book in DB in USER_PURCHASES table.
 	 *
-	 * @param request the request
+	 * @param request for update the last scroll position of user in book by id and email.
 	 * @param response the response
 	 * @throws ServletException the servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -169,7 +149,6 @@ public class ScrollPositionServlet extends HttpServlet {
 			    			System.out.println("!!!!!!!!!!!! " + scroll.getBookId());
 
 			try {
-				
     			
 
 				PreparedStatement pstmt = conn.prepareStatement(DBQueries.SET_SCROLL);
@@ -178,8 +157,6 @@ public class ScrollPositionServlet extends HttpServlet {
 				pstmt.setString(3, scroll.getBookId());
 				pstmt.executeUpdate();
 				System.out.println("email: " + scroll.getEmail() +"bookId: "+ scroll.getBookId() +" scroll: "+ scroll.getScroll());
-
-				
 
 			} catch (SQLException e) {
 				getServletContext().log("Error while querying for customers", e);

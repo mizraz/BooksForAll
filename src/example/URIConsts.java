@@ -2,7 +2,7 @@ package example;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class URIConsts.
+ * The Class URIConsts
  */
 public class URIConsts {
 
