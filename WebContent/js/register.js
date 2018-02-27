@@ -160,7 +160,7 @@ angular.module('myApp').controller("Ctrl",
 						zip: $scope.zip
 				};
 				$rootScope.getEbooksAndPurchases();
-				
+				$rootScope.curPage = $rootScope.pagesPaths.catalog;
 				$("#myModalRegisterLogin").modal('hide');
 				
 
