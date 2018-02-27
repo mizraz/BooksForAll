@@ -11,9 +11,10 @@ angular.module('myApp').controller("CtrlBuy",
 			}
 
 
-			$scope.errormsg="";
+		
 			$scope.errormsg1="";
 			$scope.errormsg2="";
+			$scope.errormsg3="";
 			$scope.errormsg4="";
 			$scope.errormsg5="";
 			$scope.errormsg6="";
@@ -27,67 +28,62 @@ angular.module('myApp').controller("CtrlBuy",
 			{
 				var checkAll=1;
 				var letters = /^[A-Z a-z]+$/;//for parameters that have to match only letters
+				var numbers = /[0-9]/;//for parameters that have to match only numbers
+				var today = new Date();
+				var usersInputDate = new Date($scope.date);
 				$('#alert1').hide();
 				$('#alert2').hide();
 				$('#alert3').hide();
 				$('#alert4').hide();
 				$('#alert5').hide();
 				$('#alert6').hide();
-				console.log($scope.myCard);
+				
 				if(!($scope.name.match(letters)))
 				{
 					checkAll=0;
-					$scope.errormsg5="Use only letters";
-					$('#alert5').show();
+					$scope.errormsg1="Use only letters";
+					$('#alert1').show();
 
 				}
 				if(!($scope.Lname.match(letters)))
 				{
 					checkAll=0;
-					$scope.errormsg5="Use only letters";
-					$('#alert6').show();
-
-				}
-				if(($scope.myCard == 'visa') && (($scope.ccn.length<16 ||$scope.ccn.length>16) || $scope.ccn.indexOf("4")!=0 ))
-				{
-					checkAll=0;
-
-					$scope.errormsg2="The valid number of digits of leumi card is 16 and it starts with 4";
+					$scope.errormsg2="Use only letters";
 					$('#alert2').show();
+
 				}
-				if($scope.myCard == 'isra' && ($scope.ccn.length>9 || $scope.ccn.length<9))
+				if(($scope.myCard == 'visa') && (($scope.ccn.length<16 ||$scope.ccn.length>16) || $scope.ccn.indexOf("4")!=0 ) || (!($scope.ccn.match(numbers))))
 				{
 					checkAll=0;
-
-					$scope.errormsg2="The valid number of digits of VISA card is 9";
-					$('#alert2').show();
+					$scope.errormsg3="The valid number of digits of VISA card is 16 and it starts with 4";
+					$('#alert3').show();
 				}
-				var today = new Date();
-				var usersInputDate = new Date($scope.date);
-				console.log(usersInputDate.getDate() );
-				console.log(today.getDate());
-				if((usersInputDate.getDate() != today.getDate()) && (usersInputDate.getMonth() != today.getMonth()+1) && (usersInputDate.getFullYear() != today.getFullYear()))
+				if(($scope.myCard == 'isra') && ($scope.ccn.length>9 || $scope.ccn.length<9) || (!($scope.ccn.match(numbers))))
 				{
 					checkAll=0;
-
-					$scope.errormsg1="The date is incorrect";
-					$('#alert1').show();
+					$scope.errormsg4="The valid number of digits of ISRACARD card is 9";
+					$('#alert4').show();
 				}
-				console.log(today.getMonth() + 1);
-				console.log(today.getFullYear());
+				if((!($scope.myCard == 'visa'))&&(!($scope.myCard == 'isra')))
+					{
+					checkAll=0;
+					$scope.errormsg4="You must choose credit card";
+					$('#alert4').show();
+					}
+					
 				if(($scope.validityMonth <= today.getMonth()+1) && ($scope.validityYear == today.getFullYear()) || ($scope.validityYear < today.getFullYear()))
 				{
 					checkAll=0;
 
-					$scope.errormsg3="Your credit card seems to be invalid";
-					$('#alert3').show();
+					$scope.errormsg5="Your credit card seems to be invalid";
+					$('#alert5').show();
 				}
-				if($scope.cvv.length < 3) 
+				if((($scope.cvv.match(numbers))&&($scope.cvv.length <3)) || (!($scope.cvv.match(numbers))))
 				{
 					checkAll=0;
 
-					$scope.errormsg4="CVV contains 3 digits";
-					$('#alert4').show();
+					$scope.errormsg6="CVV contains 3 digits";
+					$('#alert6').show();
 				}
 				if(checkAll==1)
 				{
