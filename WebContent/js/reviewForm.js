@@ -5,7 +5,7 @@
 		var ctrl = this;
 		ctrl.editMode = false;
 
-
+		$scope.showForm = true;
 		ctrl.userNickname = $rootScope.userNickname;
 
 
@@ -30,6 +30,7 @@
 		// ctrl.submitReview() - user clicked on submit review. send content to server.
 		ctrl.submitReview = function() {
 
+			$scope.showForm = false;
 
 
 			console.log("clicked;");

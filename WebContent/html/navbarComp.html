@@ -11,8 +11,8 @@
                 <a href="" class="nopadding"><span class=" text-nowrap"><img src="resources/navbarImages/glyphicons-21-home.jpg">
                      Home</span></a>
             </li>
-            <li class="nopadding text-nowrap ccc col-xs-4 col-sm-3 col-md-1" ng-click="$ctrl.routeToPage('html/topDeals.html')"><a href="" class="nopadding">Top deals</a></li>
-            <li class="nopadding text-nowrap ddd col-xs-4 col-sm-2 col-md-1" ng-click="$ctrl.routeToPage('html/contactUs.html')" ><a href="" class="nopadding">Contact us</a></li>
+            <li ng-if="0"class="nopadding text-nowrap ccc col-xs-4 col-sm-3 col-md-1" ng-click="$ctrl.routeToPage('html/topDeals.html')"><a href="" class="nopadding">Top deals</a></li>
+            <li ng-if="0" class="nopadding text-nowrap ddd col-xs-4 col-sm-2 col-md-1" ng-click="$ctrl.routeToPage('html/contactUs.html')" ><a href="" class="nopadding">Contact us</a></li>
             <li class=" text-nowrap reviews col-xs-6 col-sm-3 col-md-2 " ng-click=" $ctrl.routeToPage('html/reviewsListAll.html')"   ng-if="$ctrl.userPrivel == 1" }}>
                 <a href="" class="nopadding">Reviews list</a></li>
             <li class="nopadding text-nowrap users col-xs-6 col-sm-3 col-md-2" ng-click="$ctrl.routeToPage('html/usersList.html')" ng-if="$ctrl.userPrivel == 1" }}>
@@ -24,7 +24,7 @@
              <li class="nopadding text-nowrap last-transactions col-xs-6 col-sm-3 col-md-2" ng-click="$ctrl.routeToPage('html/userDetails.html')" ng-if="$ctrl.userPrivel == 1" }}>
 
             <li class="text-nowrap col-xs-6 col-sm-2 col-md-2 dropdown " ng-if="$ctrl.userPrivel == 0"><a class=" text-nowrap dropdown-toggle" data-toggle="dropdown"  class="nopadding">
-              <span  id="userNicknameNav" ></span>  Hi  </a>
+              <span  id="userNicknameNav" ></span>  Welcome!  </a>
             </li>
             <li class="cart col-xs-3 col-sm-1 col-md-1 navbar-right " style="margin-right: 0!important" ng-click="$ctrl.routeToPage('html/userPurchases.html')">
                 <a href="" class="" style="margin-right: 0!important"><img src="resources/navbarImages/glyphicons-203-shopping-cart.jpg"></a>

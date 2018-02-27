@@ -77,8 +77,16 @@
 
 	    						console.log("delete request sent!");
 	    						$rootScope.curPage = $rootScope.pagesPaths.usersList;
-	    		    			$("#confirmDeleteUserModal").modal('hide');
+	    						$("#confirmDeleteUserModal").modal('hide');
 
+	    		    				
+	    		    				//TODO: ksenia alert temporary with message: "user deleted successfuly!"
+	    		    				
+	    		    			
+	    						
+	    						
+	    		    			
+	    		    			
 	    					});    			
 	    				}
 	    				else {

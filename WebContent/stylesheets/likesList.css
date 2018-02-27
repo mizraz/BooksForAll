@@ -82,22 +82,21 @@
 
 .tooltipp {
   	
-             position: relative;
-            display: inline-block;
+	position: relative;
+	display: inline-block;
             
 }
 
-    .tooltipp .tooltipptext {
-       /*visibility: hidden;*/
-       font-size: 0.8em;
-       display: none;
-        background-color: black;
-        opacity: 1000;
-        color: #fff;
-        text-align: center;
-        padding: 5px 0;
-        /* Position the tooltip */
-  	
+.tooltipp .tooltipptext {
+   /*visibility: hidden;*/
+   font-size: 0.8em;
+   display: none;
+    background-color: black;
+    opacity: 1000;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    /* Position the tooltip */
     z-index: 4;
 }
 

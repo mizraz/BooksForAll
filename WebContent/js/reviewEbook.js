@@ -52,6 +52,11 @@ var reviewList;
 
 		ctrl.getAllReviewsOfThisEbook = function(){
 			ctrl.isCollapsed = !ctrl.isCollapsed;
+			if($scope.reviewsList.length == 0 ) {
+				
+				//TODO: ksenia alert temporary with message: "reviews list is empty!"
+				
+			}
 		}
 
 	}
