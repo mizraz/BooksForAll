@@ -1,3 +1,4 @@
+// registraiong controller
 angular.module('myApp').controller("Ctrl", 
 			['$scope','$rootScope','$http', function($scope, $rootScope, $http) {	
 		$scope.errormsgg="";

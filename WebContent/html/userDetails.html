@@ -1,18 +1,23 @@
 <link rel="stylesheet" href="stylesheets/userDetails.css">
+<!-- a component holds user details -->
 <div>
-	<a href="" class="ebook-dateils-a"><img class="col-xs-6 col-sm-6 col-lg-5 img-cover-wrapper ebook-img "
+	<a href="" class="ebook-dateils-a"><img
+		class="col-xs-6 col-sm-6 col-lg-5 img-cover-wrapper ebook-img "
 		src={{$ctrl.user.userImageUrl}}>
-		<div class="ebook-details-no-img"> 
-	<ul class='col-xs-12 col-sm-6 col-lg-7 details-list list-unstyled'>
-		<li><span>Name: <em><strong>"{{$ctrl.user.userName}}"</strong></em></span></li>
-		<li><span>Nickname: <h4> <em><strong>{{$ctrl.user.userNickname}}</h4></strong></em></span></li>
-		<li><span>email: <em><strong>{{$ctrl.user.email}}</strong></em></span></li>
-	</ul>
-	
-		</a>
-		
-		
-	</div>
+		<div class="ebook-details-no-img">
+			<ul class='col-xs-12 col-sm-6 col-lg-7 details-list list-unstyled'>
+				<li><span>Name: <em><strong>"{{$ctrl.user.userName}}"</strong></em></span></li>
+				<li><span>Nickname:
+						<h4>
+							<em><strong>{{$ctrl.user.userNickname}}
+						</h4>
+						</strong></em>
+				</span></li>
+				<li><span>email: <em><strong>{{$ctrl.user.email}}</strong></em></span></li>
+			</ul></a>
+
+
+</div>
 
 </div>
 

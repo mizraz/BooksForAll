@@ -1,3 +1,4 @@
+// payment controller
 angular.module('myApp').controller("CtrlBuy", 
 		['$scope','$rootScope','$http', function($scope, $rootScope, $http) {
 

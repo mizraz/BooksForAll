@@ -35,19 +35,11 @@ angular.module('myApp').controller("reviewsListAllController",
 					var bookId = $scope.result.data[review].bookId;
 					var dateTime = '';
 					var newMessage = '';
-					
+
 					$scope.reviewsList.push($scope.result.data[review]);
 
-
-				
-				
-				
-				
 				}
 
 			});
-
-
-
 		}]);
 

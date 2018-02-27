@@ -1,4 +1,4 @@
-
+// user profile controller
 	angular.module('myApp').controller("CtrlDetail", 
 			['$scope','$rootScope','$http', function($scope, $rootScope, $http) {
 	

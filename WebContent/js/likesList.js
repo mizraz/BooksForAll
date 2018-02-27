@@ -1,12 +1,11 @@
+// controller used to handle likes list. was merged to: 'buyReadLikes' component
 (function (angular) {
 	'use strict';
 
 	function likesListController($scope, $element, $attrs, $http, $rootScope) {
 		var ctrl = this;
-		ctrl.usersListHtml = ""; // TODO: delete
-
-
-
+		ctrl.usersListHtml = "";
+		// get all likes in for the current book
 		this.$onInit = function () {
 			ctrl.userPrivel = $rootScope.userPrivel;
 			console.log("likes list this.$oninit ");
@@ -26,41 +25,24 @@
 					ctrl.userNamesList.push($scope.result.data[liker]);
 					ctrl.usersListHtml = ctrl.usersListHtml + '\n' +  $scope.result.data[liker].userNickname; //TODO: delete
 				}
-
 				$rootScope.ebooksDict["ebook"+ctrl.ebookId].likesList = $scope.result.data;
-
-
-//				console.log("likers: " + ctrl.usersListHtml);
-
 			});  
-
 		};
-
-
 		ctrl.clickedAName = function (userSelectedByAdmin){
-
 			console.log("in: ctrl.goToUserDetailsPage, user: " + userSelectedByAdmin.userName);
 			$rootScope.curUserAdminSelected = userSelectedByAdmin;
 			$rootScope.curPage = $rootScope.pagesPaths.userDetailsPageForAdmin;
 		}
 
 		ctrl.likeListClickedOnce = false;
-
-
-
 		ctrl.editMode = false;
 		ctrl.userNamesList = [];
-
 		ctrl.openModalDialog = function() {
 			console.log("clicked;");
 		};
-
-
 		ctrl.getLikesList = function() {
 			$("#myModalLikes").modal();
 		};
-
-
 	}
 
 	angular.module('myApp').component('likesList', {
@@ -73,10 +55,5 @@
 			isUserPurchased: '=',
 			usersListString: '='
 		}
-
-
 	});
-
-
-
 })(window.angular);

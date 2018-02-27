@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="stylesheets/userPurchases.css">
  <!-- user purchases - list of all ebooks the user purchased. -->
-
+<!-- for each ebook in a list holding the purchases of the user, create a component of ebook-details -->
 <div class='container' ng-controller="userPurchasesController as ctrl">
 	<h1><i>{{nickname}}</i>, here are ebooks you purchased:</h1>
 	<ul class="row list-unstyled" ng-repeat="x in userPurchases">

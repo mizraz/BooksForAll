@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="stylesheets/ebookDetails.css">
-
+<!-- a review component. holds review data. -->
 <style > 
 .img-user-review {
 width: 100px;
@@ -10,10 +10,6 @@ border-radius: 100%;
 .review-details {
 }
 </style>
-
-
-
-
 <!-- review - a component represent a single review of a user on ebook -->
 <div class= "" style="">
 	<span class="" ng-show="!approved" >
@@ -25,14 +21,9 @@ border-radius: 100%;
 			<div class='col-xs-9  details-list list-unstyled'>
 				<div ><span class="col-xs-10"><em><u>{{$ctrl.review.userNickname}} for ebook id: {{$ctrl.review.bookId}}</u></em></span>
 			<button ng-if="showApproveButton" data-toggle="modal" class="button btn-info" ng-click="approveReview()" > Approve</button>
-				
 				</div>
- 
-				
 				<br>
 				<div><span>{{$ctrl.review.description}}</em></span></div>
-				
-
 			</div>
 		</div>
 	</span>

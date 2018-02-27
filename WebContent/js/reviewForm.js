@@ -1,6 +1,6 @@
+//a component for the form review. holds the ta, button and handles sending, clikcing showing etc.
 (function (angular) {
 	'use strict';
-
 	function reviewFormController ($scope, $element, $attrs, $http, $rootScope) {
 		var ctrl = this;
 		ctrl.editMode = false;
@@ -10,34 +10,10 @@
 
 
 		this.$onInit = function() {
-
-//			setTimeout(function(){ TODO: delete
-
-//			console.log("$rootScope.isCurEbookReviewed: "+ $rootScope.isCurEbookReviewed);
-
-//			}, 3000);
-
-
 		};
-
-//		setTimeout(function(){ TODO: delete
-
-//		console.log($rootScope.ebooksDict["ebook" + ctrl.ebookId]);
-
-//		}, 3000);
-
-
 		// ctrl.submitReview() - user clicked on submit review. send content to server.
 		ctrl.submitReview = function() {
-
 			$scope.showForm = false;
-
-
-			console.log("clicked;");
-			console.log(ctrl.userr);
-			console.log("$rootScope.userNickname: " + $rootScope.userNickname);
-
-
 			var review =
 			{
 					email: $rootScope.userLogedIn.email,
@@ -53,13 +29,10 @@
 			$http.post("http://localhost:8080/BooksForAll/newReview", JSON.stringify(review)) 
 			.then(function(response) {
 //				TODO: message to inform user message submited and will be approved soon
-
 				window.alert("Yor review is submitted and will be approved soon");
 
 			});
 		};
-
-
 
 		// function uses to make the ta to grow as user writes.
 		makeGrowable(document.querySelector('.ta-message-container'));
@@ -76,7 +49,7 @@
 		controller: reviewFormController,
 		templateUrl: 'html/reviewForm.html',
 		bindings: {
-			userr: '=', // TODO: delete
+			userr: '=', // TODO: delete. very risky deleting this at this point of time.
 			ebookId: '='
 		}
 	});

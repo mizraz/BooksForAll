@@ -1,3 +1,4 @@
+// input validation logic
 var letters = /^[A-Z a-z]+$/;//for parameters that have to match only letters
 var numbers = /[0-9]/;//for parameters that have to match only numbers
 var homePhone1 = /^04([0-9]{7})?$/;//pattern to phone number which starts with 04

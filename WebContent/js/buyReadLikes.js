@@ -1,18 +1,18 @@
 var myModalReadBody;
-
+// a component handles: read, buy, like, unlike, likes list buttons.
 (function(angular) {
 	'use strict';
 
 	var myModalReadBody = document.getElementById('myModalReadBody');
 
-	function buyReadController($rootScope, $http, $scope) {
+	function buyReadLikesController($rootScope, $http, $scope) {
 		var ctrl = this;
 		$scope.indexOfUserInLikesList = -1;
 
 		this.$onInit = function() {
 			ctrl = this;
 
-			$rootScope.curEbookIdd = '123'; // TODO: delete
+			$rootScope.curEbookIdd = '123'; 
 
 			// ctrl.curEbook - current ebooked is being explored by user.
 			ctrl.curEbook = ctrl.ebook;
@@ -41,24 +41,14 @@ var myModalReadBody;
 			}			
 
 
-
-			console.log("ctrl.usrBoughtCurBook: " + ctrl.usrBoughtCurBook);		
-			console.log("ctrl.isLiked: " + ctrl.isLiked);
-
-
 			// ctrl.userPrivel - for local use. 1 if admin, else 0.
 			ctrl.userPrivel = $rootScope.userPrivel;
-			console.log("likes list this.$oninit ");
-
 
 //			send ajax to get all likes to ctrl.ebookId
 			$http.get("http://localhost:8080/BooksForAll/likes/bookId/"+ctrl.ebook.bookId)
 			.then(function(response) {
 				$scope.records = response;
 				$scope.result = $scope.records;//this variable will hold the search results
-
-				console.log($scope.result);
-				console.log('number of likers: ' + $scope.result.data.length);
 
 				// ctrl.countLikers - the number of likes this book has.
 				ctrl.countLikers = $scope.result.data.length;
@@ -74,77 +64,41 @@ var myModalReadBody;
 				}
 				// update in global dictionary the likes list.
 				$rootScope.ebooksDict["ebook"+ctrl.ebook.bookId].likesList = $scope.result.data;
-
-
-
-//				console.log("likers: " + ctrl.usersListHtml);
-
 			});  
-
-
-
 			ctrl.clickedAName = function (userSelectedByAdmin){
-
-				console.log("in: ctrl.goToUserDetailsPage, user: " + userSelectedByAdmin.userNickname);
 				$rootScope.curUserAdminSelected = userSelectedByAdmin;
 				$rootScope.curPage = $rootScope.pagesPaths.userDetailsPageForAdmin;
 			}
-
 			ctrl.likeListClickedOnce = false;
-
-
 
 			ctrl.editMode = false;
 			ctrl.userNamesList = [];
-
 			ctrl.openModalDialog = function() {
 				console.log("clicked;");
 			};
-
-
 			ctrl.getLikesList = function() {
 				$("#myModalLikes").modal();
 			};
-
-
 		};
 
 		// ctrl.clickedBuy()  - user clicked by. to route to paymentForm page
 		ctrl.clickedBuy = function () {
-
-			console.log('clicked buy book: ' + ctrl.ebook.bookId);
-
 			$rootScope.curEbookUserClickedToBuy = ctrl.ebook;
 			$rootScope.curPage =  $rootScope.pagesPaths.payPage;
-
 		}
 
 
 //		ctrl.clickedRead() - user cliked on Read button. open a modal, ask for going to last scoll position.
 		ctrl.clickedRead = function clickedRead() {
-
-			console.log("clicked Read. ctrl.ebook.bookId " + ctrl.ebook.bookId);
-
 //			$rootScope.curEbookIdd - current book Id TODO: try to delete this and replace every place with:  ctrl.ebook.bookId 
 			$rootScope.curEbookIdd = ctrl.ebook.bookId;
-
-
 //			send ajax to get current scroll position.
 			$http.get("http://localhost:8080/BooksForAll/scroll/email/"+$rootScope.userLogedIn.email+"/bookId/"+ctrl.ebook.bookId)
 			.then(function(response) {
 				$scope.records = response;
 				$scope.result = $scope.records;//this variable will hold the search results
-
-				console.log($scope.result);
-				console.log('scroll arr size: ' + $scope.result.data.length);
-
 				// update currentScroll - update the position the user stopped reading
 				$rootScope.ebooksDict["ebook" +ctrl.ebook.bookId].currentScroll = $scope.result.data[0].currentScroll;
-
-
-				console.log("current scroll of bookId: " +ctrl.ebook.bookId + " is: " + $rootScope.ebooksDict["ebook" +ctrl.ebook.bookId].currentScroll);
-				console.log("$rootScope.curEbookIdd " + $rootScope.curEbookIdd);
-
 				var ebookIdDict = "ebook" + $rootScope.curEbookIdd;
 				// store user info needed for sending ajax request to update last scroll position.
 				window.curBookIdToSendScroll = $rootScope.curEbookIdd;
@@ -154,14 +108,10 @@ var myModalReadBody;
 					$rootScope.lastPage =  $rootScope.curPage;
 					$rootScope.curPage = $rootScope.pagesPaths.ebookContents + $rootScope.curEbookIdd + '.html';
 				}
-				else { //open modal to ask user if to go to last scroll.
+				else { 
+					//open modal to ask user if to go to last scroll.
 					window.curBookIdToSendScroll = $rootScope.curEbookIdd;
-					console.log("ctrl.ebook.bookId " + ctrl.ebook.bookId);
-					console.log("window.curBookIdToSendScroll " + window.curBookIdToSendScroll);
-
 					window.curEmailToSendScroll = $rootScope.userLogedIn.email;
-
-
 					$("#myModalScroll").modal();				
 				}
 			}); 
@@ -172,27 +122,14 @@ var myModalReadBody;
 		// if cliked yes - send him to the place he stopped reading. otherwise, to the top of ebook.
 		// isToGoToLastScroll - true if clicked 'yes' button , false if clicked 'no' button.
 		ctrl.goToLastScroll = function (isToGoToLastScroll) {
-
-
 			// hide the ModalScroll.
 			$('#myModalScroll').modal('hide');
 			$('body').removeClass('modal-open');
 			$('.modal-backdrop').remove();
-
-
 			// bookIdClickedToRead - current ebook id user clicked to read
 			var bookIdClickedToRead = $rootScope.curEbookIdd.bookId;
-
-
-
-			console.log("ctrl.ebook.bookId : " + ctrl.ebook.bookId);
-			console.log("$rootScope.curEbookIdd : " + $rootScope.curEbookIdd);
-
-
-
 			// ebookIdDict - the key of the ebook in ebooksDict
 			var ebookIdDict = "ebook" + $rootScope.curEbookIdd;
-
 			ctrl.curReadEbookScroll = $rootScope.ebooksDict[ebookIdDict].currentScroll;
 
 			// curScroll - user's last scroll.
@@ -202,33 +139,18 @@ var myModalReadBody;
 			// route to the ebook contents page
 			$rootScope.curPage = $rootScope.pagesPaths.ebookContents + $rootScope.curEbookIdd + '.html';
 
-			console.log("ebookIdDict: " + ebookIdDict);
-			console.log("ctrl.curReadEbookScroll: " + ctrl.curReadEbookScroll);
-			console.log("ctrl.curReadEbookPath: " + ctrl.curReadEbookPath);
-
-
-
 			if (isToGoToLastScroll) {
-
-				console.log("scroll : " + curScroll);
-
-
 				// needs to wait until navigted to the ebook contents page.
 				setTimeout(function() {
 					// bodyId - the id of the scrollable element contains ebook content
 					var bodyId = document.getElementById('bookContent');
 					body.scrollTop = curScroll;
 
-
-					console.log("body.scrollTop : " + body.scrollTop);
-					console.log("yes");					
-
 				}, 1000);
 
 			}
 			else {
-
-
+				// update that the user wants to begin reading from top of the book.
 				var scrolJSON = {
 						currentScroll: 0,
 						bookId: ctrl.ebook.bookId,
@@ -237,16 +159,8 @@ var myModalReadBody;
 				var xmlhttpDelClient = new XMLHttpRequest();
 				xmlhttpDelClient.open('POST', 'http://localhost:8080/BooksForAll/scroll', true);
 				xmlhttpDelClient.onreadystatechange = function () {
-					/* NOTHING DONE IN HERE*/
 				};
 				xmlhttpDelClient.send(JSON.stringify(scrolJSON));
-
-
-
-
-
-
-				console.log("no");	
 			}
 
 			// remove Scroll modal
@@ -257,9 +171,6 @@ var myModalReadBody;
 
 		// ctrl.submitLike() user cliked the like / unlike button. flip the value, and send ajax to update server.
 		ctrl.submitLike = function() {
-
-			console.log("clicked like;");
-
 			if(ctrl.ebook.isLiked == 1) {
 				// update all DS and flags that user is no longer likes this book.
 				// removes user from likes list.
@@ -281,10 +192,6 @@ var myModalReadBody;
 				$scope.indexOfUserInLikesList = ctrl.userNamesList.length - 1;
 				$rootScope.ebooksDict["ebook" + ctrl.ebook.bookId].isLiked = 1;
 			}
-
-
-			console.log(ctrl.ebook.isLiked);
-
 			// like object to send server to update that user likes / unliked this book.
 			var like =
 			{
@@ -293,22 +200,18 @@ var myModalReadBody;
 					userNickname: $rootScope.userLogedIn.userNickname,
 					isLiked: ctrl.ebook.isLiked
 			};
-
-			console.log(like.isLiked);
-
 			// 	send an ajax requset to update server a new like / unlike if generated by user.
 			$http.post("http://localhost:8080/BooksForAll/newLike", JSON.stringify(like)) 
 			.then(function(response) {
-
 				//TODO: DO something to inform user like submited?
 				$scope.records = response;
 				$scope.result = $scope.records;
 			});
 		};
 	};
-	angular.module('myApp').component('buyRead', {
-		controller: buyReadController,
-		templateUrl: 'html/buyRead.html',
+	angular.module('myApp').component('buyReadLikes', {
+		controller: buyReadLikesController,
+		templateUrl: 'html/buyReadLikes.html',
 		bindings: {
 			ebook: '='
 		}
