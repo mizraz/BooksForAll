@@ -1,4 +1,5 @@
 var reviewList;
+// controller for all un approved reviews.
 window.onload = function () {
 };
 

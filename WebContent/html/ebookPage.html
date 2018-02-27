@@ -6,7 +6,7 @@
 	<div class='container' id='ebookPage'>
 		<ebook-details ebook="ctrl.ebook"></ebook-details>
 		<div class="row">
-			<review-ebook userr="userName" ebook-id="ctrl.ebook.bookId"></review-ebook>
+			<review-list-ebook userr="userName" ebook-id="ctrl.ebook.bookId"></review-list-ebook>
 			<review-form userr="userName" ng-if="showReviewForm"
 				ebook-id="ctrl.ebook.bookId" ng-if="ctrl.isUserPurchased()">
 			</review-form>
