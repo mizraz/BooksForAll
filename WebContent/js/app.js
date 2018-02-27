@@ -25,7 +25,7 @@
 				userPurchases: 'html/userPurchases.html',
 				usersList: 'html/usersList.html',
 				login: 'login.html',
-				blank: 'blank.html',
+				blank: 'html/blank.html',
 				ebookContents: 'resources/gutenberg/contents/', //needs to concat a suffix with the ebookId
 				userDetailsPageForAdmin: 'html/userDetailsForAdmin.html'	
 		}

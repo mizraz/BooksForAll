@@ -197,6 +197,8 @@ var myModalReadBody;
 
 			// curScroll - user's last scroll.
 			var curScroll = ctrl.curReadEbookScroll;
+			// save this page as last page
+			$rootScope.lastPage =  $rootScope.curPage;
 			// route to the ebook contents page
 			$rootScope.curPage = $rootScope.pagesPaths.ebookContents + $rootScope.curEbookIdd + '.html';
 
@@ -225,6 +227,25 @@ var myModalReadBody;
 
 			}
 			else {
+				
+				
+				var scrolJSON = {
+						currentScroll: 0,
+						bookId: ctrl.ebook.bookId,
+						email: $rootScope.userLogedIn.email
+				}	
+				var xmlhttpDelClient = new XMLHttpRequest();
+				xmlhttpDelClient.open('POST', 'http://localhost:8080/BooksForAll/scroll', true);
+				xmlhttpDelClient.onreadystatechange = function () {
+					/* NOTHING DONE IN HERE*/
+				};
+				xmlhttpDelClient.send(JSON.stringify(scrolJSON));
+				
+				
+				
+				
+				
+				
 				console.log("no");	
 			}
 
