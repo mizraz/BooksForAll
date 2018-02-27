@@ -54,7 +54,7 @@ var reviewList;
 			ctrl.isCollapsed = !ctrl.isCollapsed;
 			if($scope.reviewsList.length == 0 ) {
 				
-				//TODO: ksenia alert temporary with message: "reviews list is empty!"
+				window.alert("The review list is empty!");
 				
 			}
 		}
