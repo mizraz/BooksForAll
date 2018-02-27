@@ -80,13 +80,6 @@
 	    						$("#confirmDeleteUserModal").modal('hide');
 
 	    		    				
-	    		    				//TODO: ksenia alert temporary with message: "user deleted successfuly!"
-	    		    				
-	    		    			
-	    						
-	    						
-	    		    			
-	    		    			
 	    					});    			
 	    				}
 	    				else {

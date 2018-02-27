@@ -5,7 +5,7 @@ angular.module('myApp').controller("CtrlBuy",
 			this.$onInit = function () {
 				$scope.curEbookIdUserClickedToBuy = $rootScope.curEbookUserClickedToBuy.bookId;
 				$scope.curEbookUserClickedToBuyTitle = $rootScope.curEbookUserClickedToBuy.title;
-
+				$scope.price = $rootScope.curEbookUserClickedToBuy.price;
 				console.log("$scope.curEbookIdUserClickedToBuy id: " + $scope.curEbookIdUserClickedToBuy);
 
 			}
