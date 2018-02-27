@@ -80,13 +80,6 @@
 	    						$("#confirmDeleteUserModal").modal('hide');
 
 	    		    				
-	    		    				
-	    		    				
-	    		    			
-	    						
-	    						
-	    		    			
-	    		    			
 	    					});    			
 	    				}
 	    				else {

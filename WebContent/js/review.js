@@ -29,7 +29,7 @@
 		
 		$scope.approveReview = function () {
 			console.log("$scope.approveReview");
-			
+			$scope.approved = true; 
 			var reviewApproval =
 			{
 					email: ctrl.review.email,
