@@ -31,8 +31,9 @@ import example.model.User;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
- * An example listener that reads the customer json file and populates the data into a Derby database
+ * An example listener that reads the customer json file and populates the data into a Derby database.
  */
 @WebListener
 public class ManageUsersDBFromJsonFile implements ServletContextListener {
@@ -44,6 +45,12 @@ public class ManageUsersDBFromJsonFile implements ServletContextListener {
         // TODO Auto-generated constructor stub
     }
     
+    /**
+     * Table already exists.
+     *
+     * @param e the e
+     * @return true, if successful
+     */
     //utility that checks whether the customer tables already exists
     private boolean tableAlreadyExists(SQLException e) {
         boolean exists;
@@ -56,8 +63,11 @@ public class ManageUsersDBFromJsonFile implements ServletContextListener {
     }
 
 	/**
-     * @see ServletContextListener#contextInitialized(ServletContextEvent)
-     */
+	 * Context initialized.
+	 *
+	 * @param event the event
+	 * @see ServletContextListener#contextInitialized(ServletContextEvent)
+	 */
     public void contextInitialized(ServletContextEvent event)  { 
     	ServletContext cntx = event.getServletContext();
     	
@@ -135,8 +145,11 @@ public class ManageUsersDBFromJsonFile implements ServletContextListener {
     }
 
 	/**
-     * @see ServletContextListener#contextDestroyed(ServletContextEvent)
-     */
+	 * Context destroyed.
+	 *
+	 * @param event the event
+	 * @see ServletContextListener#contextDestroyed(ServletContextEvent)
+	 */
     public void contextDestroyed(ServletContextEvent event)  { 
     	 ServletContext cntx = event.getServletContext();
     	 
@@ -156,12 +169,13 @@ public class ManageUsersDBFromJsonFile implements ServletContextListener {
     
     
     /**
-	 * Loads customers data from json file that is read from the input stream into 
-	 * a collection of Customer objects
-	 * @param is input stream to json file
-	 * @return collection of customers
-	 * @throws IOException
-	 */
+     * Loads customers data from json file that is read from the input stream into 
+     * a collection of Customer objects.
+     *
+     * @param is input stream to json file
+     * @return collection of customers
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
 	private Collection<User> loadusers(InputStream is) throws IOException{
 		
 		//wrap input stream with a buffered reader to allow reading the file line by line

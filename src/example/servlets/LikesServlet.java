@@ -35,8 +35,9 @@ import example.Utils;
 import example.model.Like;
 import example.model.Review;
 
+// TODO: Auto-generated Javadoc
 /**
- * Servlet implementation class LikeHandler
+ * Servlet implementation class LikeHandler.
  */
 @WebServlet(
 		description = "Servlet to Like", 
@@ -45,9 +46,13 @@ import example.model.Review;
 				"/likes/bookId/*"
 		})
 public class LikesServlet extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * Instantiates a new likes servlet.
+	 *
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public LikesServlet() {
@@ -56,6 +61,12 @@ public class LikesServlet extends HttpServlet {
 	}
 
 	/**
+	 * Do get.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -115,6 +126,12 @@ public class LikesServlet extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -37,8 +37,9 @@ import example.Utils;
 import example.model.Review;
 import example.model.User;
 
+// TODO: Auto-generated Javadoc
 /**
- * Servlet implementation class UserServlet
+ * Servlet implementation class UserServlet.
  */
 @WebServlet(
 		description = "Servlet to provide users", 
@@ -50,9 +51,13 @@ import example.model.User;
 				"/updateUserDetails"
 		})
 public class UserServlet extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * Instantiates a new user servlet.
+	 *
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public UserServlet() {
@@ -61,6 +66,12 @@ public class UserServlet extends HttpServlet {
 	}
 
 	/**
+	 * Do get.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -186,6 +197,12 @@ public class UserServlet extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -312,6 +329,17 @@ public class UserServlet extends HttpServlet {
 
 
 	}//post
+	
+	/**
+	 * Username exist.
+	 *
+	 * @param username the username
+	 * @param response the response
+	 * @param cookEmail the cook email
+	 * @return the boolean
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	protected Boolean UsernameExist(String username, HttpServletResponse response,String cookEmail) throws ServletException, IOException
 	{
 		System.out.println("baaaaa");

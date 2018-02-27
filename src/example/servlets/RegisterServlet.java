@@ -27,22 +27,31 @@ import DB.DBQueries;
 import example.AppConstants;
 import example.model.User;
 
+// TODO: Auto-generated Javadoc
 /**
- * Servlet implementation class UserRegisterServlet
+ * Servlet implementation class UserRegisterServlet.
  */
 @WebServlet(urlPatterns = { 
 		"/UserRegisterServlet"
 })
 public class RegisterServlet extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
     /**
+     * Instantiates a new register servlet.
+     *
      * @see HttpServlet#HttpServlet()
      */
 	public RegisterServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	/* (non-Javadoc)
+	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	//	Context context;
 		///try {
@@ -64,6 +73,12 @@ public class RegisterServlet extends HttpServlet {
 	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -175,6 +190,17 @@ public class RegisterServlet extends HttpServlet {
 		
 		return;
 	}
+	
+	/**
+	 * Username exist.
+	 *
+	 * @param username the username
+	 * @param email the email
+	 * @param response the response
+	 * @return the boolean
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	protected Boolean UsernameExist(String username,String email, HttpServletResponse response) throws ServletException, IOException
 	{
 		int check = 0;

@@ -3,9 +3,14 @@ package DB;
 import DB.DBConsts.SqlColumns;
 import DB.DBConsts.SqlTables;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DBQueries.
+ */
 public class DBQueries {
 	
 	
+		/** The Constant CREATE_USER_PURCHASES_TABLE. */
 		public static final String CREATE_USER_PURCHASES_TABLE =
 				"CREATE TABLE " + DBConsts.SqlTables.USER_PURCHASES.getName() + "(" +
 				DBConsts.SqlColumns.EMAIL.getName() + " varchar(100), "+
@@ -19,6 +24,7 @@ public class DBQueries {
 //				" FOREIGN KEY (" + SqlColumns.EMAIL.getName() + ") REFERENCES " + SqlTables.USERS_DETAILS.getName() + "(" + SqlColumns.EMAIL.getName() + ") " +
 				")";
 		
+		/** The Constant CREATE_ALL_REVIEWS_TABLE. */
 		public static final String CREATE_ALL_REVIEWS_TABLE =
 				"CREATE TABLE " + DBConsts.SqlTables.REVIEWS.getName() + "(" +
 				DBConsts.SqlColumns.EMAIL.getName() + " varchar(100), "+
@@ -30,6 +36,8 @@ public class DBQueries {
 //				" FOREIGN KEY (" + SqlColumns.BOOK_ID.getName() + ") REFERENCES " + SqlTables.EBOOKS.getName() + "(" + SqlColumns.BOOK_ID.getName() + ") , " + 
 //				" FOREIGN KEY (" + SqlColumns.EMAIL.getName() + ") REFERENCES " + SqlTables.USERS_DETAILS.getName() + "(" + SqlColumns.EMAIL.getName() + ")  " +
 				")";
+		
+		/** The Constant UPDATE_USER_DETAILS. */
 		public static final String UPDATE_USER_DETAILS =
 				"UPDATE "+  DBConsts.SqlTables.USERS_DETAILS.getName() +
 				" SET " +DBConsts.SqlColumns.EMAIL.getName() + " = ? " + " , " +
@@ -42,32 +50,41 @@ public class DBQueries {
 				  DBConsts.SqlColumns.USER_IMAGE.getName() + " = ?  "+
 				" WHERE " + DBConsts.SqlColumns.EMAIL.getName() + " = ? ";
 		
+		/** The Constant DROP_EBOOKS_TABLE_CONSTRAINT_PK. */
 		public static final String DROP_EBOOKS_TABLE_CONSTRAINT_PK = 
 				"ALTER TABLE " + SqlTables.EBOOKS.getName() + " " + 
 				" DROP CONSTRAINT " + SqlTables.EBOOKS.getName() + "_PK";
 		
 		
+		/** The Constant DROP_REVIEWS_TABLE_CONSTRAINT_PK. */
 		public static final String DROP_REVIEWS_TABLE_CONSTRAINT_PK = 
 				"ALTER TABLE " + SqlTables.REVIEWS.getName() + " " + 
 				" DROP CONSTRAINT " + SqlTables.REVIEWS.getName() + "_PK";
 		
+		/** The Constant DROP_PURCHASES_TABLE_CONSTRAINT_PK. */
 		public static final String DROP_PURCHASES_TABLE_CONSTRAINT_PK = 
 				"ALTER TABLE " + SqlTables.USER_PURCHASES.getName() + " " + 
 				" DROP CONSTRAINT " + SqlTables.USER_PURCHASES.getName() + "_PK";
 		
 		
 		
+		/** The Constant DROP_REVIEWS_TABLE_CONSTRAINT_EMAIL. */
 		public static final String DROP_REVIEWS_TABLE_CONSTRAINT_EMAIL = 
 				"ALTER TABLE " + SqlTables.REVIEWS.getName() + " " + 
 				" DROP CONSTRAINT " + SqlColumns.BOOK_ID.getName() ;
+		
+		/** The Constant DROP_EBOOKS_TABLE_CONSTRAINT_EBOOK_ID. */
 		public static final String DROP_EBOOKS_TABLE_CONSTRAINT_EBOOK_ID = 
 				"ALTER TABLE " + SqlTables.REVIEWS.getName() + " " + 
 				" DROP CONSTRAINT " + SqlColumns.EMAIL.getName() ;
 		
 		
+		/** The Constant DROP_PURCHASES_TABLE_CONSTRAINT_EMAIL. */
 		public static final String DROP_PURCHASES_TABLE_CONSTRAINT_EMAIL = 
 				"ALTER TABLE " + SqlTables.USER_PURCHASES.getName() + " " + 
 				" DROP CONSTRAINT " + SqlColumns.BOOK_ID.getName() ;
+		
+		/** The Constant DROP_PURCHASES_TABLE_CONSTRAINT_EBOOK_ID. */
 		public static final String DROP_PURCHASES_TABLE_CONSTRAINT_EBOOK_ID = 
 				"ALTER TABLE " + SqlTables.USER_PURCHASES.getName() + " " + 
 				" DROP CONSTRAINT " + SqlColumns.EMAIL.getName() ;
@@ -77,6 +94,7 @@ public class DBQueries {
 		
 		
 		
+		/** The Constant CREATE_USER_DETAILS_TABLE. */
 		public static final String CREATE_USER_DETAILS_TABLE =
 				"CREATE TABLE " + DBConsts.SqlTables.USERS_DETAILS.getName() + "(" +
 				DBConsts.SqlColumns.EMAIL.getName() + " varchar(100), "+
@@ -90,6 +108,7 @@ public class DBQueries {
 //				"PRIMARY KEY (" + SqlColumns.EMAIL.getName() + ") " +
 				")";
 		
+		/** The Constant CREATE_EBOOKS_TABLE. */
 		public static final String CREATE_EBOOKS_TABLE =
 				"CREATE TABLE " + DBConsts.SqlTables.EBOOKS.getName() + "(" +
 				DBConsts.SqlColumns.BOOK_ID.getName() + " varchar(100), "+
@@ -102,6 +121,7 @@ public class DBQueries {
 				")";
 
 		
+		/** The Constant INSERT_EBOOK. */
 		public static final String INSERT_EBOOK =
 				"INSERT INTO "+  DBConsts.SqlTables.EBOOKS.getName() + "(" +
 				DBConsts.SqlColumns.BOOK_ID.getName() + ", "+
@@ -114,6 +134,7 @@ public class DBQueries {
 				" VALUES(?,?,?,?,?,?)";
 		
 		
+		/** The Constant INSERT_USER_DETAILS. */
 		public static final String INSERT_USER_DETAILS =
 				"INSERT INTO "+  DBConsts.SqlTables.USERS_DETAILS.getName() + "(" +
 				DBConsts.SqlColumns.EMAIL.getName() + ", "+
@@ -135,19 +156,23 @@ public class DBQueries {
 //				"like varchar(1)" +			
 //				")";
 		
+		/** The Constant DROP_ALL_REVIEWS_TABLE. */
 		public static final String DROP_ALL_REVIEWS_TABLE = 
 				"DROP TABLE  " + DBConsts.SqlTables.REVIEWS.getName() ;//+ 
 //				"  cascade constraints; ";
 
-		public static final String DROP_USERS_TABLE = 
+		/** The Constant DROP_USERS_TABLE. */
+public static final String DROP_USERS_TABLE = 
 				"DROP TABLE  " + DBConsts.SqlTables.USERS_DETAILS.getName();// + 
 //				"  cascade constraints; ";
 		
-		public static final String DROP_USER_PURCHASES_TABLE = 
+		/** The Constant DROP_USER_PURCHASES_TABLE. */
+public static final String DROP_USER_PURCHASES_TABLE = 
 				"DROP TABLE  " + DBConsts.SqlTables.USER_PURCHASES.getName(); //+ 
 //				"  cascade constraints;";
 		
-		public static final String DROP_EBOOKS_TABLE = 
+		/** The Constant DROP_EBOOKS_TABLE. */
+public static final String DROP_EBOOKS_TABLE = 
 				"DROP TABLE  " + DBConsts.SqlTables.EBOOKS.getName() ;//+
 //				" cascade constraints; ";		
 		
@@ -159,7 +184,8 @@ public class DBQueries {
 //				" FROM ALL_REVIEWS " +
 //				" WHERE is_review_approved = '0'";
 		
-		public static final String SELECT_ALL_REVIEWS_NOT_APPROVED = 
+		/** The Constant SELECT_ALL_REVIEWS_NOT_APPROVED. */
+public static final String SELECT_ALL_REVIEWS_NOT_APPROVED = 
 				" SELECT " +
 				SqlTables.REVIEWS.getName() + "." + SqlColumns.EMAIL.getName() + "," +
 				SqlTables.REVIEWS.getName() + "." + SqlColumns.BOOK_ID.getName() + "," +
@@ -175,6 +201,7 @@ public class DBQueries {
 				" WHERE " + SqlColumns.REVIEW_IS_APPROVED.getName() + " = '0' or  " +
 							SqlColumns.REVIEW_IS_APPROVED.getName() + " = '1'" ; //TODO: delete the 1 thing
 		
+		/** The Constant SELECT_ALL_USERS. */
 		public static final String SELECT_ALL_USERS = 
 				" SELECT  " +
 						SqlColumns.EMAIL.getName() + ", " +
@@ -187,6 +214,7 @@ public class DBQueries {
 				" FROM  " +SqlTables.USERS_DETAILS.getName() ;
 		
 		
+		/** The Constant SELECT_REVIEWS_OF_BOOK_ID. */
 		public static final String SELECT_REVIEWS_OF_BOOK_ID = 
 				" SELECT " +
 				SqlTables.REVIEWS.getName() +"." + SqlColumns.EMAIL.getName() + "," +
@@ -204,6 +232,7 @@ public class DBQueries {
 						SqlTables.REVIEWS.getName() + "." +SqlColumns.BOOK_ID.getName() + " = ? and " +
 						SqlTables.REVIEWS.getName() + "." + SqlColumns.REVIEW_IS_APPROVED.getName() + " = '1'";
 		
+		/** The Constant INSERT_REVIEW. */
 		public static final String INSERT_REVIEW =
 				" INSERT INTO " + SqlTables.REVIEWS.getName() + " (" +
 					DBConsts.SqlColumns.EMAIL.getName() + ", "+
@@ -216,6 +245,7 @@ public class DBQueries {
 		
 		
 
+		/** The Constant SET_REVIEW. */
 		public static final String SET_REVIEW =
 				"UPDATE " + SqlTables.REVIEWS.getName() + " " +
 				"SET " + SqlColumns.REVIEW_IS_APPROVED.getName() + " = '1' " +
@@ -223,6 +253,7 @@ public class DBQueries {
 							SqlColumns.BOOK_ID.getName() + " = ? " ;
 		
 		
+		/** The Constant SET_LIKE. */
 		public static final String SET_LIKE =
 				"UPDATE " + SqlTables.USER_PURCHASES.getName() + " " +
 				"SET " + SqlColumns.LIKED.getName() + " = ? " +
@@ -230,6 +261,7 @@ public class DBQueries {
 							SqlColumns.BOOK_ID.getName() + " = ? " ;
 		
 
+		/** The Constant SET_SCROLL. */
 		public static final String SET_SCROLL =
 				"UPDATE " + SqlTables.USER_PURCHASES.getName() + " " +
 				"SET " + SqlColumns.SCROLL.getName() + " = ? " +
@@ -238,6 +270,7 @@ public class DBQueries {
 		
 		
 		
+		/** The Constant INSERT_PURCHASE. */
 		public static final String INSERT_PURCHASE =
 				" INSERT INTO " + SqlTables.USER_PURCHASES.getName() + " (" +
 					DBConsts.SqlColumns.EMAIL.getName() + ", "+
@@ -249,6 +282,7 @@ public class DBQueries {
 				") VALUES (?,?,?,?,?,?)";
 		
 		
+		/** The Constant SELECT_LIKES_OF_BOOK_ID. */
 		public static final String SELECT_LIKES_OF_BOOK_ID =
 				"SELECT " + SqlTables.USER_PURCHASES.getName() + "." + SqlColumns.EMAIL.getName() + ", " +
 							SqlTables.USER_PURCHASES.getName() + "." + SqlColumns.BOOK_ID.getName() + ", " +
@@ -261,6 +295,7 @@ public class DBQueries {
 							SqlColumns.LIKED.getName() + " = '1' " ;
 		
 		
+		/** The Constant SELECT_TRANSACTIONS_BETWEEN_2_DATES. */
 		public static final String SELECT_TRANSACTIONS_BETWEEN_2_DATES =
 				"SELECT " + SqlTables.USER_PURCHASES.getName() + "." + SqlColumns.EMAIL.getName() + ", " +
 							SqlTables.USER_PURCHASES.getName() + "." + SqlColumns.BOOK_ID.getName() + ", " +
@@ -275,6 +310,7 @@ public class DBQueries {
 					" BETWEEN ? AND  ? " ;
 		
 		
+		/** The Constant SELECT_PURCHASES_BY_EMAIL. */
 		public static final String SELECT_PURCHASES_BY_EMAIL =
 				"SELECT " + SqlTables.USER_PURCHASES.getName() + "." + SqlColumns.EMAIL.getName() + ", " +
 							SqlTables.USER_PURCHASES.getName() + "." + SqlColumns.BOOK_ID.getName() + ", " +
@@ -291,6 +327,7 @@ public class DBQueries {
 					" = ? " ;
 		
 		
+		/** The Constant SELECT_ALL_EBOOKS. */
 		public static final String SELECT_ALL_EBOOKS =
 				"SELECT " + SqlTables.EBOOKS.getName() + "." + SqlColumns.BOOK_ID.getName() + ", " +
 							SqlTables.EBOOKS.getName() + "." + SqlColumns.TITLE.getName() + ", " +
@@ -307,6 +344,7 @@ public class DBQueries {
 		
 		
 		
+		/** The Constant SELECT_PURCHASES_BY_EMAIL_AND_BOOK_ID. */
 		public static final String SELECT_PURCHASES_BY_EMAIL_AND_BOOK_ID =
 				"SELECT " + SqlTables.USER_PURCHASES.getName() + "." + SqlColumns.EMAIL.getName() + ", " +
 							SqlTables.USER_PURCHASES.getName() + "." + SqlColumns.BOOK_ID.getName() + ", " +
@@ -323,6 +361,7 @@ public class DBQueries {
 					SqlColumns.BOOK_ID.getName() + " = ? ";
 		
 		
+		/** The Constant SELECT_SCROLL_BY_BOOK_ID_AND_EMAIL. */
 		public static final String SELECT_SCROLL_BY_BOOK_ID_AND_EMAIL = 
 				" SELECT " + SqlColumns.SCROLL.getName() + " " +
 				" FROM " + SqlTables.USER_PURCHASES.getName() + " " +
@@ -330,6 +369,7 @@ public class DBQueries {
 					" and " + SqlColumns.EMAIL.getName() + " = ? " ;
 		
 
+		/** The Constant SELECT_LIKES_OF_BOOK_ID_JUST_THE_EMAIL_AND_BOOK_ID. */
 		public static final String SELECT_LIKES_OF_BOOK_ID_JUST_THE_EMAIL_AND_BOOK_ID =
 				"SELECT " +SqlColumns.EMAIL.getName() + ", " +
 							SqlColumns.BOOK_ID.getName() + " " +
@@ -338,12 +378,14 @@ public class DBQueries {
 //							SqlColumns.LIKED.getName() + " = '1' " ;
 		
 		
-		public static final String UPDATE_USER_LIKE_BOOK = 
+		/** The Constant UPDATE_USER_LIKE_BOOK. */
+public static final String UPDATE_USER_LIKE_BOOK = 
 				" UPDATE  " + DBConsts.SqlTables.USER_PURCHASES.getName() + 
 				" SET " + SqlColumns.LIKED.getName() + " = ? " +
 				" WHERE " + SqlColumns.EMAIL.getName() + " = ?";
 		
 		
+		/** The Constant DELETE_USER_BY_EMAIL. */
 		public static final String DELETE_USER_BY_EMAIL = 
 				"DELETE FROM " + DBConsts.SqlTables.USERS_DETAILS.getName() + " " +
 				" WHERE " + DBConsts.SqlColumns.EMAIL.getName() + " = ? ";
