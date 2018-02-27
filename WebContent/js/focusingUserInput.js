@@ -1,3 +1,8 @@
+
+/**functions that help to focus the user on his parameters choice**/
+
+
+
 var letters = /^[A-Z a-z]+$/;//for parameters that have to match only letters
 var numbers = /[0-9]/;//for parameters that have to match only numbers
 var homePhone1 = /^04([0-9]{7})?$/;//pattern to phone number which starts with 04
@@ -12,11 +17,13 @@ $scope.errormsg1="";
 function focusPassword()
 		{
 	 	
-			var theInput = document.getElementsById("pwd");
+
+			var theInput = document.getElementsByTagName("input")[2];
 			var theOutput = document.getElementById("out");
 			var pass = document.forms[0].pass.value;
-			//theInput.style.borderWidth = "2px 2px 4px 1px";
-			if(theInput.length<4)
+	
+			if(pass.length<4)
+
 			{
 				
 				theInput.style.borderColor="red";
