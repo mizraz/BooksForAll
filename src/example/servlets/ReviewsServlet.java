@@ -42,13 +42,13 @@ import example.model.Review;
 				"/reviewApprove",
 				"/reviews/bookId/*"
 		})
-public class ReviewHandler extends HttpServlet {
+public class ReviewsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ReviewHandler() {
+	public ReviewsServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
