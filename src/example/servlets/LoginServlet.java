@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Type;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,9 +22,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import DB.DBQueries;
@@ -125,13 +126,34 @@ public class LoginServlet extends HttpServlet {
 		if (checkUser == 1)
 		{
 			
+			HttpSession session = request.getSession();
+			if (users.getUserNickname().compareTo("admin") == 0) 
+			{
+				session.setAttribute("isAdmin", "1");
+			} else {
+				session.setAttribute("isAdmin", "0");
+
+			}
+			
+			String hashOfNicknameAndTime = users.getUserNickname() + Long.toString(System.currentTimeMillis());
+			byte[] bytesOfMessage = hashOfNicknameAndTime.getBytes("UTF-8");
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] thedigest = md.digest(bytesOfMessage);
+			String stringOfHashOfNicknameAndTime = new String(thedigest);
+
+			session.setAttribute("hashForSessionId", stringOfHashOfNicknameAndTime);
+			SessionsActiveTable.setOfActiveSessions.add(stringOfHashOfNicknameAndTime);
+			
+			
+			
+			
 			Gson gsonRet = new Gson();
 			//convert from customers collection to json
 			String userRet = gsonRet.toJson(userResult, AppConstants.USER_COLLECTION);
 			response.addHeader("Content-Type", "application/json");
 			PrintWriter writer = response.getWriter();
 			writer.println(userRet);
-			writer.close();
+			writer.close();	
 		}
 		else
 			
@@ -146,7 +168,10 @@ public class LoginServlet extends HttpServlet {
         catch (SQLException | NamingException e) {
     		getServletContext().log("Error while closing connection", e);
     		response.sendError(500);//internal server error
-    	}
+    	} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 }
 }
