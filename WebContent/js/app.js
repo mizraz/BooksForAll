@@ -25,6 +25,7 @@
 				userPurchases: 'html/userPurchases.html',
 				usersList: 'html/usersList.html',
 				login: 'login.html',
+				blank: 'blank.html',
 				ebookContents: 'resources/gutenberg/contents/', //needs to concat a suffix with the ebookId
 				userDetailsPageForAdmin: 'html/userDetailsForAdmin.html'	
 		}
@@ -40,7 +41,8 @@
 		// $rootScope.ebooksList - a list holds all the books can offer.
 		$rootScope.ebooksList = [];
 		// $rootScope.curPage - holds the current page user in. starts in main page: the catalog.
-		$rootScope.curPage = $rootScope.pagesPaths.catalog;
+//		$rootScope.curPage = $rootScope.pagesPaths.catalog;
+		$rootScope.curPage = $rootScope.pagesPaths.blank;
 		// $rootScope.lastPage - holds the last page user in. used just for reading ebooks. starts in main page: the catalog.
 		$rootScope.lastPage = $rootScope.pagesPaths.catalog;
 		console.log("$rootScope.pagesPaths.catalog: " + $rootScope.pagesPaths.catalog);

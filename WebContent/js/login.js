@@ -99,11 +99,16 @@ angular.module('myApp').controller("Ctrlogin",
 							// $Ctrlogin.curPage='index.html';
 //							window.location = 'http://localhost:8080/BooksForAll/KREbooks/index.html';
 
-
-
-
+//							document.userNicknameNav.textContent = $rootScope.userLogedIn.userNickname;
+							$rootScope.curPage = $rootScope.pagesPaths.catalog;
 
 							$("#myModalRegisterLogin").modal('hide');
+
+//							setTimeOut(function() {
+//								$rootScope.curPage = $rootScope.pagesPaths.catalog;
+//
+//							}, 1000);
+							
 
 						} 
 
