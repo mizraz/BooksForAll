@@ -36,7 +36,7 @@ function focusPassword()
 					{
 					//ok password
 					theInput.style.borderColor="blue";
-					theOutput.innerHTML = "Not strong enough";
+					theOutput.innerHTML = "Not strong enough,try to use digits and letters";
 					theOutput.style.color="blue";
 					}
 	

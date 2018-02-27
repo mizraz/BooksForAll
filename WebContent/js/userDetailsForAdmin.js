@@ -6,24 +6,25 @@
 					ctrl = this;
 				};
 				
-				
+				//user the admin selected
 				$rootScope.curUserAdminSelected;
 				console.log("on CtrlDetailsForAdmin controller, $rootScope.curUserAdminSelected: "+ $rootScope.curUserAdminSelected);
 				
 	    		var data =
 	    		{
-	    			//TODO : Pass email  of the user from users list you want to see
+	    			
 	    				user:$rootScope.curUserAdminSelected
 
 	    		}
+	    		//get request to server: the server has to send the chosen user details
 	    		$http.get("http://localhost:8080/BooksForAll/returnUserDetails/user/"+$rootScope.curUserAdminSelected.email )
 
 				.then(function(response) {
 					$scope.records = response;
 	    			
-//				        console.log(response);
+
 	    		
-	    		
+	    		        //the chosen user details
 						$scope.name = response.data[0].userName;
 						$scope.email = response.data[0].email;
 						$scope.nick = response.data[0].userNickname;
@@ -31,7 +32,7 @@
 						$scope.phoneNumber = response.data[0].phoneNumber;
 						$scope.photo = response.data[0].userImageUrl;
 						
-						console.log(response.data[0].address.split(",")[0]);
+						
 						
 						if(response.data[0].address.split(",")[0] != null)
 						$scope.country = response.data[0].address.split(",")[0];
@@ -56,8 +57,8 @@
 	    			$("#confirmDeleteUserModal").modal();
 
 	    		};
-
-
+                
+                //if admin wants to delete user
 	    		$scope.deleteUser = function(isToDeleteUser) {
 	    			console.log("window.curUserToDelete.email in deleteUser: " + window.curUserToDelete.email);
 
@@ -70,7 +71,7 @@
 	    					{
 	    							email: window.curUserToDelete.email
 	    					};
-
+                            //the chosen users email sent to server with request to delete
 	    					$http.post("http://localhost:8080/BooksForAll/deleteUser", JSON.stringify(userToDelete)) 
 	    					.then(function(response) {
 

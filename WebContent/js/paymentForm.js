@@ -1,7 +1,7 @@
 angular.module('myApp').controller("CtrlBuy", 
 		['$scope','$rootScope','$http', function($scope, $rootScope, $http) {
 
-
+           //defines which user(logged in user!!!!) and which book he chose to buy
 			this.$onInit = function () {
 				$scope.curEbookIdUserClickedToBuy = $rootScope.curEbookUserClickedToBuy.bookId;
 				$scope.curEbookUserClickedToBuyTitle = $rootScope.curEbookUserClickedToBuy.title;
@@ -26,6 +26,7 @@ angular.module('myApp').controller("CtrlBuy",
 			$('#alert6').hide();
 			$scope.BuyNow = function()
 			{
+				//validating the data!
 				var checkAll=1;
 				var letters = /^[A-Z a-z]+$/;//for parameters that have to match only letters
 				var numbers = /[0-9]/;//for parameters that have to match only numbers
