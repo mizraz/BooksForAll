@@ -112,7 +112,7 @@ angular.module('myApp').controller("CtrlBuy",
 							$rootScope.ebooksDict["ebook"+$rootScope.curEbookUserClickedToBuy.bookId];
 
 		    				
-		    				//TODO: ksenia alert temporary with message: "bought succesfuly!"
+						    window.alert("The payment ended successfully!");
 		    				
 							$rootScope.curPage = $rootScope.pagesPaths.userPurchases;	
 						
