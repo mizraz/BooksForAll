@@ -29,7 +29,7 @@ public class DBQueries {
 				"CREATE TABLE " + DBConsts.SqlTables.REVIEWS.getName() + "(" +
 				DBConsts.SqlColumns.EMAIL.getName() + " varchar(100), "+
 				DBConsts.SqlColumns.BOOK_ID.getName() + " varchar(100), "+
-				DBConsts.SqlColumns.REVIEW_DESCRIPTION.getName() + " varchar(5000), "+
+				DBConsts.SqlColumns.REVIEW_DESCRIPTION.getName() + " varchar(15000), "+
 				DBConsts.SqlColumns.REVIEW_IS_APPROVED.getName() + " varchar(1), "+
 				DBConsts.SqlColumns.REVIEW_DATE.getName() + " timestamp " + //" , " +	
 //				" PRIMARY KEY (" + SqlColumns.BOOK_ID.getName() + "," + SqlColumns.EMAIL.getName() + ") " + ", " +
@@ -191,15 +191,20 @@ public static final String SELECT_ALL_REVIEWS_NOT_APPROVED =
 				SqlTables.REVIEWS.getName() + "." + SqlColumns.BOOK_ID.getName() + "," +
 				SqlTables.REVIEWS.getName() + "." + SqlColumns.REVIEW_DESCRIPTION.getName() + "," +
 				SqlTables.REVIEWS.getName() + "." + SqlColumns.REVIEW_IS_APPROVED.getName() + "," +
-				SqlTables.USERS_DETAILS.getName() + "." + SqlColumns.USER_NAME.getName() + "," +
+				SqlTables.USERS_DETAILS.getName() + "." + SqlColumns.USER_NIECKNAME.getName() + "," +
 				SqlTables.USERS_DETAILS.getName() + "." + SqlColumns.USER_IMAGE.getName() + "," +
 				SqlTables.REVIEWS.getName() + "." + SqlColumns.REVIEW_DATE.getName()  +
 				" FROM " + SqlTables.REVIEWS.getName() +
 				" INNER JOIN " + SqlTables.USERS_DETAILS.getName() + " "
 						+ " ON " + SqlTables.USERS_DETAILS.getName() +"."+ SqlColumns.EMAIL.getName() + " = " +
 								    	SqlTables.REVIEWS.getName() + "." + SqlColumns.EMAIL.getName() + " "  + 
-				" WHERE " + SqlColumns.REVIEW_IS_APPROVED.getName() + " = '0' or  " +
-							SqlColumns.REVIEW_IS_APPROVED.getName() + " = '1'" ; //TODO: delete the 1 thing
+				" WHERE " + SqlColumns.REVIEW_IS_APPROVED.getName() + " = '0' " // + " or  " +
+							//SqlColumns.REVIEW_IS_APPROVED.getName() + " = '1'" ; //TODO: delete the 1 thing
+				
+				// + " or  " +
+				//SqlColumns.REVIEW_IS_APPROVED.getName() + " = '1'" ; //TODO: delete the 1 thing
+				
+				;
 		
 		/** The Constant SELECT_ALL_USERS. */
 		public static final String SELECT_ALL_USERS = 
