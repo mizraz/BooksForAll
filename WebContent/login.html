@@ -12,7 +12,7 @@
 
 	<div class="container ng-scope"  ng-controller="Ctrlogin">
 		<form>
-	        <h3 class="form-heading">Please sign in</h3>
+	        <h3 class="form-heading">Please sign in</h3><br>
 	        <div class="form-group">
 	        	<label for="nick">Nickname: </label>
 	        	<input type="text" class="form-control" placeholder="Nickname" ng-model="nick" id="nick" required >
@@ -25,10 +25,17 @@
 	        	<label for="pwd">Password: </label>
 	        	<input type="password" class="form-control" placeholder="Password" ng-model="pwd" id="pwd" required>
 	        </div><br>
-             <br><br> 
+	 
+             <br>
+             <br>
 	        <button type="submit" ng-click='SubmitFunction()' class="btn btn-lg btn-success">Sign in</button>
+	        
 		</form>
-		<br><br><br>
+		
+		 <img id="logo" class="img-tumbnail col-lg-4 pull-right" src="resources/logo.bmp">
+			        
+		
+		<br><br>
 		<p><strong>Not a member?<strong></strong></p>
 		<a  class="btn btn-lg btn-info " role="button" ng-click="clickedRegister()">Resigter Now</a>
 		

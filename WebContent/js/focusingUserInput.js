@@ -6,38 +6,37 @@ var homePhone3 = /^03([0-9]{7})?$/;//pattern to phone number which starts with 0
 var homePhone4 = /^09([0-9]{7})?$/;//pattern to phone number which starts with 09
 var cellPhone = /^05([0-9]{8})?$/;//pattern to phone number which starts with 05
 var validEmail =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;//pattern to email
-$scope.errormsg1="";
+
 	    		
 
 function focusPassword()
 		{
 	 	
-			var theInput = document.getElementsById("pwd");
+	        var theInput = document.getElementsByTagName("input")[2];
 			var theOutput = document.getElementById("out");
 			var pass = document.forms[0].pass.value;
-			//theInput.style.borderWidth = "2px 2px 4px 1px";
-			if(theInput.length<4)
+			
+			if(pass.length<3)
 			{
 				
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "Weak Password";
 				theOutput.style.color="red";
 			}
-			else
-			{
-				if((pass.match(letters))&&(pass.match(numbers)))
+			
+				if(((pass.match(letters))||(pass.match(numbers)))&&(pass.length>3))
 				{
 					theInput.style.borderColor="green";
 					theOutput.innerHTML = "Strong Password";
 					theOutput.style.color="green";
 				}
-				else
-				{
-					theInput.style.borderColor="blue";
-					theOutput.innerHTML = "Password steel not strong, but not weak eather,try to use numbers and latters to make your password stronger";
-					theOutput.style.color="blue";
-				}
-			}
+		//		else
+		//		{
+		//			theInput.style.borderColor="blue";
+		//			theOutput.innerHTML = "Password steel not strong, but not weak eather,try to use numbers and latters to make your password stronger";
+		//			theOutput.style.color="blue";
+		//		}
+			
 		}
 
 
@@ -52,13 +51,13 @@ function focusPassword()
 				theOutput.innerHTML = "Please use letters";
 				theOutput.style.color="red";
 			}
-		    if((country.length<2))
+		    if((country.length<3))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "You have to use at least 3 letters";
 				theOutput.style.color="red";
 			}
-			if(country.match(letters)&&(country.length>=2))
+			if(country.match(letters)&&(country.length>=3))
 			{
 				theInput.style.borderColor="blue";
 				theOutput.innerHTML = "Ok";
@@ -76,13 +75,13 @@ function focusPassword()
 				theOutput.innerHTML = "Please use letters";
 				theOutput.style.color="red";
 			}
-		    if((street.length<2))
+		    if((street.length<3))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "You have to use at least 3 letters";
 				theOutput.style.color="red";
 			}
-			if(street.match(letters)&&(street.length>=2))
+			if(street.match(letters)&&(street.length>=3))
 			{
 				theInput.style.borderColor="blue";
 				theOutput.innerHTML = "Ok";
@@ -101,7 +100,7 @@ function focusPassword()
 				theOutput.innerHTML = "Please use numbers";
 				theOutput.style.color="red";
 			}
-		    if((hnumb.length<0))
+		    if((hnumb.length==0))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "Please enter your block number";
@@ -127,13 +126,13 @@ function focusPassword()
 				theOutput.innerHTML = "Please use letters";
 				theOutput.style.color="red";
 			}
-		    if((city.length<2))
+		    if((city.length<3))
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "You have to use at least 3 letters";
 				theOutput.style.color="red";
 			}
-			if(city.match(letters)&&(city.length>=2))
+			if(city.match(letters)&&(city.length>=3))
 			{
 				theInput.style.borderColor="blue";
 				theOutput.innerHTML = "Ok";
@@ -152,13 +151,13 @@ function focusPassword()
 				theOutput.innerHTML = "Please use numbers";
 				theOutput.style.color="red";
 			}
-		    if(zip.length!=6)
+		    if(zip.length!=7)
 			{
 				theInput.style.borderColor="red";
 				theOutput.innerHTML = "You have to 7 digits";
 				theOutput.style.color="red";
 			}
-			if(zip.length==6)
+			if(zip.length==7)
 			{
 				theInput.style.borderColor="blue";
 				theOutput.innerHTML = "Ok";

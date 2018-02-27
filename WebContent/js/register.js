@@ -147,7 +147,7 @@ angular.module('myApp').controller("Ctrl",
 	    			}
 	    		    
 				$rootScope.userLogedIn = {
-						email: $scope.name,
+						email: $scope.email,
 						userNickname:  $scope.nick,
 						userName: $scope.name,
 						userImageUrl: $scope.userImageUrl,

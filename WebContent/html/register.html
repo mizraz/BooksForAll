@@ -8,9 +8,11 @@
 	<title>Welcome!</title>	
 </head>
 <body id="registration">
+    <img id="logo" class="img-tumbnail col-lg-3 pull-right" src="resources/logo.bmp">
 	<div class="container ng-scope"  ng-controller="Ctrl">
       <form class="form-inline" method="post">
         <h3 class="form-heading">Registration</h3>
+        
         <div class="form-group">
         	<label for="name">Name: </label>
         	<input type="text" class="form-control" placeholder="Name" id="name" maxlength="10" required ng-model="name">
@@ -33,7 +35,7 @@
   			</div><br>
         <div class="form-group">
         	<label for="pwd">Password: </label>
-        	<input type="password" name="pass" onchange="focusPassword()" class="form-control" placeholder="Password" id="pwd" maxlength="8" required ng-model="pwd">
+        	<input type="password" name="pass" onkeyup="focusPassword()" class="form-control" placeholder="Password" id="pwd" maxlength="8" required ng-model="pwd">
         	<div class="form-group" id="out"></div>
         </div><br>
 
@@ -46,7 +48,7 @@
         <div class="form-group">
         	<label for="desc">Description: </label>
         	<textarea maxlength="300" rows="4" cols="50" class="form-control" id="desc" ng-model="desc"></textarea>
-        </div><br>
+        </div><br><br>
 		<div class="form-group">
         	<label for="email">Email: </label>
         	<input type="email" class="form-control" placeholder="Email" id="email" ng-model="email" required>
@@ -57,7 +59,7 @@
   			</div><br>
 		<div class="form-group">
         	<label for="email">Phone Number: </label>
-        	<input type="text" name="phone" ng-change="focusPhone()" class="form-control" id="phone" ng-model="phone" required>
+        	<input type="text" name="phone" onkeyup="focusPhone()" class="form-control" id="phone" ng-model="phone" required>
         	<div class="form-group" id="outp"></div><br>
         </div><br>
           <div class="alert alert-danger" id="alert4">
@@ -66,7 +68,7 @@
   			</div><br>
 		<div class="form-group">
 			<label for="cntry">Country: </label>
-        	<input type="text" name="country" ng-change="focusCountry()" class="form-control" id="country"  ng-model="country" required>
+        	<input type="text" name="country" onkeyup="focusCountry()" class="form-control" id="country"  ng-model="country" required>
 			</div>
 			<div class="form-group" id="outc"></div><br>
 	   <div class="alert alert-danger" id="alert6">
@@ -76,7 +78,7 @@
 			<br>	
 		<div class="form-group">	
 			<label for="city">City: </label>
-        	<input type="text" name="city" ng-change="focusCity()"class="form-control" id="city" ng-model="city" required>
+        	<input type="text" name="city" onkeyup="focusCity()"class="form-control" id="city" ng-model="city" required>
 			</div><div class="form-group" id="outci"></div><br>
 		<div class="alert alert-danger" id="alert7">
     			<a href="#" class="close" onclick="$('#alert7').hide()">&times;</a>
@@ -85,7 +87,7 @@
 			
 		<div class="form-group">	
 			<label for="city">Street: </label>
-        	<input type="text" name="street" ng-change="focusStreet()"class="form-control" id="street" ng-model="street" required>
+        	<input type="text" name="street" onkeyup="focusStreet()"class="form-control" id="street" ng-model="street" required>
 			</div>
 		<div class="form-group" id="outs"></div><br>
 					<div class="alert alert-danger" id="alert8">
@@ -95,7 +97,7 @@
 			
 		<div class="form-group">
 		    <label for="hnum">Number: </label>
-        	<input type="text" name="hnumb" ng-change="focushNumber()" class="form-control" id="hnumb" ng-model="hnumb" required>
+        	<input type="text" name="hnumb" onkeyup="focushNumber()" class="form-control" id="hnumb" ng-model="hnumb" required>
 			</div>
 			<div class="form-group" id="outn"></div><br>
 	
@@ -105,7 +107,7 @@
   		</div><br>
 		<div class="form-group">	
 			<label for="zc">Zip Code: </label>
-        	<input type="text" name="zip" ng-change="focusZip()"class="form-control" id="zip" ng-model="zip" required>
+        	<input type="text" name="zip" onkeyup="focusZip()"class="form-control" id="zip" ng-model="zip" required>
         </div>
 		<div class="form-group" id="outz"></div><br>
 		<div class="alert alert-danger" id="alert10">
@@ -118,8 +120,10 @@
         	<input type="text" class="form-control" id="userImageUrl" placeholder="Photo URL" ng-model="userImageUrl">
         </div><br>
  <br>
-        <button type="submit" class="btn btn-lg btn-success " ng-click='SubmitFunction()'>Register Now</button>
+        <button type="submit" class="btn btn-lg btn-success " ng-click='SubmitFunction()'>Register Now</button>              		
+        
       </form>
+      
     </div>
 </body>
 </html>
