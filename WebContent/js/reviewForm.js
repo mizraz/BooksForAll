@@ -54,6 +54,7 @@
 			.then(function(response) {
 //				TODO: message to inform user message submited and will be approved soon
 
+				window.alert("Yor review is submitted and will be approved soon");
 
 			});
 		};
