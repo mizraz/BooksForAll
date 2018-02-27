@@ -110,7 +110,12 @@ angular.module('myApp').controller("CtrlBuy",
 						$rootScope.purchasesDict["ebook"+$rootScope.curEbookUserClickedToBuy.bookId] = 
 							$rootScope.ebooksDict["ebook"+$rootScope.curEbookUserClickedToBuy.bookId];
 
-						$rootScope.curPage = $rootScope.pagesPaths.userPurchases;
+		    				
+		    				//TODO: ksenia alert temporary with message: "bought succesfuly!"
+		    				
+							$rootScope.curPage = $rootScope.pagesPaths.userPurchases;	
+						
+						
 
 
 					});

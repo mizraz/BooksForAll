@@ -49,8 +49,8 @@ var myModalReadBody;
 			// ctrl.userPrivel - for local use. 1 if admin, else 0.
 			ctrl.userPrivel = $rootScope.userPrivel;
 			console.log("likes list this.$oninit ");
-			
-			
+
+
 //			send ajax to get all likes to ctrl.ebookId
 			$http.get("http://localhost:8080/BooksForAll/likes/bookId/"+ctrl.ebook.bookId)
 			.then(function(response) {
@@ -227,8 +227,8 @@ var myModalReadBody;
 
 			}
 			else {
-				
-				
+
+
 				var scrolJSON = {
 						currentScroll: 0,
 						bookId: ctrl.ebook.bookId,
@@ -240,12 +240,12 @@ var myModalReadBody;
 					/* NOTHING DONE IN HERE*/
 				};
 				xmlhttpDelClient.send(JSON.stringify(scrolJSON));
-				
-				
-				
-				
-				
-				
+
+
+
+
+
+
 				console.log("no");	
 			}
 

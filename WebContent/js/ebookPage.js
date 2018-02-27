@@ -5,10 +5,20 @@ angular.module('myApp').controller("ebookPageController",
 			ctrl.ebook = $rootScope.curEbook;
 
 			this.$onInit = function() {
-				$rootScope.isCurEbookReviewed = 0;
+				$scope.showReviewForm = false;
+				$rootScope.isCurEbookReviewed = false;
+//				$rootScope.isCurEbookReviewedOrNotBought = 0;
 
+				
+				if ($rootScope.purchasesDict["ebook"+ ctrl.ebook.bookId] == undefined) {
+					$rootScope.isCurEbookBought = false;
+				}
+				else {
+					$rootScope.isCurEbookBought = true;
+				}
+				
 				// get reviews of ebookId
-				$http.get("http://localhost:8080/BooksForAll/reviews/bookId/"+ctrl.ebookId)
+				$http.get("http://localhost:8080/BooksForAll/reviews/bookId/"+ctrl.ebook.bookId)
 				.then(function(response) {
 					
 					
@@ -32,13 +42,31 @@ angular.module('myApp').controller("ebookPageController",
 						// email of the ith reviewer
 						var email = $scope.result.data[i].email;
 						if(email == $rootScope.userLogedIn.email) {
-							$rootScope.ebooksDict["ebook" + ctrl.ebookId].isReviewd = 1;
-							$rootScope.isCurEbookReviewed = 1;
+							$rootScope.ebooksDict["ebook" + ctrl.ebook.bookId].isReviewd = 1;
+							$rootScope.isCurEbookReviewed = true;
 						} 
 
 					}
+					$scope.showReviewForm = $rootScope.isCurEbookBought && (!$rootScope.isCurEbookReviewed);
 
 				});
+				
+				
+				
+				
+
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+
 
 			};
 
