@@ -78,10 +78,7 @@ public class UserServlet extends HttpServlet {
 
 		
 		String uri1;  
-		uri1 = new String (request.getRequestURI());
-	
-
-		
+		uri1 = new String (request.getRequestURI()); // check which action user wants the server to do, from the url patterns above	
         try {
         	
     		
@@ -92,29 +89,37 @@ public class UserServlet extends HttpServlet {
     		Connection conn = ds.getConnection();
     		Collection<User> userResult = new ArrayList<User>(); 
     		PreparedStatement stmt;
+    		
+    		//prepare cookie for further use
     		Cookie[] sessionCookie = null;
     		sessionCookie = request.getCookies();
+    		
+    		//prepare strings for further use
     		String searchBy = "";
     		String element2 = "";
     		
+    		//split the uri request from above and see which action user wanted the server to do, put that action into element2 string(the action placed in cell 2
     		element2 = uri1.split("/")[2];
-    		
+    	//if user wanted the server to return details (can be an admin and can be a simple user)	
     	if(element2.equals( "returnUserDetails")) {	
-    		
+    		//if cell 4 in splitted uri array is not empty=>email passed by admin
     		if(uri1.split("/")[4]!=null)
     		{
+    			//the user details of the user admin has requested(clicked on in the client side) will be returned
     			searchBy=uri1.split("/")[4];
     		}
+    		//the simple user logged in!!!!  details will be returned. The cookie tells us who is the user that logged in
     		else if (uri1.split("/")[2] == "returnUserDetails")
     		{
     			searchBy=sessionCookie[0].getValue();
     		}
     		System.out.println(sessionCookie[0].getValue());
+    		//return details of the user requested
     			stmt = conn.prepareStatement("SELECT * FROM USER_DETAILS WHERE  email= '"+searchBy+"'");
     	 	
 			try {		
 				ResultSet rs = stmt.executeQuery();
-				
+				//create user for response
 				while (rs.next()){
 					User usr = new User(rs.getString(1),rs.getString(2),rs.getString(6),rs.getString(5),rs.getString(3),rs.getString(8),rs.getString(4),rs.getString(7));
 					System.out.println(usr);
@@ -128,6 +133,7 @@ public class UserServlet extends HttpServlet {
 				getServletContext().log("Error while querying for ebooks", e);
 				response.sendError(500);//internal server error
 			}
+			//for inner checks
 			for (Iterator iterator = userResult.iterator(); iterator.hasNext();) {
 				User usr = (User) iterator.next();
 				System.out.println("name : "+ usr.getUserName() + " nickname : "+ usr.getUserNickname() 
@@ -135,7 +141,7 @@ public class UserServlet extends HttpServlet {
 			}
 
 			conn.close();
-
+            //return the user details by json
 			Gson gsonRet = new Gson();
 			//convert from customers collection to json
 			String userRet = gsonRet.toJson(userResult, AppConstants.USER_COLLECTION);
@@ -146,15 +152,16 @@ public class UserServlet extends HttpServlet {
 			
     	}//if
     	
+    //if list of users has been requested(by admin)	
      if(element2.equals("usersList"))
     	{
     		
-    
-			Collection<User> usersResult = new ArrayList<User>(); 
+			Collection<User> usersResult = new ArrayList<User>(); //create new array for response
 			
 			Statement stmt2;
 			try {
 				stmt2 = conn.createStatement();
+				//select all users from USERS_TABLE
 				ResultSet rs2 = stmt2.executeQuery(DBQueries.SELECT_ALL_USERS);
 				while (rs2.next()){
 
@@ -170,13 +177,14 @@ public class UserServlet extends HttpServlet {
 				response.sendError(500);//internal server error
 			}
 
+			//for inner use
 			for (Iterator iterator = usersResult.iterator(); iterator.hasNext();) {
 				User user = (User) iterator.next();
 				//				System.out.println("bookId: "+ review.getBookId() + "description "+ review.getDescription());
 
 			}
 			conn.close();
-
+            //return the users list via json
 			Gson gson = new Gson();
 			//convert from customers collection to json
 			String userJsonResult = gson.toJson(usersResult, AppConstants.USER_COLLECTION);
@@ -208,15 +216,15 @@ public class UserServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String uri1;  
-		uri1 = new String (request.getRequestURI());
+		uri1 = new String (request.getRequestURI());// check which action user wants the server to do, from the url patterns above	
 		String element2;
-	    element2 = uri1.split("/")[2];
+	    element2 = uri1.split("/")[2]; //see what acction has been set by user
 	    
 	   
 		
 		try {
 
-			//obtain CustomerDB data source from Tomcat's context
+			//obtain DB data source from Tomcat's context
 			Context context = new InitialContext();
 			BasicDataSource ds = (BasicDataSource)context.lookup(
 					getServletContext().getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.OPEN);
@@ -233,41 +241,43 @@ public class UserServlet extends HttpServlet {
 //TODO: need to insert timestamp
 				
 	    		String uri = request.getRequestURI();
-	    		if (uri.indexOf(URIConsts.DELETE_USER) != -1){//filter customer by specific name
-
+	    		if (uri.indexOf(URIConsts.DELETE_USER) != -1){// check if the action is to delete user	
+                //delete user 
 				PreparedStatement pstmt = conn.prepareStatement(DBQueries.DELETE_USER_BY_EMAIL);
 				pstmt.setString(1, user.getEmail());
 				pstmt.executeUpdate();
 				System.out.println("in delete user: email: " + user.getEmail());
 	    		} 
+	    		//if the action is update
 	    		if(element2.equals("updateUserDetails")){
-	    			System.out.println("Hello");
+	    			
 	    		try {	
-	    			StringBuffer jb = new StringBuffer();
+	    			StringBuffer buff = new StringBuffer(); //create buffer to read the request into
 	    			String line = null;
 	    			try
 	    			{
+	    				//read the request
 	    				BufferedReader reader = request.getReader();
 	    				while ((line = reader.readLine()) != null)
-	    				jb.append(line);
+	    				buff.append(line);
 	    			}
 	    			catch (Exception e)
 	    			{
 	    			System.out.println(e);
 	    			}
 	    			
+	    			//use cookie to update logged in users details
 	    			Cookie[] sessionCookie = null;
 	    			sessionCookie = request.getCookies();
-	    			System.out.println(sessionCookie[0].getValue());
-	    			System.out.println(user.getUserNickname());
-	    			System.out.println(response);
-	    			if (UsernameExist(user.getUserNickname(),response,sessionCookie[0].getValue())) //&& (user.getEmail() != sessionCookie[0].getValue()))
+	    			//check if the new nickname user picked already exists
+	    			if (UsernameExist(user.getUserNickname(),response,sessionCookie[0].getValue())) 
 	    			{
-	    				
+	    				//if exists return failure
 	    				 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 	    				return;
 	    			}
 	    		else {	
+	    			//strings to be set in to user's row in USERS_TABLE, from data
 	    			final String name = user.getUserName();
 	    			final String password =user.getPwd();
 	    			final String nickname = user.getUserNickname();
@@ -276,12 +286,13 @@ public class UserServlet extends HttpServlet {
 	    	        final String phoneNumber = user.getPhoneNumber();
 	    	        final String email = user.getEmail();
 	    	        final String photo = user.getImageUrl();
-	    	        if (email != null && name != null &&
-	    	                !email.isEmpty() && !name.isEmpty() ) {
+	    	        if (email != null && nickname != null &&
+	    	                !email.isEmpty() && !nickname.isEmpty() ) {
 	    	            response.setStatus(HttpServletResponse.SC_OK);
 	    	        } else {
 	    	            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 	    	        }
+	    	        //update the user's details in USERS_TABLE with data passed in request
 	    			PreparedStatement pstmt = conn.prepareStatement(DBQueries.UPDATE_USER_DETAILS);
 	    			pstmt.setString(1,email);
 	    			pstmt.setString(2,name);
@@ -340,20 +351,24 @@ public class UserServlet extends HttpServlet {
 	 * @throws ServletException the servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
+	//function checks if user picked new nickname that is already taken by other user
 	protected Boolean UsernameExist(String username, HttpServletResponse response,String cookEmail) throws ServletException, IOException
 	{
-		System.out.println("baaaaa");
-		int check = 0;
+		
+		int check = 0;//flag if user exists/not exists
 		try
 		{
+			//connect to db
 			Context context = new InitialContext();
 			BasicDataSource ds = (BasicDataSource)context.lookup(
 					getServletContext().getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.OPEN);
 			Connection conn = ds.getConnection();
+			//get all users whose nickname and email match to entered by user
 			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM USER_DETAILS WHERE user_nickname ='"+username.toString()+"' AND email !='"+cookEmail+"'" );
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next())
 			{
+				//if exists change flag
 				check++;
 	 		}
 		 	rs.close();
@@ -366,7 +381,7 @@ public class UserServlet extends HttpServlet {
 			getServletContext().log("Error: Connection to DB or SELECT command are not good", e);
 			response.sendError(500);
 		}
-		System.out.println(check);
+		
 		if (check > 0)
 			return true;
 		else

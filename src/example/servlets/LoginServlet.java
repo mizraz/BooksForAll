@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
      */
     public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
@@ -63,16 +63,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-//		Cookie[] sessionCookie = null;
-//		sessionCookie = request.getCookies();
-//		if (sessionCookie == null) //if no session is open
-//		{
-//			response.sendRedirect("http://localhost:8080/ExampleServletv3/KREbooks/registerANDlogin/login.html");
-//		}
-//		//else
-//		//{
-//			response.sendRedirect("http://localhost:8080/ExampleServletv3/KREbooks/registerANDlogin/login.html");
-//		//}
+
 	}
 
 	/**
@@ -87,28 +78,29 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 	try {
-		Cookie cook = null;
-		StringBuffer jb = new StringBuffer();
+		Cookie cook = null;                       //create cookie for further use
+		StringBuffer buff = new StringBuffer();   //create buffer to read the request into
 		String line = null;
 		try
 		{
-			BufferedReader reader = request.getReader();
+			BufferedReader reader = request.getReader(); //read the request to the buffer 
 			while ((line = reader.readLine()) != null)
-			jb.append(line);
+			buff.append(line);
 		}
 		catch (Exception e)
 		{
-		/*report an error*/
+		/*error*/
 		}
-		String data = jb.toString();
+		//create user fields from the data received, to check if user exists
+		String data = buff.toString();
 		Gson gson = new Gson();
 		Type type = new TypeToken<User>(){}.getType();
 		User users = gson.fromJson(data, type);
-		System.out.println(users.getUserNickname());
 		
+		//flag if such user exists
 		int checkUser= 0;
 		
-			
+			//connection to the DB
 			Context context = new InitialContext();
 			BasicDataSource ds = (BasicDataSource)context.lookup(
 					getServletContext().getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.OPEN);
@@ -116,18 +108,18 @@ public class LoginServlet extends HttpServlet {
 			Connection conn = ds.getConnection();
 			Collection<User> userResult = new ArrayList<User>();
 			PreparedStatement pstmt;
-			
+			//check if user with nickname and password passed in data exists
 			pstmt = conn.prepareStatement("SELECT * FROM USER_DETAILS WHERE user_nickname = '"+users.getUserNickname()+"' AND pwd = '"+users.getPwd() +"'");
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next())
-			{
+			{   //if user exists change the flag. Create new user to response with
 				checkUser++;
 				User usr = new User(rs.getString(1),rs.getString(2),rs.getString(6),rs.getString(5),rs.getString(3),rs.getString(8),rs.getString(4),rs.getString(7));
 				System.out.println(usr);
 				userResult.add(usr);
 				if(checkUser == 1)
-				{
+				{   //initialize cookie for further use
 					cook = new Cookie("email",usr.getEmail());
 					cook.setMaxAge(60*60*24);
 					response.addCookie(cook);
@@ -139,10 +131,10 @@ public class LoginServlet extends HttpServlet {
 			rs.close();	
 			pstmt.close();	
 		conn.close();
-		System.out.println(checkUser);
+		
 		if (checkUser == 1)
 		{
-			
+			//check if admin loged in and set the session attribute accordingly
 			HttpSession session = request.getSession();
 			if (users.getUserNickname().compareTo("admin") == 0) 
 			{
@@ -163,9 +155,9 @@ public class LoginServlet extends HttpServlet {
 			
 			
 			
-			
+			//return user if user who logged in was found via json
 			Gson gsonRet = new Gson();
-			//convert from customers collection to json
+			//convert from users collection to json
 			String userRet = gsonRet.toJson(userResult, AppConstants.USER_COLLECTION);
 			response.addHeader("Content-Type", "application/json");
 			PrintWriter writer = response.getWriter();
@@ -175,7 +167,7 @@ public class LoginServlet extends HttpServlet {
 		else
 			
 		{
-			
+		    //return "Failure" if user who logged in was not found	
 			PrintWriter writer = response.getWriter();
 			writer.println("Failure");
 			writer.close();

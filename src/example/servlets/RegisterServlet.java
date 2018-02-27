@@ -53,22 +53,7 @@ public class RegisterServlet extends HttpServlet {
 	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	//	Context context;
-		///try {
-			//context = new InitialContext();
-			//BasicDataSource ds = (BasicDataSource)context.lookup(
-				//	getServletContext().getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.OPEN);
-		//	Connection conn = ds.getConnection();
-			
-	//	} catch (NamingException e) {
-			// TODO Auto-generated catch block
-		//	e.printStackTrace();
-		//} catch (SQLException e) {
-    		//getServletContext().log("Error while closing connection", e);
-    		//response.sendError(500);//internal server error
-    	//}
-		
-		
+
 	
 	}
 
@@ -83,35 +68,34 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("HELLO");
-		StringBuffer jb = new StringBuffer();
+		
+		StringBuffer buff = new StringBuffer();          //create buffer to read the request
 		String line = null;
 		try
-		{
+		{   //read the request into buffer
 			BufferedReader reader = request.getReader();
 			while ((line = reader.readLine()) != null)
-			jb.append(line);
+			buff.append(line);
 		}
 		catch (Exception e)
 		{
-		/*report an error*/
+		/*error*/
 		}
-		String data = jb.toString();
+		//create new user from the data received
+		String data = buff.toString();
 		Gson gson = new Gson();
 		Type type = new TypeToken<User>(){}.getType();
 		User user = gson.fromJson(data, type);
+		//check if user with nickname/email passed by data  already exists
 		if (UsernameExist(user.getUserNickname(),user.getEmail(),response))
-		{
+		{    //if true,respond with failure, the user on the other side will receive a message that the nickname/email is taken
 			 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-			//PrintWriter writer = response.getWriter();
-			//writer.println("Failure");
-			//writer.close();
 			return;
 		}
-		//System.out.println(user.getUserName());
+		
 	else { 
 			
-		
+		    //if the nickname/email is not taken create strings corresponding to the passed values
 			final String name = user.getUserName();
 			final String password =user.getPwd();
 			final String nickname = user.getUserNickname();
@@ -120,21 +104,21 @@ public class RegisterServlet extends HttpServlet {
 			final String phoneNumber = user.getPhoneNumber();
 			final String email = user.getEmail();
 			final String photo = user.getImageUrl();
-			if (email != null && name != null &&
-                !email.isEmpty() && !name.isEmpty() ) {
-            response.setStatus(HttpServletResponse.SC_OK);
+			if (email != null && nickname != null &&
+                !email.isEmpty() && !nickname.isEmpty() ) {
+            response.setStatus(HttpServletResponse.SC_OK); //make sure the nickname/email is not empty
         } else {
             response.setStatus(HttpServletResponse.SC_CONFLICT);
         }
 	try
 		{
-		
+		//connect to database
 		Context context = new InitialContext();
 	
 		BasicDataSource ds = (BasicDataSource)context.lookup(
 				getServletContext().getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.OPEN);
 		Connection conn = ds.getConnection();
-		    
+		    //insert new user into USERS_TABLE
 			PreparedStatement pstmt = conn.prepareStatement(DBQueries.INSERT_USER_DETAILS);
 			pstmt.setString(1,email);
 			pstmt.setString(2,name);
@@ -146,6 +130,7 @@ public class RegisterServlet extends HttpServlet {
 			pstmt.setString(8,photo);
 			
 			pstmt.executeUpdate();
+			//initialize cookie for further use
 			Cookie cook = null;
 			cook = new Cookie("email",email);
 			cook.setMaxAge(120*3);
@@ -159,32 +144,7 @@ public class RegisterServlet extends HttpServlet {
 			
 		}
 		
-        // just to illustrate the use of Json in Servlets, we return the input to the client
-        /*final JSONObject jsonObject = new JSONObject();
-        try {
-	        jsonObject.put("nickname", nickname);
-	        jsonObject.put("password", password);
-	        jsonObject.put("name", name);
-	        jsonObject.put("surname", surname);
-	        jsonObject.put("addr", address);
-	        jsonObject.put("phone", phoneNumber);
-	        jsonObject.put("email", email);
-        }
-        catch (Exception e) {
-        	e.printStackTrace();
-        }*/
 
-
-      //  response.setContentType("application/json");
-        // Get the printwriter object from response to write the required json object to the output stream
-        //final PrintWriter out = response.getWriter();
-		//System.out.println(response.getStatus());
-
-        //PrintWriter writer = response.getWriter();
-		//writer.println("Success");
-		//writer.close();
-        // Assuming your json object is **jsonObject**, perform the following, it will return your json object
-      //  out.print(jsonObject.toString());
     }
 	
 		
@@ -201,19 +161,22 @@ public class RegisterServlet extends HttpServlet {
 	 * @throws ServletException the servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
+	//function checks if user that have the nickname/email identical to the passed in data, already exists
 	protected Boolean UsernameExist(String username,String email, HttpServletResponse response) throws ServletException, IOException
 	{
-		int check = 0;
+		int check = 0;//flag if user exists
 		try
-		{
+		{   // connect to db
 			Context context = new InitialContext();
 			BasicDataSource ds = (BasicDataSource)context.lookup(
 					getServletContext().getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.OPEN);
 			Connection conn = ds.getConnection();
+			//check if user that have the nickname/email identical to the passed in data, already exists in the USERS_TABLE 
 			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM USER_DETAILS WHERE user_nickname ='"+username.toString()+"' OR email='"+email.toString()+"'");
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next())
 			{
+				//if user already exists change flag
 				check++;
 	 		}
 		 	rs.close();
@@ -226,6 +189,7 @@ public class RegisterServlet extends HttpServlet {
 			getServletContext().log("Error: Connection to DB or SELECT command are not good", e);
 			response.sendError(500);
 		}
+		//return the flag
 		if (check > 0)
 			return true;
 		else
