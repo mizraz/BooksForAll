@@ -27,6 +27,7 @@
 					ctrl.usersListHtml = ctrl.usersListHtml + '\n' +  $scope.result.data[liker].userNickname; //TODO: delete
 				}
 
+				$rootScope.ebooksDict["ebook"+ctrl.ebookId].likesList = $scope.result.data;
 
 
 //				console.log("likers: " + ctrl.usersListHtml);
@@ -41,8 +42,6 @@
 			console.log("in: ctrl.goToUserDetailsPage, user: " + userSelectedByAdmin.userName);
 			$rootScope.curUserAdminSelected = userSelectedByAdmin;
 			$rootScope.curPage = $rootScope.pagesPaths.userDetailsPageForAdmin;
-			
-			
 		}
 
 		ctrl.likeListClickedOnce = false;
@@ -59,34 +58,6 @@
 
 		ctrl.getLikesList = function() {
 			$("#myModalLikes").modal();
-
-
-//			if (!ctrl.likeListClickedOnce) {
-//			ctrl.likeListClickedOnce = true;
-////			TODO: fix ajax for getting all likes of this book
-//			$http.get("http://localhost:8080/BooksForAll/likes/bookId/"+ctrl.ebookId)
-//			.then(function(response) {
-//			$scope.records = response;
-//			$scope.result = $scope.records;//this variable will hold the search results
-//			console.log($scope.result);
-//			console.log('arr length ' + $scope.result.data.length);
-//			for (var i = 0; i < $scope.result.data.length; ++i) {
-
-
-//			var name = $scope.result.data[i].userNickname;
-
-//			ctrl.userNamesList.push(name);
-//			console.log("in likesList, userNickname: " + name);
-////			console.log("userNamesList[0] " + ctrl.userNamesList[0]);
-//			ctrl.usersListHtml = ctrl.usersListHtml.concat('\\n', name);
-
-////			console.log(newMessage);
-//			}
-////			console.log("likers: " + ctrl.usersListHtml);
-
-//			});    	    		
-//			}
-
 		};
 
 

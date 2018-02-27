@@ -1,10 +1,26 @@
 <link rel="stylesheet" href="stylesheets/buyRead.css">
+<link rel="stylesheet" href="stylesheets/likesList.css">
+
 
 <div class='container buy-read col-xs-5 col-sm-7' id='buyRead'>
 	<div>
-		<likes-list ebook-id="$ctrl.ebook.bookId"
-			is-user-liked="$ctrl.isUserliked" class=" "
-			is-user-purchased="$isUserPurchased"></likes-list>
+<button type="button" ng-disabled="!$ctrl.userPrivel" style="cursor: default; z-index: 500;"
+	class="tooltipp btn-likes-list btn btn-default btn-lg">
+	<span data-toggle="modal" data-target="#myModal" data-toggle="tooltip"
+		data-placement="top" > <!-- title={{$ctrl.usersListHtml}}  -->
+		<img src="resources/glyphicons-344-thumbs-up.jpg"> <b>{{$ctrl.countLikers}}</b>
+		Likes
+	</span>
+
+	<div id="myTool" class=" tooltipptext"> 
+	<div  ng-repeat="user in $ctrl.userNamesList"
+		class=" tooltipptext">
+			<a ng-if="$ctrl.userPrivel" ng-click="$ctrl.clickedAName(user)">{{user.userNickname}}</a>
+			<span ng-if="!$ctrl.userPrivel" ng-disabled="!$ctrl.userPrivel" >{{user.userNickname}}</span>
+	</div>
+</div>
+
+</button>
 		<button ng-if="!$ctrl.ebook.isPurchased" type="button"
 			ng-click="$ctrl.clickedBuy()" class="btn btn-info btn-lg "
 			data-toggle="modal" data-target="#myModalBuy">Buy</button>
