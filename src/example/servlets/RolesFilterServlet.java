@@ -24,12 +24,12 @@ import javax.servlet.http.HttpSession;
 				"/usersList"
 
 		})
-public class RolesFilter implements Filter {
+public class RolesFilterServlet implements Filter {
 
     /**
      * Default constructor. 
      */
-    public RolesFilter() {
+    public RolesFilterServlet() {
         // TODO Auto-generated constructor stub
     }
 

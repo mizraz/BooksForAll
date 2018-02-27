@@ -37,13 +37,13 @@ import example.model.ScrollObj;
 				"/scroll/email/*",
 
 		})
-public class ScrollServlet extends HttpServlet {
+public class ScrollPositionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ScrollServlet() {
+    public ScrollPositionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

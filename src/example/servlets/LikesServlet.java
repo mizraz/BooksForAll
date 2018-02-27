@@ -44,13 +44,13 @@ import example.model.Review;
 				"/newLike",
 				"/likes/bookId/*"
 		})
-public class LikeHandler extends HttpServlet {
+public class LikesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LikeHandler() {
+	public LikesServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

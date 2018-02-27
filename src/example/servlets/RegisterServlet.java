@@ -33,13 +33,13 @@ import example.model.User;
 @WebServlet(urlPatterns = { 
 		"/UserRegisterServlet"
 })
-public class UserRegisterServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-	public UserRegisterServlet() {
+	public RegisterServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="stylesheets/likesList.css">
 
+<!--  not in use. formerly contained the likes list. was merged with the buttons of like unlike to allow online update of likers -->
 
-<button type="button" ng-disabled="!$ctrl.userPrivel" style="cursor: default;"
-	class="tooltipp btn-likes-list btn btn-default btn-lg">
+<button type="button" style="cursor: default;"
+	class="tooltipp btn-likes-list btn btn-default btn-lg">  <!-- ng-disabled="!$ctrl.userPrivel"  -->
 	<span data-toggle="modal" data-target="#myModal" data-toggle="tooltip"
 		data-placement="top" > <!-- title={{$ctrl.usersListHtml}}  -->
 		<img src="resources/glyphicons-344-thumbs-up.jpg"> <b>{{$ctrl.countLikers}}</b>
@@ -13,7 +14,7 @@
 	<div  ng-repeat="user in $ctrl.userNamesList"
 		class=" tooltipptext">
 			<a ng-if="$ctrl.userPrivel" ng-click="$ctrl.clickedAName(user)">{{user.userNickname}}</a>
-			<span ng-if="!$ctrl.userPrivel" ng-disabled="!$ctrl.userPrivel" >{{user.userNickname}}</span>
+			<span ng-if="!$ctrl.userPrivel" > <!-- ng-disabled="!$ctrl.userPrivel"  --> {{user.userNickname}}</span>
 	</div>
 </div>
 
