@@ -27,6 +27,7 @@
 		$('#alert12').hide();							
 	    $scope.Update = function()
 	    {
+	    	//validating the input
 			 var CheckFlag=1;//checks if all parameters were entered correct way
 			 var letters = /^[A-Z a-z]+$/;//for parameters that have to match only letters
 			 var numbers = /[0-9]/;//for parameters that have to match only numbers

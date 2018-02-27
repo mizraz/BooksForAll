@@ -9,7 +9,7 @@ angular.module('myApp').controller("Ctrlogin",
 			
 			$('#alert1').hide();
 
-
+           //calls the register if user not a member
 			$scope.clickedRegister = function()
 			{
 				$rootScope.modalCurPath = $rootScope.pagesPaths.register;
@@ -17,7 +17,7 @@ angular.module('myApp').controller("Ctrlogin",
 			}
 
 			$scope.SubmitFunction = function()
-			{
+			{   //checks user input
 				$('#alert1').hide();
 				if($scope.nick.length>2 && $scope.pwd.length>3)
 				{
@@ -27,7 +27,7 @@ angular.module('myApp').controller("Ctrlogin",
 							pwd: $scope.pwd
 
 					};
-
+                    //sends request post to the login servlet, with data that user entered (the data is sent as JSON)
 					$http.post('http://localhost:8080/BooksForAll/login', JSON.stringify(data))
 					.then(function(response) {
 
@@ -38,17 +38,17 @@ angular.module('myApp').controller("Ctrlogin",
 
 						var res = new String(response.data);
 
-
+                        //if the server does not find such user
 						if(res.indexOf("Failure")==0)
 						{
-							console.log("HELLO");
-							$scope.error="Info ";
+							
+							
 							$scope.errormsg1="The username and password you entered did not match our records. Please double-check and try again.";
 							$('#alert1').show();
 						}//if failure
 						else
 						{
-
+							//if the user is admin
 							if($scope.nick == 'admin') {
 								$rootScope.userPrivel = 1;
 							} else {
@@ -71,45 +71,12 @@ angular.module('myApp').controller("Ctrlogin",
 		    						zip:response.data[0].address.split(",")[4]
 							};
 
-
+                           //represent the catalog
 							$rootScope.getEbooksAndPurchases();
 
-
-
-
-
-//							$rootScope.nick=response.data[0].userNickname;
-//							console.log(response.data[0].userNickname);
-//							localStorage.setItem('nick', response.data[0].userNickname);
-//							$rootScope.email=response.data[0].email;
-//							localStorage.setItem('email', response.data[0].emai);
-//							$rootScope.address=response.data[0].address;
-//							localStorage.setItem('address', response.data[0].address);
-//							$rootScope.name=response.data[0].userName;
-//							localStorage.setItem('userName', response.data[0].userName);
-//							$rootScope.password=response.data[0].pwd;
-//							localStorage.setItem('pwd', response.data[0].pwd);
-//							$rootScope.description=response.data[0].description;
-//							localStorage.setItem('description', response.data[0].description);
-//							$rootScope.phoneNumber=response.data[0].phoneNumber;
-//							localStorage.setItem('phoneNumber', response.data[0].phoneNumber);
-//							$rootScope.photo=response.data[0].userImageUrl;
-//							localStorage.setItem('userImageUrl', response.data[0].userImageUrl);
-//							console.log($rootScope.nick);
-							// $Ctrlogin.curPage='index.html';
-//							window.location = 'http://localhost:8080/BooksForAll/KREbooks/index.html';
-
-//							document.userNicknameNav.textContent = $rootScope.userLogedIn.userNickname;
 							$rootScope.curPage = $rootScope.pagesPaths.catalog;
-
+							//hide the login modal
 							$("#myModalRegisterLogin").modal('hide');
-
-//							setTimeOut(function() {
-//								$rootScope.curPage = $rootScope.pagesPaths.catalog;
-//
-//							}, 1000);
-							
-
 						} 
 
 					});
@@ -197,41 +164,6 @@ angular.module('myApp').controller("Ctrlogin",
 
 						}
 
-//						i = 0;
-//						//TODO: take the if, and merge this for and one above it.
-//						if ($rootScope.resultPurchasesTmp.data.length > 0) {
-//							console.log("$rootScope.resultPurchasesTmp.data: " + $rootScope.resultPurchasesTmp.data[0].bookId);
-//							for (var pur in $rootScope.resultPurchasesTmp.data) {
-//							
-//								
-//								
-//								
-//								console.log("pur.bookId: "+ $rootScope.resultPurchasesTmp.data[pur].bookId);
-//								// update if the isPurchased flag - 1 if bought this book, otherwise 0.
-//								$rootScope.ebooksDict["ebook" + $rootScope.resultPurchasesTmp.data[pur].bookId].isPurchased = 1 ; //TODO: this line is example how to add properties to ebook. need to do this for like etc with real data from ajax.
-//								// update isLiked - 1 if liked, otherwise 0.
-//								$rootScope.ebooksDict["ebook" + $rootScope.resultPurchasesTmp.data[pur].bookId].isliked = $rootScope.resultPurchasesTmp.data[pur].isLiked; //TODO: this line is example how to add properties to ebook. need to do this for like etc with real data from ajax.
-//								// update currentScroll - update the position the user stopped reading
-//								$rootScope.ebooksDict["ebook" + $rootScope.resultPurchasesTmp.data[pur].bookId].currentScroll = $rootScope.resultPurchasesTmp.data[pur].currentScroll;
-//
-//								
-//								
-//								
-//								
-//								
-//								console.log("1: " + $rootScope.ebooksDict["ebook" + $rootScope.resultPurchasesTmp.data[pur].bookId].isPurchased);
-//								console.log("2: " + $rootScope.ebooksDict["ebook" + $rootScope.resultPurchasesTmp.data[pur].bookId].isliked);
-//								console.log("3: " + $rootScope.ebooksDict["ebook" + $rootScope.resultPurchasesTmp.data[pur].bookId].currentScroll);
-//
-//
-//
-////								$rootScope.ebooksList.push($rootScope.result.data[1]);
-//								i++; //to delete this
-//							}
-//						}
-//						else {
-//							console.log("purchases list of: " + $rootScope.userLogedIn.email + " is empty!");
-//						}
 
 					});
 

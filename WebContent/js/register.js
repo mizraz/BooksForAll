@@ -137,15 +137,15 @@ angular.module('myApp').controller("Ctrl",
 
 	    		
 
-	    		
+	    		//sends to server post request sends the details of the new user(via JSON)
 	    		$http.post("http://localhost:8080/BooksForAll/UserRegisterServlet",JSON.stringify(data))
 	    		.then(function(response) {
-	    		    console.log("HELLO");
+	    		    
 		    		if($scope.userImageUrl =="")
 	    			{
 		    			$scope.userImageUrl = "resources/userImages/annonymous.jpg"
 	    			}
-	    		    
+	    		 //now the current user is the new user and those are his details   
 				$rootScope.userLogedIn = {
 						email: $scope.email,
 						userNickname:  $scope.nick,
@@ -160,14 +160,14 @@ angular.module('myApp').controller("Ctrl",
 						zip: $scope.zip
 				};
 				$rootScope.getEbooksAndPurchases();
+				
 				$("#myModalRegisterLogin").modal('hide');
 				
-//				$rootScope.curPage = $rootScope.pagesPaths.catalog;
-//	    	       	window.location = 'http://localhost:8080/ExampleServletv3/index.html';
+
 	    	    },function() {			
 	    			$scope.errormsg12="Nickname "+$scope.nick+" already exists, enter a new one and try again";
 	    			$('#alert12').show();
-					//window.location = 'http://localhost:8080/ExampleServletv3/KREbooks/index.html';
+
 	    		});
 
 
