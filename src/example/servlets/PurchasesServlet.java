@@ -39,7 +39,6 @@ import example.model.Review;
 				"/purchases/email/*",
 				"/purchase/email/*",
 				"/newPurchase"
-//				, "/transactions/*" /*will have 2 params: first, second date*/
 		})
 public class PurchasesServlet extends HttpServlet {
 	
@@ -57,7 +56,7 @@ public class PurchasesServlet extends HttpServlet {
     }
 
 	/**
-	 * Do get.
+	 * Get all purchases of user , get a single purchase of user by url params: email , bookId
 	 *
 	 * @param request the request
 	 * @param response the response
@@ -135,7 +134,7 @@ public class PurchasesServlet extends HttpServlet {
 	}
 
 	/**
-	 * Do post.
+	 * A new purchase is made by user. update in USER_PURCHASES table that user purchased ebook.
 	 *
 	 * @param request the request
 	 * @param response the response
@@ -145,8 +144,6 @@ public class PurchasesServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		
 		
 		try {
 
@@ -193,19 +190,6 @@ public class PurchasesServlet extends HttpServlet {
 			getServletContext().log("Error while closing connection", e);
 			response.sendError(500);//internal server error
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	}
 

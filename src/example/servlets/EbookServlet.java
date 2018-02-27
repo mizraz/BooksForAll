@@ -53,10 +53,10 @@ public class EbookServlet extends HttpServlet {
     }
 
 	/**
-	 * Do get.
+	 * get all the ebooks the store can offer.
 	 *
-	 * @param request the request
-	 * @param response the response
+	 * @param request the request - for all ebooks the store can offer
+	 * @param response with a list of all ebooks store can offer
 	 * @throws ServletException the servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -128,7 +128,7 @@ public class EbookServlet extends HttpServlet {
 		}	}
 
 	/**
-	 * Do post.
+	 * Do post. - in this project - no need to edit ebooks functionallity.
 	 *
 	 * @param request the request
 	 * @param response the response

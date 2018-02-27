@@ -59,10 +59,10 @@ public class ReviewsServlet extends HttpServlet {
 	}
 
 	/**
-	 * Do get.
+	 * Get: all reviews by book id url param , get all unapproved reviews.
 	 *
 	 * @param request the request
-	 * @param response the response
+	 * @param response - a list of reviews
 	 * @throws ServletException the servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -122,25 +122,6 @@ public class ReviewsServlet extends HttpServlet {
 				
 			}
 
-//			
-//			PreparedStatement ps7 = (PreparedStatement) conn.prepareStatement(AppConstants.SELECT_REVIEWS_OF_BOOK_ID);
-//			ps7.setString(1, "56254");
-//			ResultSet rs7 = ps7.executeQuery();	
-//			
-//			ArrayList<Map<String, Object>> resultList7 = new ArrayList<Map<String, Object>>(); 
-//			Map<String, Object> row7 = null;
-//			ResultSetMetaData metaData7 = (ResultSetMetaData) rs7.getMetaData();
-//			Integer columnCount7 = metaData7.getColumnCount();
-//			while (rs7.next()) {
-//				row7 = new HashMap<String, Object>();
-//				for (int i = 1; i <= columnCount7; i++) {
-//					row7.put(metaData7.getColumnName(i), rs7.getObject(i));
-//				}
-//				resultList7.add(row7);
-//			}
-//			Utils.printAllInResultSet(resultList7);
-			
-    		
     		
     		conn.close();
     		
@@ -158,9 +139,9 @@ public class ReviewsServlet extends HttpServlet {
 	}
 
 	/**
-	 * Do post.
+	 * store in DB in REVIEWS table a new review. for review approval - update DB in REVIEWS table the review is approved
 	 *
-	 * @param request the request
+	 * @param request for new review submission, approve a review.
 	 * @param response the response
 	 * @throws ServletException the servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -204,41 +185,6 @@ public class ReviewsServlet extends HttpServlet {
 					System.out.println("review approved email: " + rev.getEmail() + " bookId: " + rev.getBookId()  );
 	    		}
 	    		
-				
-//				PreparedStatement ps = (PreparedStatement) conn.prepareStatement(DBQueries.SELECT_ALL_REVIEWS_NOT_APPROVED);
-//				ResultSet rs = ps.executeQuery();
-//				
-////				PreparedStatement pstmt4 = (PreparedStatement) conn.prepareStatement(AppConstants.SELECT_REVIEWS_OF_BOOK_ID);
-////				pstmt4.setString(1, "1");
-////				ResultSet rs4 = pstmt4.executeQuery();
-////
-////				ArrayList<Map<String, Object>> resultList4 = new ArrayList<Map<String, Object>>(); 
-////				Map<String, Object> row4 = null;
-////				ResultSetMetaData metaData4 = (ResultSetMetaData) rs4.getMetaData();
-////				Integer columnCount4 = metaData4.getColumnCount();
-////				while (rs4.next()) {
-////					row4 = new HashMap<String, Object>();
-////					for (int i = 1; i <= columnCount4; i++) {
-////						row4.put(metaData4.getColumnName(i), rs4.getObject(i));
-////					}
-////					resultList4.add(row4);
-////				}
-////				Utils.printAllInResultSet(resultList4);
-//				
-//				
-//
-//				ArrayList<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>(); 
-//				Map<String, Object> row1 = null;
-//				ResultSetMetaData metaData = (ResultSetMetaData) rs.getMetaData();
-//				Integer columnCount = metaData.getColumnCount();
-//				while (rs.next()) {
-//					row1 = new HashMap<String, Object>();
-//					for (int i = 1; i <= columnCount; i++) {
-//						row1.put(metaData.getColumnName(i), rs.getObject(i));
-//					}
-//					resultList.add(row1);
-//				}
-////				Utils.printAllInResultSet(resultList);
 
 			} catch (SQLException e) {
 				getServletContext().log("Error while querying for customers", e);

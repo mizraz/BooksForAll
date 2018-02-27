@@ -44,10 +44,11 @@ public class RolesFilterServlet implements Filter {
 	}
 
 	/**
-	 * Do filter.
+	 * filter unauthorized users try to make admin's activities. checks that session is exist by comparing hash came from request
+	 * that appears in SessionActiveTable. 
 	 *
-	 * @param request the request
-	 * @param response the response
+	 * @param request a request to perform: get: allReviewsNotApproved /  transactions / usersList / reviewApprove
+	 * @param response - chain if authorized, otherwise drop
 	 * @param chain the chain
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws ServletException the servlet exception

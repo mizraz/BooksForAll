@@ -51,10 +51,10 @@ public class TransactionsServlet extends HttpServlet {
     }
 
 	/**
-	 * Do get.
+	 * Get all the transaction made between 2 dates: early and later date (default is since 1.1.1970 ,  now).
 	 *
-	 * @param request the request
-	 * @param response the response
+	 * @param request for all transactions between 2 dates (with no params - default is since 1.1.1970 ,  now)
+	 * @param response contains a list of all transactions made between the 2 dates given by param.
 	 * @throws ServletException the servlet exception
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -105,8 +105,6 @@ public class TransactionsServlet extends HttpServlet {
 									+ "transaction time : "+ transaction.getDatePurchased());
 			}
 
-
-
 			conn.close();
 
 			Gson gson = new Gson();
@@ -121,9 +119,6 @@ public class TransactionsServlet extends HttpServlet {
 			response.sendError(500);//internal server error
 		}
 	}
-
-		
-		
 
 	/**
 	 * Do post.
