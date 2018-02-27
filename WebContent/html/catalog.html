@@ -1,4 +1,6 @@
 <!--  with ngRepeat need a workaround WITH BOOTSTRAP STYLE -->
+<div ng-controller="catalogController">
+<div id="userNicknameCat"><b><i>{{userNickname}}</i></b></div>
 <!-- Catalog - a list of all the ebooks the store can offer -->
 <ul ng-repeat="x in ebooksList" ng-if="$index % 3 == 0"
 	class="list-unstyled ">
@@ -10,3 +12,4 @@
 			ebook="ebooksList[$index+2]"></ebook-details></li>
 </ul>
 
+</div>
