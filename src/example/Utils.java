@@ -8,8 +8,19 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Utils.
+ */
 public class Utils {
 
+	/**
+	 * Gets the post body.
+	 *
+	 * @param request the request
+	 * @return the post body
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static String getPostBody(HttpServletRequest request) throws IOException {
 	    StringBuilder buffer = new StringBuilder();
 	    BufferedReader reader = request.getReader();
@@ -20,6 +31,11 @@ public class Utils {
 	    return buffer.toString();
 	}
 	
+	/**
+	 * Prints the all in result set.
+	 *
+	 * @param resultList the result list
+	 */
 	public static void printAllInResultSet(ArrayList<Map<String, Object>> resultList) {
 		Iterator<Map<String, Object>> iterator = resultList.iterator();
 		while (iterator.hasNext()) {

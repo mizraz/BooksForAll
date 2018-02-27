@@ -28,8 +28,9 @@ import example.AppConstants;
 import example.URIConsts;
 import example.model.Ebook;
 
+// TODO: Auto-generated Javadoc
 /**
- * Servlet implementation class EbookServlet
+ * Servlet implementation class EbookServlet.
  */
 @WebServlet(
 		description = "Handles ebooks info",
@@ -37,9 +38,13 @@ import example.model.Ebook;
 				"/ebooks"
 		})
 public class EbookServlet extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
        
     /**
+     * Instantiates a new ebook servlet.
+     *
      * @see HttpServlet#HttpServlet()
      */
     public EbookServlet() {
@@ -48,6 +53,12 @@ public class EbookServlet extends HttpServlet {
     }
 
 	/**
+	 * Do get.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -117,6 +128,12 @@ public class EbookServlet extends HttpServlet {
 		}	}
 
 	/**
+	 * Do post.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

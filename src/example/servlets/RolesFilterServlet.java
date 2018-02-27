@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+// TODO: Auto-generated Javadoc
 /**
- * Servlet Filter implementation class RolesFilter
+ * Servlet Filter implementation class RolesFilter.
  */
 @WebFilter(
 		urlPatterns = { 
@@ -34,6 +35,8 @@ public class RolesFilterServlet implements Filter {
     }
 
 	/**
+	 * Destroy.
+	 *
 	 * @see Filter#destroy()
 	 */
 	public void destroy() {
@@ -41,6 +44,13 @@ public class RolesFilterServlet implements Filter {
 	}
 
 	/**
+	 * Do filter.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 * @param chain the chain
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 * @throws ServletException the servlet exception
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -63,6 +73,10 @@ public class RolesFilterServlet implements Filter {
 	}
 
 	/**
+	 * Inits the.
+	 *
+	 * @param fConfig the f config
+	 * @throws ServletException the servlet exception
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
